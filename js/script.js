@@ -22,7 +22,7 @@ $(".navbar-brand").click(function(){
 
 // Ajout de la couche des sites à la carte
 // Mettre le script php ici
-$.getJSON("data/site_geol.geojson", function(data) {
+/*$.getJSON("data/site_geol.geojson", function(data) {
     var geojsonLayer = new L.GeoJSON(data);
     carte.addLayer(geojsonLayer);
-});
+});*/
