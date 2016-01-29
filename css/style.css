@@ -1,0 +1,87 @@
+/* Les icônes dans la barre de nav */
+.icon{
+	height: 20px;
+	padding-right: 5px;
+	margin-top: -5px;
+}
+
+/* Le logo dans la barre de nav */
+.logoPNE{
+	height: 40px;
+	padding: 0px;
+	margin-top: -10px;
+}
+
+/* Le même curseur que lorsque l'on clique sur un lien, là il est sur le titre de la barre de nav */
+.navbar-brand{
+	cursor: pointer;
+}
+
+/* Petit trait violet de la couleur du logo juste en dessous de la barre de navigation */
+.navbar-inverse{
+	border-bottom: 2px solid #981D97;
+}
+
+/* Panneau latéral */
+#sidebar{
+	/*top: 8vh;*/
+	/*margin-top: 50px;*/	
+	/*height: 92%;*/
+	top: 50px;
+	bottom: 0px;
+	position: fixed;
+	display: block;
+	overflow: auto;
+	padding: 10px 15px;
+	position: absolute;
+	box-shadow: inset 0 0 10px #000000;
+	margin-bottom: auto;
+}
+
+/* Contenu du panneau latéral */
+#containerSidebar{
+}
+
+/* Le bouton pour Affiche/Masquer la sidebar */
+.toggle {
+    z-index: 1300;
+    opacity: 0.8;
+    display: block;
+    bottom: 0px;
+    left: 0px;
+    position: fixed;
+    border-radius: 0px 4px 4px 0px;
+    color: #FFF;
+    background-color: #222;
+    padding: 20px 30px;
+}
+
+/* Au survol du bouton, on garde la couleur blanche */
+.toggle:hover{
+	color: white;
+}
+
+/* La carte */
+#carte{
+	margin-top: 51px;
+	height: 92vmin;
+	margin-bottom: 0px;
+	margin-left: -15px;
+	margin-right: -15px;
+	overflow: none;
+}
+
+#imgPNE{
+	height: 100px;
+	margin-left: 10px;
+}
+
+.texteContainerSidebar{
+	font-size: 1em;
+	margin-right: 5px;
+	margin-left: 10px;
+}
+
+.sautLigne{
+	margin-top: 5px;
+}

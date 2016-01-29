@@ -1,0 +1,23 @@
+{
+	"order" : 1,
+	"id": "default", 
+	"clustering": false,
+	"name": "Parc national des Ecrins", 
+	"center": {
+		"lat": 44.85,
+		"lng": 6.1,
+		"zoom": 10
+	},
+	"location":{
+		"name":"Communes",
+		"url":"data/communes.json"
+	},
+	"layers": { 		
+		"overlay":{
+		        "name": "Sites Géologiques",
+		        "type": "geojson",
+		        "url": "data/site_geol.geojson",
+		        "options" : "{style:function (feature) {return {color: $scope.mapOptions.layers.overlay.filters.id_site.values[feature.properties.id_site].color, weight: 0.1, opacity: 1, fillOpacity: 0.7 };},onEachFeature: function (feature, layer) {if (feature.properties, {noHide:false}) {layer.bindPopup(\"<h4>\"+feature.properties.id_site+\"</h4>\");}}}"
+		    }
+	}
+}

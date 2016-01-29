@@ -1,0 +1,31 @@
+{
+	"navBarHeader": {		
+			"icon": "img/logo.png",
+			"title": "Carte des sites géologiques du PNE"		
+	},
+	"navBarElements": [
+		{
+			"icon": "img/info.svg",
+			"title": "Informations / En savoir plus",
+			"content": "<h1>Mon titre h1</h1><p style='color: red'>voici du \"contenu\", c'est beau !</p>"
+		},
+		{
+			"icon": "img/spirale.svg",
+			"title": "Parc National des Ecrins",
+			"content": "le contenu 2"
+		},
+		{
+			"icon": "img/outils.svg",
+			"title": "Outils",
+			"content": "le contenu 3"
+		},
+		{
+			"icon": "img/contact2.svg",
+			"title": "Contact",
+			"content": "le contenu 4"
+		}
+	],
+	"sideBarContent": {
+		"content": "<img id=\"imgPNE\" class=\"img-responsive pull-left\" alt=\"imgPNE\" src=\"img/imgPNE.png\"><div class=\"texteContainerSidebar\"><strong>Le Parc National des Ecrins</strong> a décidé en Janvier 2016 de développer une application permettant de montrer au grand public la carte des sites géologiques du Parc.</div><div class=\"texteContainerSidebar sautLigne\"><em>Ci-dessous vous pourrez consulter la liste des sites géologiques présents dans le Parc National des Ecrins.</em></div>"
+	}
+}
