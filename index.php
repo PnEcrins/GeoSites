@@ -63,34 +63,19 @@ include ("dbconnect.php");
 			<div id="containerSidebar">
 				<div class="row" ng-bind-html="contentHTML.sideBarContent.content | sanitize"></div>
 				<hr>
-				<div>
-<?php
-$query = "SELECT id_site, nom_site, lieudit, periode_ouverture, superficie, unite_superficie, rarete FROM geologie.site ORDER BY id_site";
-$rs = pg_query($dbconnect, $query) or die("Cannot execute query: $query\n");
-
-while ($row = pg_fetch_row($rs)) {
-	?>
-	<strong>{{::mapOptions.name}}</strong>
-	<?php
-	echo ("$row[1]<br />");
-	echo ("<strong>Lieu-dit : </strong>");
-	echo ("$row[2]<br />");
-	echo ("<strong>Période d'ouverture : </strong>");
-	echo ("$row[3]<br />");
-	echo ("<strong>Superficie : </strong>");
-	echo ("$row[4] $row[5]<br />");
-	echo ("<strong>Rareté : </strong>");
-	echo ("$row[6]<br />");
-	echo ("<a role='button' class='btn btn-default' href='#' ng-click='open()'>Afficher détails &raquo </a><hr>");
-}
-pg_close($dbconnect); 
-?>
-				</div>				
+				<div ng-repeat="site in geojsonSites"> 					
+					<strong>Nom du site : </strong>{{ site.properties.nom_site }}<br />
+				    <strong>Lieu-dit : </strong>{{ site.properties.lieudit }} <br />
+				    <strong>Période d'ouverture : </strong>{{ site.properties.periode_ouverture }} <br />
+				    <strong>Superficie : </strong>{{ site.properties.superficie }} {{ site.properties.unite_superficie }}<br />
+				    <strong>Rareté : </strong>{{ site.properties.rarete }} <br />
+					<a role="button" class="btn btn-default" href="#" ng-click="open()">Afficher détails &raquo </a><hr>
+				</div> 		
 			</div>			
 		</div>						
 
 		<!-- La carte -->
-		<div ng-controller="MainMapCtl" id="containerCarte" class="col-md-offset-4 col-md-8">
+		<div id="containerCarte" class="col-md-offset-4 col-md-8">
 			<div id="carte"></div>
 		</div>		
 
@@ -108,7 +93,7 @@ pg_close($dbconnect);
 
 		<!-- Controllers -->
 		<script src="js/controllers/homeController.js"></script>
-		<script src="js/controllers/modalController.js"></script>
+		<script src="js/controllers/modalController.js"></script>		
 		<script src="js/controllers/mapController.js"></script>
 
 		<!-- Services -->

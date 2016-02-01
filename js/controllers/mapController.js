@@ -1,4 +1,4 @@
-// Création du controller pour tout ce qui est de angular et leaflet sur la carte
+/*// Création du controller pour tout ce qui est de angular et leaflet sur la carte
 app.controller('MainMapCtl',
     ['$scope', '$http','LeafletServices', '$rootScope', function ($scope, $http, LeafletServices, $rootScope) {
 		$scope.baselayers = {},
@@ -39,19 +39,6 @@ app.controller('MainMapCtl',
 							$('#info-popup').hide();
 						}
 					});					
-				};
-
-				$scope.open = function () {
-					var modalInstance = $uibModal.open({						
-						templateUrl: 'modalDetails.html',
-						controller: 'ModalDetailsCtrl',
-						size: 'lg',
-						resolve: {
-							infoModal: function () {
-								return $scope.infoObj;
-							}
-						}
-					});
 				};
 
 				//Chargement des données et affichage sur la carte
@@ -142,4 +129,4 @@ app.factory('LeafletServices', ['$http', function($http) {
         return this.layer;
       }
    };
-}]);
+}]);*/
