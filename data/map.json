@@ -2,10 +2,10 @@
 	"order" : 1,
 	"id": "default", 
 	"clustering": false,
-	"name": "Périmètre de quiétude", 
+	"name": "Carte des sites géologiques du PNE", 
 	"center": {
-		"lat": 44.3266459,
-		"lng": 3.6072651,
+		"lat": 44.83,
+		"lng": 6.18,
 		"zoom": 10
 	},
 	"location":{
@@ -30,16 +30,16 @@
 		    }
 		],
 		"overlay":{
-		        "name": "Perimetre quietude",
+		        "name": "sites geologiques",
 		        "type": "geojson",
-		        "url": "data/site_geol.geojson",
-		        "options" : "{style:function (feature) {return {color: $scope.mapOptions.layers.overlay.filters.code_sp.values[feature.properties.code_sp].color, weight: 1.3, opacity: 1, fillOpacity: 0.5 };},onEachFeature: function (feature, layer) {if (feature.properties, {noHide:false}) {layer.bindPopup(\"<h4>\"+$scope.mapOptions.layers.overlay.filters.code_sp.values[feature.properties.code_sp].label+\"</h4>\");}}}",
+		        "url": "data/site_geol_tmp.geojson",
+		        "options" : "{style:function (feature) {return {weight: 1.3, opacity: 1, fillOpacity: 0.5 };},onEachFeature: function (feature, layer) {if (feature.properties, {noHide:false}) {layer.bindPopup(\"<h4>TEST</h4>\");}}}",
 		        "filters":{
 					"code_region" :{
 						"name" : "Region",
 						"values" : {
-							"PAC":{"label":"Aigle botté", "color":"#FF6A00", "visible":true},
-							"RHA":{"label":"Aigle de Bonelli", "color":"maroon", "visible":true}							
+							"PAC":{"label":"Région PACA", "color":"#FF6A00", "visible":true},
+							"RHA":{"label":"Région Rhône Alpes", "color":"maroon", "visible":true}							
 						}
 					}
 		        }

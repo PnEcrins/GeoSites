@@ -7,7 +7,9 @@ app.controller('MainMapCtl',
 		
 		$('#info-popup').hide();
 		
-		$scope.map = L.map('carte', { zoomControl:true });
+		$scope.map = L.map('carte', { attributionControl: false, zoomControl: false });
+		L.control.zoom({position: 'topright', zoomInTitle: 'Zoomer', zoomOutTitle: 'Dézoomer'}).addTo($scope.map);
+		L.control.scale({position: 'bottomright', imperial: false}).addTo($scope.map);
 
 		$http.get("data/map.json").then(
 			function(results) {
@@ -38,6 +40,20 @@ app.controller('MainMapCtl',
 						}
 					});					
 				};
+
+				$scope.open = function () {
+					var modalInstance = $uibModal.open({						
+						templateUrl: 'modalDetails.html',
+						controller: 'ModalDetailsCtrl',
+						size: 'lg',
+						resolve: {
+							infoModal: function () {
+								return $scope.infoObj;
+							}
+						}
+					});
+				};
+
 				//Chargement des données et affichage sur la carte
 				$http.get(results.data.layers.overlay.url).then(
 					function(results) {    

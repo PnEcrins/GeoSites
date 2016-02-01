@@ -33,32 +33,6 @@ app.directive('showSidebar', function() {
 	};
 });
 
-
-/* ------------------- *
-* --------------------- *
-* ------- CARTE ------- *
-* --------------------- *
-* -------------------- */
-
-/*// Création de la carte, on choisi la vue de départ
-var carte = L.map('carte', {attributionControl: false, zoomControl: false}).setView([44.83, 6.18], 10);
-
-// Les control sur la carte (le zoom et l'échelle)
-L.control.zoom({position: 'topright', zoomInTitle: 'Zoomer', zoomOutTitle: 'Dézoomer'}).addTo(carte);
-L.control.scale({position: 'bottomright', imperial: false}).addTo(carte);
-
-// Icon custom, à faire
-L.Icon.Default.imagePath = 'img/';
-L.Icon.iconSize(25,25);
-
-// Fond de carte Open Street Map
-var osm = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-	maxZoom: 19
-});
-
-// Ajout du fond de carte à la carte
-carte.addLayer(osm);*/
-
 /* ------------------- *
 * --------------------- *
 * ------ FILTRES ------ *

@@ -23,7 +23,7 @@ include ("dbconnect.php");
 		ng-app défini la portée de l'application (le scope)
 		ng-controller défini la portée du controller, c'est à dire que les propriétés dans HomeController sont utilisables dans tout le body
 	-->
-	<body ng-app="GeoSiteApp" ng-controller="HomeController" ng-controller="MapController">
+	<body ng-app="GeoSiteApp" ng-controller="HomeController">
 
 		<!-- Barre de navigation -->
 		<nav class="navbar navbar-inverse navbar-fixed-top">
@@ -69,17 +69,19 @@ $query = "SELECT id_site, nom_site, lieudit, periode_ouverture, superficie, unit
 $rs = pg_query($dbconnect, $query) or die("Cannot execute query: $query\n");
 
 while ($row = pg_fetch_row($rs)) {
-	echo ("<strong>Nom du site : </strong>");
+	?>
+	<strong>{{::mapOptions.name}}</strong>
+	<?php
 	echo ("$row[1]<br />");
 	echo ("<strong>Lieu-dit : </strong>");
 	echo ("$row[2]<br />");
 	echo ("<strong>Période d'ouverture : </strong>");
 	echo ("$row[3]<br />");
 	echo ("<strong>Superficie : </strong>");
-	echo ("$row[4].$row[5]<br />");
+	echo ("$row[4] $row[5]<br />");
 	echo ("<strong>Rareté : </strong>");
 	echo ("$row[6]<br />");
-	echo ("<a role='button' class='btn btn-default' href='#' ng-click=''>Afficher détails &raquo </a><hr>");
+	echo ("<a role='button' class='btn btn-default' href='#' ng-click='open()'>Afficher détails &raquo </a><hr>");
 }
 pg_close($dbconnect); 
 ?>
@@ -88,7 +90,7 @@ pg_close($dbconnect);
 		</div>						
 
 		<!-- La carte -->
-		<div id="containerCarte" class="col-md-offset-4 col-md-8">
+		<div ng-controller="MainMapCtl" id="containerCarte" class="col-md-offset-4 col-md-8">
 			<div id="carte"></div>
 		</div>		
 
