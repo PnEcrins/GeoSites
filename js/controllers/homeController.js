@@ -1,6 +1,10 @@
 // Création du controller HomeController
 // Un controller gère les données de l'application
-app.controller('HomeController', ['$scope', 'htmlcontent', '$uibModal', '$http','LeafletServices', '$rootScope', function ($scope, htmlcontent, $uibModal, $http, LeafletServices, $rootScope) {
+app.controller('HomeController', ['$scope', 'htmlcontent', '$uibModal', '$http','LeafletServices', '$location', '$anchorScroll', '$rootScope', function ($scope, htmlcontent, $uibModal, $http, LeafletServices, $location, $anchorScroll, $rootScope) {
+	
+	// Initilisation des variables
+	$scope.collapser = "panel-collapse collapse",
+
 	// On récupère dans le fichier Json toutes les données de la barre de navigation (le logo, le titre, les liens)
 	htmlcontent.success(function(data) {
 		$scope.contentHTML = data;
@@ -44,7 +48,7 @@ app.controller('HomeController', ['$scope', 'htmlcontent', '$uibModal', '$http',
 		//carte
 		$scope.baselayers = {},
 		$scope.mainLayer = null,
-		$scope.mainLayerData = null,
+		$scope.mainLayerData = null,		
 		
 		$('#info-popup').hide();
 		
@@ -109,8 +113,10 @@ app.controller('HomeController', ['$scope', 'htmlcontent', '$uibModal', '$http',
 		$scope.infoObj = item.feature.properties;
 		$('#filter-panel').collapse('hide');
 		$('#info-popup').show();
-
-		
+		$location.hash('anchor'+item.feature.properties.id_site);
+	    // call $anchorScroll()
+	    $anchorScroll();
+	    document.getElementById('collapse'+item.feature.properties.id_site).className="panel-collapse collapse in";	    
 	});
 	
 	//Action zoom sur une localisation
@@ -174,3 +180,4 @@ app.factory('LeafletServices', ['$http', function($http) {
       }
    };
 }]);
+

@@ -63,25 +63,23 @@ include ("dbconnect.php");
 			<div id="containerSidebar">
 				<div class="row" ng-bind-html="contentHTML.sideBarContent.content | sanitize"></div>
 				<hr>
-				<div ng-repeat="site in geojsonSites">
-
-					<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-						<div class="panel panel-default">
-							<div class="panel-heading" role="tab" id="{{ 'heading' + site.properties.id_site }}">
-								<h4 class="panel-title">
-									<a role="button" data-toggle="collapse" data-parent="#accordion" href="{{ '#collapse' + site.properties.id_site }}" aria-expanded="false" aria-controls="{{ 'collapse' + site.properties.id_site }}">
-									<strong>{{ site.properties.nom_site }}</strong>
-									</a>
-								</h4>
-							</div>
-							<div id="{{ 'collapse' + site.properties.id_site }}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="{{ 'heading' + site.properties.id_site }}">
-								<div class="panel-body">
-									<strong>Lieu-dit : </strong>{{ site.properties.lieudit }} <br />
-									<strong>Période d'ouverture : </strong>{{ site.properties.periode_ouverture }} <br />
-									<strong>Superficie : </strong>{{ site.properties.superficie }} {{ site.properties.unite_superficie }}<br />
-									<strong>Rareté : </strong>{{ site.properties.rarete }} <br />
-									<a role="button" class="btn btn-default" href="#" ng-click="openDetails(site.properties)">Afficher détails &raquo </a>
-								</div>
+				<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+				
+					<div ng-repeat="site in geojsonSites" class="panel panel-default" id="{{ 'anchor' + site.properties.id_site }}">
+						<div class="panel-heading" role="tab" id="{{ 'heading' + site.properties.id_site }}">
+							<h4 class="panel-title">
+								<a role="button" data-toggle="collapse" data-parent="#accordion" href="{{ '#collapse' + site.properties.id_site }}" aria-expanded="true" aria-controls="{{ 'collapse' + site.properties.id_site }}">
+								<strong>{{ site.properties.nom_site }}</strong>
+								</a>
+							</h4>
+						</div>
+						<div id="{{ 'collapse' + site.properties.id_site }}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="{{ 'heading' + site.properties.id_site }}">
+							<div class="panel-body">
+								<strong>Lieu-dit : </strong>{{ site.properties.lieudit }} <br />
+								<strong>Période d'ouverture : </strong>{{ site.properties.periode_ouverture }} <br />
+								<strong>Superficie : </strong>{{ site.properties.superficie }} {{ site.properties.unite_superficie }}<br />
+								<strong>Rareté : </strong>{{ site.properties.rarete }} <br />
+								<a role="button" class="btn btn-default" href="#" ng-click="openDetails(site.properties)">Afficher détails &raquo </a>
 							</div>
 						</div>
 					</div>
@@ -99,6 +97,7 @@ include ("dbconnect.php");
 		<script src="vendors/jquery/jquery.min.js"></script>	
 		<script src="vendors/bootstrap/js/bootstrap.min.js"></script>			
 		<script src="vendors/angular/angular.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-animate.js"></script>
 		<script src="vendors/leaflet/leaflet.js"></script>
 		<script src="https://code.angularjs.org/1.2.28/angular-route.min.js"></script>
 		<script src="vendors/angular-bootstrap/ui-bootstrap-custom-1.1.1.min.js"></script>
