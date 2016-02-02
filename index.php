@@ -68,12 +68,12 @@ include ("dbconnect.php");
 					<div ng-repeat="site in geojsonSites" class="panel panel-default" id="{{ 'anchor' + site.properties.id_site }}">
 						<div class="panel-heading" role="tab" id="{{ 'heading' + site.properties.id_site }}">
 							<h4 class="panel-title">
-								<a role="button" data-toggle="collapse" data-parent="#accordion" href="{{ '#collapse' + site.properties.id_site }}" aria-expanded="true" aria-controls="{{ 'collapse' + site.properties.id_site }}">
+								<a role="button" data-toggle="collapse" data-parent="#accordion" ng-click="test(site)" href="{{ '#collapse' + site.properties.id_site }}" aria-expanded="true" aria-controls="{{ 'collapse' + site.properties.id_site }}">
 								<strong>{{ site.properties.nom_site }}</strong>
 								</a>
 							</h4>
 						</div>
-						<div id="{{ 'collapse' + site.properties.id_site }}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="{{ 'heading' + site.properties.id_site }}">
+						<div id="{{ 'collapse' + site.properties.id_site }}" ng-class="collapser" role="tabpanel" aria-labelledby="{{ 'heading' + site.properties.id_site }}">
 							<div class="panel-body">
 								<strong>Lieu-dit : </strong>{{ site.properties.lieudit }} <br />
 								<strong>Période d'ouverture : </strong>{{ site.properties.periode_ouverture }} <br />

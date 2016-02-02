@@ -3,7 +3,7 @@
 app.controller('HomeController', ['$scope', 'htmlcontent', '$uibModal', '$http','LeafletServices', '$location', '$anchorScroll', '$rootScope', function ($scope, htmlcontent, $uibModal, $http, LeafletServices, $location, $anchorScroll, $rootScope) {
 	
 	// Initilisation des variables
-	$scope.collapser = "panel-collapse collapse",
+	$scope.collapser = "panel-collapse collapse";
 
 	// On récupère dans le fichier Json toutes les données de la barre de navigation (le logo, le titre, les liens)
 	htmlcontent.success(function(data) {
@@ -39,6 +39,12 @@ app.controller('HomeController', ['$scope', 'htmlcontent', '$uibModal', '$http',
 			}
 		});
 	};
+
+	$scope.test = function (site) {		
+		alert(site.properties.id_site);
+		/*site.properties.noHide=false;
+		$('#info-popup').show();*/
+	}
 
 	//geojson
 	$http.get('http://dev.ecrins-parcnational.fr/pne_maps/GeoSiteApp/generategeojson.php')
@@ -116,7 +122,8 @@ app.controller('HomeController', ['$scope', 'htmlcontent', '$uibModal', '$http',
 		$location.hash('anchor'+item.feature.properties.id_site);
 	    // call $anchorScroll()
 	    $anchorScroll();
-	    document.getElementById('collapse'+item.feature.properties.id_site).className="panel-collapse collapse in";	    
+	    /*$scope.collapser = "panel-collapse collapse";
+	    document.getElementById('collapse'+item.feature.properties.id_site).className="panel-collapse collapse in";	    */
 	});
 	
 	//Action zoom sur une localisation
