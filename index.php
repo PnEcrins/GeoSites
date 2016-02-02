@@ -45,10 +45,10 @@ include ("dbconnect.php");
 
 				<!-- Les autres éléments de la barre de navigation, on récupère les données dans le controller et on fait une boucle avec ng-repeat -->
 				<div class="collapse navbar-collapse">
-		      		<ul class="nav navbar-nav">
-		      			<li ng-repeat="navBarElement in contentHTML.navBarElements">
-		      				<!-- Je passe en paramètres le contenu et le titre pour la modal -->
-		      				<a role="button" href="#" ng-click="open(navBarElement.title, navBarElement.content)">
+					<ul class="nav navbar-nav">
+						<li ng-repeat="navBarElement in contentHTML.navBarElements">
+							<!-- Je passe en paramètres le contenu et le titre pour la modal -->
+							<a role="button" href="#" ng-click="open(navBarElement.title, navBarElement.content)">
 								<img class="icon" ng-src="{{ navBarElement.icon }}">{{ navBarElement.title }}
 							</a>							
 						</li>
@@ -63,13 +63,29 @@ include ("dbconnect.php");
 			<div id="containerSidebar">
 				<div class="row" ng-bind-html="contentHTML.sideBarContent.content | sanitize"></div>
 				<hr>
-				<div ng-repeat="site in geojsonSites"> 					
-					<strong>Nom du site : </strong>{{ site.properties.nom_site }}<br />
-				    <strong>Lieu-dit : </strong>{{ site.properties.lieudit }} <br />
-				    <strong>Période d'ouverture : </strong>{{ site.properties.periode_ouverture }} <br />
-				    <strong>Superficie : </strong>{{ site.properties.superficie }} {{ site.properties.unite_superficie }}<br />
-				    <strong>Rareté : </strong>{{ site.properties.rarete }} <br />
-					<a role="button" class="btn btn-default" href="#" ng-click="open()">Afficher détails &raquo </a><hr>
+				<div ng-repeat="site in geojsonSites">
+
+					<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+						<div class="panel panel-default">
+							<div class="panel-heading" role="tab" id="{{ 'heading' + site.properties.id_site }}">
+								<h4 class="panel-title">
+									<a role="button" data-toggle="collapse" data-parent="#accordion" href="{{ '#collapse' + site.properties.id_site }}" aria-expanded="false" aria-controls="{{ 'collapse' + site.properties.id_site }}">
+									<strong>{{ site.properties.nom_site }}</strong>
+									</a>
+								</h4>
+							</div>
+							<div id="{{ 'collapse' + site.properties.id_site }}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="{{ 'heading' + site.properties.id_site }}">
+								<div class="panel-body">
+									<strong>Lieu-dit : </strong>{{ site.properties.lieudit }} <br />
+									<strong>Période d'ouverture : </strong>{{ site.properties.periode_ouverture }} <br />
+									<strong>Superficie : </strong>{{ site.properties.superficie }} {{ site.properties.unite_superficie }}<br />
+									<strong>Rareté : </strong>{{ site.properties.rarete }} <br />
+									<a role="button" class="btn btn-default" href="#" ng-click="openDetails(site.properties)">Afficher détails &raquo </a>
+								</div>
+							</div>
+						</div>
+					</div>
+
 				</div> 		
 			</div>			
 		</div>						
@@ -93,7 +109,8 @@ include ("dbconnect.php");
 
 		<!-- Controllers -->
 		<script src="js/controllers/homeController.js"></script>
-		<script src="js/controllers/modalController.js"></script>		
+		<script src="js/controllers/modalController.js"></script>
+		<script src="js/controllers/modalDetailsController.js"></script>			
 		<script src="js/controllers/mapController.js"></script>
 
 		<!-- Services -->

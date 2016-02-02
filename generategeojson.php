@@ -1,7 +1,8 @@
 <?php
 include ("dbconnect.php");
 header('Content-type: application/json');
-$query = "Select id_site, nom_site, lieudit, superficie, unite_superficie, periode_ouverture, rarete, st_asgeojson(the_geom_point) as geometry from geologie.site order by id_site";
+$mavue = "geologie.v_sites";
+$query = "Select * from $mavue";
 $rs = pg_query($dbconnect, $query) or die("La requete suivante ne peut pas etre executee : $query\n");
 
 //Construction du GeoJSON
@@ -13,9 +14,9 @@ $geojson = array(
 while ($row = pg_fetch_assoc($rs)) {
     
     $geometry = json_decode($row['geometry']);
+    //On enlève les propriétés des géométries
     unset($row['geometry']);
-    $properties = $row;
-        //On enlève les propriétés des géométries
+    $properties = $row;        
     $feature = array(
         'type' => 'Feature'
         ,'properties' => $properties

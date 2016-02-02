@@ -54,14 +54,14 @@ app.filter("sanitize", ['$sce', function($sce) {
 * -------------------- */
 
 /*
-- Système de route
-- Afficher le GeoJSON avec AngularJS et Leaflet (pas seulement leaflet)
-- Faire un script php pour générer un JSON qui contient les attributs ainsi que la géométrie
-- Créer la liaison entre carte et liste
-- Créer la modal contenant les détails d'un site et le lien du pdf
-- Mettre en place le fitrage
-- Mettre en place la recherche avec auto-complétion pour rechercher une commune
-- Mettre l'application sur GitHub
+- Système de route ---------------------------------------------------------------------------------- TODO
+- Afficher le GeoJSON avec AngularJS et Leaflet (pas seulement leaflet) ----------------------------- DONE
+- Faire un script php pour générer un JSON qui contient les attributs ainsi que la géométrie -------- DONE
+- Créer la liaison entre carte et liste ------------------------------------------------------------- TODO
+- Créer la modal contenant les détails d'un site et le lien du pdf ---------------------------------- TODO
+- Mettre en place le fitrage ------------------------------------------------------------------------ TODO
+- Mettre en place la recherche avec auto-complétion pour rechercher une commune --------------------- TODO
+- Mettre l'application sur GitHub ------------------------------------------------------------------- DONE
 */
 
 

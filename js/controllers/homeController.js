@@ -22,6 +22,20 @@ app.controller('HomeController', ['$scope', 'htmlcontent', '$uibModal', '$http',
 			}
 		});
 	};
+
+	$scope.openDetails = function (site) {
+		var modalInstance = $uibModal.open({
+			templateUrl: 'js/directives/modalDetails.html',
+			controller: 'ModalDetailsCtrl',
+			size: 'lg',
+			resolve: {
+				site: function () {
+					return site;
+				}
+			}
+		});
+	};
+
 	//geojson
 	$http.get('http://dev.ecrins-parcnational.fr/pne_maps/GeoSiteApp/generategeojson.php')
 	//$http.get('data/site_geol_tmp.geojson')	
@@ -95,6 +109,8 @@ app.controller('HomeController', ['$scope', 'htmlcontent', '$uibModal', '$http',
 		$scope.infoObj = item.feature.properties;
 		$('#filter-panel').collapse('hide');
 		$('#info-popup').show();
+
+		
 	});
 	
 	//Action zoom sur une localisation
