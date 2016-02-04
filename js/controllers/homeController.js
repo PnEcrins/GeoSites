@@ -1,9 +1,6 @@
 // Création du controller HomeController
 // Un controller gère les données de l'application
 app.controller('HomeController', ['$scope', 'htmlcontent', '$uibModal', '$http','LeafletServices', '$location', '$anchorScroll', '$rootScope', function ($scope, htmlcontent, $uibModal, $http, LeafletServices, $location, $anchorScroll, $rootScope) {
-	
-	// Initilisation des variables
-	$scope.collapser = "panel-collapse collapse";
 
 	// On récupère dans le fichier Json toutes les données de la barre de navigation (le logo, le titre, les liens)
 	htmlcontent.success(function(data) {
@@ -40,11 +37,17 @@ app.controller('HomeController', ['$scope', 'htmlcontent', '$uibModal', '$http',
 		});
 	};
 
-	$scope.test = function (site) {		
-		alert(site.properties.id_site);
-		/*site.properties.noHide=false;
-		$('#info-popup').show();*/
-	}
+	$scope.test = function () {		
+		/*alert(site.properties.id_site);*/		
+		document.getElementById(feature.feature.properties.id_site).className="couleurNoire";
+		//$('#info-popup').show();
+		/*var id = $(this)[0].id;
+		$scope.geojsonSites.eachLayer(function(feature) {
+			if(feature.feature.properties.id_site == id){
+				alert("$('#info-popup').show()");
+			}
+		});	*/	
+	};
 
 	//geojson
 	$http.get('http://dev.ecrins-parcnational.fr/pne_maps/GeoSiteApp/generategeojson.php')
@@ -112,18 +115,27 @@ app.controller('HomeController', ['$scope', 'htmlcontent', '$uibModal', '$http',
 		$scope.erreur = err;
 	});
 
-	
-	
+	$scope.previousLinkSelected = null;
 	//Action selection d'un élément sur la carte
 	$scope.$on('feature:click', function(ev, item){
 		$scope.infoObj = item.feature.properties;
 		$('#filter-panel').collapse('hide');
 		$('#info-popup').show();
 		$location.hash('anchor'+item.feature.properties.id_site);
-	    // call $anchorScroll()
-	    $anchorScroll();
-	    /*$scope.collapser = "panel-collapse collapse";
-	    document.getElementById('collapse'+item.feature.properties.id_site).className="panel-collapse collapse in";	    */
+		// call $anchorScroll()
+		$anchorScroll();
+		//$scope.couleurPolice = "couleurRouge";
+		/*$scope.collapser = "panel-collapse collapse";*/
+		document.getElementById(item.feature.properties.id_site).className="couleurNoire";
+		if(document.getElementById(item.feature.properties.id_site).className!="couleurRouge"){
+			/*var x =document.getElementByClassName("couleurRouge");
+			x[0].className="panel-collapse collapse in";*/
+			if($scope.previousLinkSelected != null && $scope.previousLinkSelected != item.feature.properties.id_site){
+				document.getElementById($scope.previousLinkSelected).className="couleurNoire";
+			}			
+			document.getElementById(item.feature.properties.id_site).className="couleurRouge";
+			$scope.previousLinkSelected = item.feature.properties.id_site;							
+		}	    	   
 	});
 	
 	//Action zoom sur une localisation
@@ -151,7 +163,7 @@ app.controller('HomeController', ['$scope', 'htmlcontent', '$uibModal', '$http',
 				}
 			}
 		);
-	 	$scope.mainLayer = new L.geoJson($scope.mainLayerData,options);
+		$scope.mainLayer = new L.geoJson($scope.mainLayerData,options);
 		$scope.mainLayer.addTo($scope.map);
 	}
 	
@@ -165,26 +177,26 @@ app.controller('HomeController', ['$scope', 'htmlcontent', '$uibModal', '$http',
 }]);
 
 app.factory('LeafletServices', ['$http', function($http) {
-    return {
-      layer : {}, 
-      
-      loadData : function(layerdata) {
-        this.layer = {};
-        this.layer.name = layerdata.name;
-        this.layer.active = layerdata.active;
-        
-        if (layerdata.type == 'xyz' || layerdata.type == 'ign') {
+	return {
+	  layer : {}, 
+	  
+	  loadData : function(layerdata) {
+		this.layer = {};
+		this.layer.name = layerdata.name;
+		this.layer.active = layerdata.active;
+		
+		if (layerdata.type == 'xyz' || layerdata.type == 'ign') {
 		  var url = layerdata.url;
-          if ( layerdata.type == 'ign') {
-            url = 'https://gpp3-wxs.ign.fr/' + layerdata.key + '/geoportail/wmts?LAYER='+layerdata.layer+'&EXCEPTIONS=text/xml&FORMAT=image/jpeg&SERVICE=WMTS&VERSION=1.0.0&REQUEST=GetTile&STYLE=normal&TILEMATRIXSET=PM&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}'; 
-          }
-          this.layer.map = new L.TileLayer(url,layerdata.options);
-        }
-        else if (layerdata.type == 'wms') {
-          this.layer.map = L.tileLayer.wms(layerdata.url,layerdata.options);
-        }
-        return this.layer;
-      }
+		  if ( layerdata.type == 'ign') {
+			url = 'https://gpp3-wxs.ign.fr/' + layerdata.key + '/geoportail/wmts?LAYER='+layerdata.layer+'&EXCEPTIONS=text/xml&FORMAT=image/jpeg&SERVICE=WMTS&VERSION=1.0.0&REQUEST=GetTile&STYLE=normal&TILEMATRIXSET=PM&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}'; 
+		  }
+		  this.layer.map = new L.TileLayer(url,layerdata.options);
+		}
+		else if (layerdata.type == 'wms') {
+		  this.layer.map = L.tileLayer.wms(layerdata.url,layerdata.options);
+		}
+		return this.layer;
+	  }
    };
 }]);
 
