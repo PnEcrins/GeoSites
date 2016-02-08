@@ -1,0 +1,7 @@
+<?php
+$serveur = ""; 
+$user = "";
+$passe = ""; 
+$base = "";
+$mavue = "";
+?>
