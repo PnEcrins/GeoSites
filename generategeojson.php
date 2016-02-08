@@ -1,4 +1,5 @@
 <?php
+include ("config.php");
 include ("dbconnect.php");
 header('Content-type: application/json');
 $mavue = "geologie.v_sites";

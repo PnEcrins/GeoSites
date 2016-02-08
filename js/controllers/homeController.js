@@ -37,16 +37,16 @@ app.controller('HomeController', ['$scope', 'htmlcontent', '$uibModal', '$http',
 		});
 	};
 
-	$scope.test = function () {		
+	$scope.test = function (site) {		
 		/*alert(site.properties.id_site);*/		
-		document.getElementById(feature.feature.properties.id_site).className="couleurNoire";
+		document.getElementById(site.properties.id_site).className="couleurNoire";
 		//$('#info-popup').show();
 		/*var id = $(this)[0].id;
-		$scope.geojsonSites.eachLayer(function(feature) {
-			if(feature.feature.properties.id_site == id){
-				alert("$('#info-popup').show()");
+		$scope.geojsonSites.eachLayer(function(site) {
+			if(site.properties.id_site == id){
+				$('#info-popup').show();
 			}
-		});	*/	
+		});*/		
 	};
 
 	//geojson
@@ -93,7 +93,7 @@ app.controller('HomeController', ['$scope', 'htmlcontent', '$uibModal', '$http',
 							$('#info-popup').hide();
 						}
 					});					
-				};
+				};				
 
 				//Chargement des données et affichage sur la carte    
 				$scope.mainLayerData = $scope.geojsonSites;

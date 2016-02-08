@@ -1,7 +1,7 @@
 {
 	"navBarHeader": {		
 			"icon": "img/logo.png",
-			"title": "Carte des sites géologiques du PNE"		
+			"title": "Sites géologiques remarquables du Parc national des Ecrins"		
 	},
 	"navBarElements": [
 		{
@@ -11,13 +11,8 @@
 		},
 		{
 			"icon": "img/spirale.svg",
-			"title": "Parc National des Ecrins",
+			"title": "Parc national des Ecrins",
 			"content": "<h1>Présentation</h1><div><strong>Le Parc National des Écrins</strong> est situé aux confins de l'Isère et des Hautes-Alpes.</div><div><strong>Il a été créé officiellement le 27 mars 1973.</strong> Culminant à 4 102 mètres au sommet de la Barre des Ecrins, il est considéré comme le <strong>parc européen de la haute montagne.</strong></div><div>Ses vallées forment des <strong>identités paysagères et culturelles affirmées</strong> : Oisans, Valbonnais, Briançonnais, Vallouise, Embrunais, Champsaur et Valgaudemar.</div><div>Son étonnante diversité végétale répond aux grands écarts d'altitude et à la conjugaison des influences climatiques des Alpes et de la Méditerranée.</div><div>Vallées, alpages et sommets <strong>abritent toute la faune des montagnes.</strong></div><div>Le bouquetin a été réintroduit, l'aigle royal semble prospère, tandis que le lagopède s'accroche, en altitude, menacé notamment par les évolutions du climat.</div><div><strong>L'offre de randonnée, l'accueil des visiteurs dans les maisons de Parcs, les actions pédagogiques et la connaissance des patrimoines</strong> comptent parmi les orientations de sa charte, co-construite avec les partenaires locaux.</div><div>Ce projet de territoire accompagne les activités économiques dans le respect des milieux naturels avec des outils comme la nouvelle marque <strong>Esprit parc national.</strong></div><img alt=\"Carte PNE\" class=\"img-responsive img-rounded center-block\" src=\"http://www.ecrins-parcnational.fr/sites/ecrins-parcnational.com/files/page/930/body/carte-generale-pne-simplifiee.jpg\"><hr><h2>Qu'est-ce qu'un Parc National ?</h2><div>C’est un territoire généralement vaste dont la richesse biologique, la qualité paysagère, l’intérêt culturel et le caractère historiquement préservé justifient une protection et une gestion qui garantissent la pérennité de ce patrimoine considéré comme exceptionnel.</div><div>Depuis la loi du 14 avril 2006, le parc est composé d'un cœur réglementé et d'une aire d’adhésion. <a href=\"http://www.ecrins-parcnational.fr/linstitution-et-le-territoire\">Plus d'infos</a></div><hr><h2>Quelques chiffres :</h2><div><strong>Création du Parc : 27 mars 1973</strong></div><div><strong>Cœur du Parc* :</strong> 91 800 ha</div><div><strong>Aire optimale d’adhésion ** :</strong> 179 581 ha</div><div><strong>Hébergement :</strong> 38 refuges et 48 gîtes d’étape et de séjour</div><div><strong>Altitudes extrêmes :</strong> de 669 à 4 102 m.</div><div><strong>Point culminant :</strong> La Barre des Ecrins</div><div><strong>Sentiers :</strong> plus de 700 km et 146 passerelles dans le cœur du parc</div><div><strong>La flore :</strong> 2 500 espèces dont 216 sont répertoriées sur la liste rouge de la flore rare et menacée et 389 espèces sont endémiques des Alpes ou ont une aire de répartition arctico-alpine</div><div><strong>La faune :</strong> 75 espèces de mammifères, 233 d'oiseaux, 16 de reptiles, 10 d'amphibiens, 21 de poissons, 56 de libellules, 70 de criquets et sauterelles, 222 de papillons diurnes, 744 de papillons nocturnes...</div><div><strong>Les glaciers :</strong> 7 200 ha</div><div><strong>Alpages :</strong> 68 800 ha</div><div><strong>Forêts :</strong> 41 422 ha</div><div>* Le cœur du parc s’entend comme l'espace à protéger donc soumis à une réglementation particulière.</div><div>** L’aire optimale d’adhésion correspond à l’ancienne zone périphérique soit 59 communes.</div>"
-		},
-		{
-			"icon": "img/outils.svg",
-			"title": "Outils",
-			"content": "le contenu 3"
 		},
 		{
 			"icon": "img/contact2.svg",

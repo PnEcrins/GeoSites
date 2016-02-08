@@ -85,3 +85,19 @@
 .sautLigne{
 	margin-top: 5px;
 }
+
+.couleurRouge{
+	color: red;
+}
+
+.couleurNoire{
+	color: #333;
+}
+
+.imgModal{
+	height: 250px;
+}
+
+.modal-body{
+	margin: 15px;
+}
