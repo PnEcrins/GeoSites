@@ -1,0 +1,30 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+	<div class="container-fluid">
+		<!-- Entête de la barre de navigation (le logo et l'affichage mobile) -->
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="#">
+				<img class="logoPNE" alt="Logo Parc National des Ecrins" ng-src="{{contentHTML.navBarHeader.icon}}">
+			</a>
+			<!-- Titre de l'appli -->
+			<span class="navbar-brand" >{{ contentHTML.navBarHeader.title }}</span>
+		</div>
+
+		<!-- Les autres éléments de la barre de navigation, on récupère les données dans le controller et on fait une boucle avec ng-repeat -->
+		<div class="collapse navbar-collapse">
+			<ul class="nav navbar-nav">
+				<li ng-repeat="navBarElement in contentHTML.navBarElements">
+					<!-- Je passe en paramètres le contenu et le titre pour la modal -->
+					<a role="button" href="#" ng-click="open(navBarElement.title, navBarElement.content)">
+						<img class="icon" ng-src="{{ navBarElement.icon }}">{{ navBarElement.title }}
+					</a>							
+				</li>
+			</ul>
+		</div>
+	</div>
+</nav>

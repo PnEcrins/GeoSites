@@ -26,67 +26,11 @@ include ("dbconnect.php");
 	<body ng-app="GeoSiteApp" ng-controller="HomeController">
 
 		<!-- Barre de navigation -->
-		<nav class="navbar navbar-inverse navbar-fixed-top">
-			<div class="container-fluid">
-				<!-- Entête de la barre de navigation (le logo et l'affichage mobile) -->
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false">
-						<span class="sr-only">Toggle navigation</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-					<a class="navbar-brand" href="#">
-						<img class="logoPNE" alt="Logo Parc National des Ecrins" ng-src="{{contentHTML.navBarHeader.icon}}">
-					</a>
-					<!-- Titre de l'appli -->
-					<span class="navbar-brand" >{{ contentHTML.navBarHeader.title }}</span>
-				</div>
-
-				<!-- Les autres éléments de la barre de navigation, on récupère les données dans le controller et on fait une boucle avec ng-repeat -->
-				<div class="collapse navbar-collapse">
-					<ul class="nav navbar-nav">
-						<li ng-repeat="navBarElement in contentHTML.navBarElements">
-							<!-- Je passe en paramètres le contenu et le titre pour la modal -->
-							<a role="button" href="#" ng-click="open(navBarElement.title, navBarElement.content)">
-								<img class="icon" ng-src="{{ navBarElement.icon }}">{{ navBarElement.title }}
-							</a>							
-						</li>
-					</ul>
-				</div>
-			</div>
-		</nav>
+		<div ng-include src="'templates/navBar.html'"></div>
 
 		<!-- Panneau latéral -->
 		<show-sidebar></show-sidebar>
-		<div id="sidebar" class="col-md-4">
-			<div id="containerSidebar">
-				<div class="row" ng-bind-html="contentHTML.sideBarContent.content | sanitize"></div>
-				<hr>
-				<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-				
-					<div ng-repeat="site in geojsonSites" class="panel panel-default" id="{{ 'anchor' + site.properties.id_site }}">
-						<div class="panel-heading" role="tab" id="{{ 'heading' + site.properties.id_site }}">
-							<h4 class="panel-title">
-								<a role="button" data-toggle="collapse" data-parent="#accordion" ng-click="test(site)" href="{{ '#collapse' + site.properties.id_site }}" aria-expanded="true" aria-controls="{{ 'collapse' + site.properties.id_site }}">
-								<strong id="{{site.properties.id_site}}">{{ site.properties.nom_site }}</strong>
-								</a>
-							</h4>
-						</div>
-						<div id="{{ 'collapse' + site.properties.id_site }}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="{{ 'heading' + site.properties.id_site }}">
-							<div class="panel-body">
-								<strong>Lieu-dit : </strong>{{ site.properties.lieudit }} <br />
-								<strong>Période d'ouverture : </strong>{{ site.properties.periode_ouverture }} <br />
-								<strong>Superficie : </strong>{{ site.properties.superficie }} {{ site.properties.unite_superficie }}<br />
-								<strong>Rareté : </strong>{{ site.properties.rarete }} <br />
-								<a role="button" class="btn btn-default" href="#" ng-click="openDetails(site.properties)">Afficher détails &raquo </a>
-							</div>
-						</div>
-					</div>
-
-				</div> 		
-			</div>			
-		</div>						
+		<div ng-include src="'templates/listeSidebar.html'"></div>
 
 		<!-- La carte -->
 		<div id="containerCarte" class="col-md-offset-4 col-md-8">

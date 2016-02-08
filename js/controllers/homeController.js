@@ -26,7 +26,7 @@ app.controller('HomeController', ['$scope', 'htmlcontent', '$uibModal', '$http',
 
 	$scope.openDetails = function (site) {
 		var modalInstance = $uibModal.open({
-			templateUrl: 'js/directives/modalDetails.html',
+			templateUrl: 'templates/modalDetails.html',
 			controller: 'ModalDetailsCtrl',
 			size: 'lg',
 			resolve: {
