@@ -29,6 +29,22 @@
 				"options":{}
 			},
 			{
+              "name": "Scan 25",
+              "type": "ign",
+              "key" : "94zzr2fl3uvw9y9mzqskwyuo",
+              "layer" : "GEOGRAPHICALGRIDSYSTEMS.MAPS", 
+              "active" : false,
+              "options": {"maxZoom": 17, "attribution": "IGN", "subdomains": ""}
+            },
+            {
+              "name": "Ortho Photographie",
+              "type": "ign",
+              "key" : "94zzr2fl3uvw9y9mzqskwyuo",
+              "layer" : "ORTHOIMAGERY.ORTHOPHOTOS", 
+              "active" : false,
+              "options": {"maxZoom": 19, "attribution": "IGN", "subdomains": ""}
+            },
+			{
 				"name": "ScanExpress",
 				"type": "ign",
 				"key" : "94zzr2fl3uvw9y9mzqskwyuo",

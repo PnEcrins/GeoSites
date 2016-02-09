@@ -50,18 +50,18 @@ app.controller('HomeController', ['$scope', 'htmlcontent', '$uibModal', '$http',
 	};
 
 	//geojson
-	$http.get('http://dev.ecrins-parcnational.fr/pne_maps/GeoSiteApp/generategeojson.php')
-	//$http.get('data/site_geol_tmp.geojson')	
+	$http.get('generategeojson.php')
 	.success(function(response) {
 		$scope.geojsonSites = response.features;
 		//carte
 		$scope.baselayers = {},
+		$scope.controllayers = {},
 		$scope.mainLayer = null,
 		$scope.mainLayerData = null,		
 		
 		$('#info-popup').hide();
 		
-		$scope.map = L.map('carte', { attributionControl: false, zoomControl: false });
+		$scope.map = L.map('carte', { zoomControl: false });
 		L.control.zoom({position: 'topright', zoomInTitle: 'Zoomer', zoomOutTitle: 'Dézoomer'}).addTo($scope.map);
 		L.control.scale({position: 'bottomright', imperial: false}).addTo($scope.map);
 
@@ -71,6 +71,7 @@ app.controller('HomeController', ['$scope', 'htmlcontent', '$uibModal', '$http',
 				angular.forEach(results.data.layers.baselayers, function(value, key) {
 					var l = LeafletServices.loadData(value);
 					$scope.baselayers[key] = l;
+					$scope.controllayers[l.name] = l.map;
 					if (value.active) {
 					  $scope.baselayers[key].map.addTo($scope.map);
 					}
@@ -78,6 +79,8 @@ app.controller('HomeController', ['$scope', 'htmlcontent', '$uibModal', '$http',
 				$scope.map.setView(new L.LatLng(results.data.center.lat, results.data.center.lng),results.data.center.zoom);
 				
 				$scope.mapOptions = results.data;
+
+				$scope.map.addControl(new L.Control.Layers($scope.controllayers));
 				
 				//----Couche principale
 				//options
