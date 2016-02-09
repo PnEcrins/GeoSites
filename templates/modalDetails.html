@@ -1,73 +1,119 @@
 <div class="modal-header">
+	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 	<h3 class="modal-title">{{site.nom_site}}</h3>
 </div>
 <div class="modal-body">
 	<div class="row">
 		<div class="col-md-5">
-			<img class="img-responsive img-rounded imgModal pull-left" alt="photoModal" src="{{ 'img/photo' + site.id_site + '.png' }}">
+			<img class="img-responsive img-rounded imgModal pull-left" alt="photoModal" src="{{ 'data/img/photo' + site.id_site + '.png' }}">
 		</div>
 		<div class="col-md-7">
-			<table class="table table-hover">
-				<tr><td>Référence du site : {{site.id_site}}</td></tr>
-				<tr>
+			<table ng-if="site.typologie3 || site.typologie2 || site.id_site || site.eval_interet_patrim" class="table table-hover">
+				<tr ng-if="site.id_site"><td ng-if="site.id_site">Référence du site : {{site.id_site}}</td></tr>
+				<tr ng-if="site.eval_interet_patrim">
 					<td ng-if="site.eval_interet_patrim == 3">Intérêt patrimonial : <span>★★★</span></td>
 					<td ng-if="site.eval_interet_patrim == 2">Intérêt patrimonial : <span>★★☆</span></td>
 					<td ng-if="site.eval_interet_patrim == 1">Intérêt patrimonial : <span>★☆☆</span></td>
 				</tr>
-				<tr><td>Typologie : {{site.typologie3}} {{site.typologie2}} </td></tr>
+				<tr ng-if="site.typologie3 || site.typologie2"><td ng-if="site.typologie3 || site.typologie2">Typologie : {{site.typologie3}} {{site.typologie2}} </td></tr>
 			</table>
-			<hr>
-			<table class="table table-hover">
-				<tr><th></th><th></th><th></th><th></th><th>Lieu-dit</th></tr>
-				<tr><td></td><td></td><td></td><td></td><td>{{site.lieudit}}</td></tr>				
-			</table>
+			<div class="bs-callout bs-callout-primary">
+				<h2>Localisation</h2>
+				<div><em>Région :</em> {{site.nom_region}}</div>
+				<div><em>Département :</em> {{site.nom_departement}}</div>
+				<div><em>Commune(s) :</em> {{site.commune}}</div>
+				<div><em>Lieu-dit :</em> {{site.lieudit}}</div>					
+			</div>						
 		</div>		
 	</div>
 
 	<hr>
 
 	<div class="row">
-		<h2>Description du site</h2>
-		<h4>Description géologique</h4>
-		<div> {{site.commentaire_geol}} </div>
-		<h4>Phénomène représentatif du site</h4>
-		<div><strong> {{site.phenomene_geol}} </strong></div>
-		<h4>Age du phénomène</h4>
-		<div class="row">
-			<div class="col-md-6">Ancien : {{site.strati_ancien_phenom}} </div>
-			<div class="col-md-6">Récent : {{site.strati_recent_phenom}} </div>
-		</div>
-		<h4>Age du terrain</h4>
-		<div class="row">
-			<div class="col-md-6">Ancien : {{site.strati_ancien_terrain}} </div>
-			<div class="col-md-6">Récent : {{site.strati_recent_terrain}} </div>
-		</div>
-		<h4>Existance d'une coupe géologique dans la base</h4>
-		<div> {{site.coupe_geol}} </div>
-		<h4>Description physique</h4>
-		<div> {{site.description_physique}} </div>
-		<h4>Commentaire</h4>
-		<div> {{site.comment_description}} </div>
-		<h4>Etat actuel</h4>
-		<div> {{site.etat2}} </div>
+		<div class="bs-callout bs-callout-primary">
+			<h2>Documents</h2>
+		</div> 
+		<table class="table table-hover">
+			<tr><th>Type de document</th><th>Nom du fichier</th><th>Commentaire</th></tr>
+			<tr ng-repeat="doc in docs"><td> {{doc.type_document}} </td><td> <a href="data/pdf/{{doc.fichier}}" target="_blank"> {{doc.fichier}} </a> </td><td> {{doc.commentaire}} </td></tr>				
+		</table>	
 	</div>
 
 	<hr>
 
 	<div class="row">
-		<h2>Intérêts</h2>
-		<h4>Intérêt géologique principal</h4>
-		<div class="row"><div class="col-md-2"><strong>{{site.interet_geol}}</strong></div><div class="col-md-10">{{site.justif_interet_geol}}</div></div>
+		<div class="bs-callout bs-callout-primary">
+			<h2>Description du site</h2>
+		</div> 
+		<div ng-if="site.commentaire_geol">
+			<h4>Description géologique</h4>
+			<div> {{site.commentaire_geol}} </div>
+		</div>
+		<div ng-if="site.phenomene_geol">
+			<h4>Phénomène représentatif du site</h4>
+			<div><strong> {{site.phenomene_geol}} </strong></div>
+		</div>
+		<div ng-if="site.strati_ancien_phenom || site.strati_recent_phenom">
+			<h4>Age du phénomène</h4>
+			<div class="row">
+				<div ng-if="site.strati_ancien_phenom" class="col-md-6">Ancien : {{site.strati_ancien_phenom}} </div>
+				<div ng-if="site.strati_recent_phenom" class="col-md-6">Récent : {{site.strati_recent_phenom}} </div>
+			</div>
+		</div>
+		<div ng-if="site.strati_ancien_terrain || site.strati_recent_terrain">
+			<h4>Age du terrain</h4>
+			<div class="row">
+				<div ng-if="site.strati_ancien_terrain" class="col-md-6">Ancien : {{site.strati_ancien_terrain}} </div>
+				<div ng-if="site.strati_recent_terrain" class="col-md-6">Récent : {{site.strati_recent_terrain}} </div>
+			</div>
+		</div>
+		<div ng-if="site.coupe_geol">
+			<h4>Existance d'une coupe géologique dans la base</h4>
+			<div> {{site.coupe_geol}} </div>
+		</div>
+		<div ng-if="site.description_physique">
+			<h4>Description physique</h4>
+			<div> {{site.description_physique}} </div>
+		</div>
+		<div ng-if="site.comment_description">
+			<h4>Commentaire</h4>
+			<div> {{site.comment_description}} </div>
+		</div>
+		<div ng-if="site.etat2">
+			<h4>Etat actuel</h4>
+			<div> {{site.etat2}} </div>
+		</div>
 	</div>
 
 	<hr>
 
 	<div class="row">
-		<h2>Conditions d'accès</h2>
-		<h4>Itinéraire</h4>
-		<div> {{site.itineraire}} </div>
-		<h4>Accessibilité</h4>
-		<div> {{site.accessibilite1}} <span ng-if="site.accessibilite2 != 'Libre'">({{site.accessibilite2 | lowercase}})</span></div>
+		<div class="bs-callout bs-callout-primary">
+			<h2>Intérêts</h2>
+		</div> 
+		<div>
+			<h4>Intérêt géologique principal</h4>		
+			<div class="row">
+				<div class="col-md-2"><strong>{{site.interet_geol}}</strong></div>
+				<div class="col-md-10">{{site.justif_interet_geol}}</div>
+			</div>
+		</div>
+	</div>
+
+	<hr>
+
+	<div class="row">
+		<div class="bs-callout bs-callout-primary">
+			<h2>Conditions d'accès</h2>
+		</div> 
+		<div ng-if="site.itineraire">
+			<h4>Itinéraire</h4>
+			<div> {{site.itineraire}} </div>
+		</div>
+		<div ng-if="site.accessibilite1">
+			<h4>Accessibilité</h4>
+			<div> {{site.accessibilite1}} <span ng-if="site.accessibilite2 != 'Libre'">({{site.accessibilite2 | lowercase}})</span></div>
+		</div>
 	</div>
 
 </div>
