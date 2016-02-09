@@ -155,3 +155,21 @@
 .bs-callout-primary h4{
     color: #428bca;
 }
+
+/* Load mask */
+#loadmask{
+    position:fixed;
+    background: url('../img/load.gif') center no-repeat #fff;
+    height: 100%;
+    width:100%;
+    overflow: none;
+    z-index:9999;    
+}
+
+.onloading{
+    display: block;
+}
+
+.isload{
+    display:none;
+}

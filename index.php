@@ -24,7 +24,10 @@ include ("dbconnect.php");
 		ng-controller défini la portée du controller, c'est à dire que les propriétés dans HomeController sont utilisables dans tout le body
 	-->
 	<body ng-app="GeoSiteApp" ng-controller="HomeController">
-
+		<div id="loadmask" ng-model="loadingClass" ng-class="loadingClass">
+            <!-- <div id="loadingtext" >Chargement en cours...</div> -->
+ 		</div>
+ 		
 		<!-- Barre de navigation -->
 		<div ng-include src="'templates/navBar.html'"></div>
 

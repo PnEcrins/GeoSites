@@ -2,6 +2,7 @@
 // Un controller gère les données de l'application
 app.controller('HomeController', ['$scope', 'htmlcontent', '$uibModal', '$http','LeafletServices', '$location', '$anchorScroll', '$rootScope', function ($scope, htmlcontent, $uibModal, $http, LeafletServices, $location, $anchorScroll, $rootScope) {
 
+	$scope.loadingClass = 'onloading';
 	// On récupère dans le fichier Json toutes les données de la barre de navigation (le logo, le titre, les liens)
 	htmlcontent.success(function(data) {
 		$scope.contentHTML = data;
@@ -113,6 +114,7 @@ app.controller('HomeController', ['$scope', 'htmlcontent', '$uibModal', '$http',
 				}
 			}
 		);
+		$scope.loadingClass = 'isload';
 	})
 	.error(function(err) {
 		$scope.erreur = err;
@@ -181,8 +183,7 @@ app.controller('HomeController', ['$scope', 'htmlcontent', '$uibModal', '$http',
 
 app.factory('LeafletServices', ['$http', function($http) {
 	return {
-	  layer : {}, 
-	  
+	  layer : {}, 	  
 	  loadData : function(layerdata) {
 		this.layer = {};
 		this.layer.name = layerdata.name;
@@ -199,7 +200,7 @@ app.factory('LeafletServices', ['$http', function($http) {
 		  this.layer.map = L.tileLayer.wms(layerdata.url,layerdata.options);
 		}
 		return this.layer;
-	  }
+	  }	  
    };
 }]);
 
