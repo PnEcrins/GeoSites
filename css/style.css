@@ -108,6 +108,9 @@
 .indent{
 	margin-left: 10px;
 }
+.subline{
+    margin-top: 10px;
+}
 
 .bs-callout{
     padding: 20px;
