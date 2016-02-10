@@ -55,18 +55,18 @@
                 <div class="indent"> {{site.commentaire_geol | limitTo:longueur}} <span ng-if="longueur <= longueurChaineAfficherSuite">... <a href="#" ng-click="afficherSuite(site.commentaire_geol)">afficher la suite &gt;&gt;</a></span></div>
             </div>
             <div ng-if="site.phenomene_geol">
-                <h4>Phénomène représentatif du site</h4>
+                <h4 class="subline">Phénomène représentatif du site</h4>
                 <div class="indent"><strong> {{site.phenomene_geol}} </strong></div>
             </div>
             <div ng-if="site.strati_ancien_phenom || site.strati_recent_phenom">
-                <h4>Age du phénomène</h4>
+                <h4 class="subline">Age du phénomène</h4>
                 <div class="row indent">
                     <div ng-if="site.strati_ancien_phenom" class="col-md-6">Ancien : {{site.strati_ancien_phenom}} </div>
                     <div ng-if="site.strati_recent_phenom" class="col-md-6">Récent : {{site.strati_recent_phenom}} </div>
                 </div>
             </div>
             <div ng-if="site.strati_ancien_terrain || site.strati_recent_terrain">
-                <h4>Age du terrain</h4>
+                <h4 class="subline">Age du terrain</h4>
                 <div class="row indent">
                     <div ng-if="site.strati_ancien_terrain" class="col-md-6">Ancien : {{site.strati_ancien_terrain}} </div>
                     <div ng-if="site.strati_recent_terrain" class="col-md-6">Récent : {{site.strati_recent_terrain}} </div>
@@ -74,18 +74,18 @@
             </div>
             <div ng-if="site.coupe_geol">
                 <h4>Existance d'une coupe géologique dans la base</h4>
-                <div class="indent"> {{site.coupe_geol}} </div>
+                <div class="indent">{{site.coupe_geol}}.<span ng-if="site.commentaire_geol"> {{site.commentaire_geol}} </div>
             </div>
             <div ng-if="site.description_physique">
-                <h4>Description physique</h4>
+                <h4 class="subline">Description physique</h4>
                 <div class="indent"> {{site.description_physique}} </div>
             </div>
             <div ng-if="site.comment_description">
-                <h4>Commentaire</h4>
+                <h4 class="subline">Commentaire</h4>
                 <div class="indent"> {{site.comment_description}} </div>
             </div>
             <div ng-if="site.etat2">
-                <h4>Etat actuel</h4>
+                <h4 class="subline">Etat actuel</h4>
                 <div class="indent"> {{site.etat2}} </div>
             </div>
         </div>   
@@ -104,6 +104,13 @@
 				<div class="indent">{{site.justif_interet_geol}}</div>
 			</div>
 		</div>
+        <div class="modal-subtitle">
+			<h4 class="subline">Autres intérêts géologiques</h4>		
+			<div class="row indent" ng-repeat="interet in interets">
+				<h5 class="subline"><strong>Intérêt {{interet.interet1.toLowerCase()}}</strong></h5>
+				<div class="indent"><u> {{interet.interet2}}</u> : {{interet.justification}}</div>
+			</div>
+		</div>
 	</div>
 
 	<hr>
@@ -118,7 +125,7 @@
                 <div class="indent"> {{site.itineraire}} </div>
             </div>
             <div ng-if="site.accessibilite1">
-                <h4>Accessibilité</h4>
+                <h4 class="subline">Accessibilité</h4>
                 <div class="indent"> {{site.accessibilite1}} <span ng-if="site.accessibilite2 != 'Libre'">({{site.accessibilite2 | lowercase}})</span></div>
             </div>
         </div>
