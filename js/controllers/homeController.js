@@ -102,7 +102,7 @@ app.controller('HomeController', ['$scope', 'htmlcontent', '$uibModal', '$http',
 				}
 
 				// Interraction liste/carte
-				$scope.test = function (site) {			
+				$scope.bindListMap = function (site) {			
 					document.getElementById(site.properties.id_site).className="couleurNoire";
 					$scope.mainLayer.eachLayer(function(layer) { 
 						if(site.properties.id_site == layer._siteId){

@@ -6,7 +6,7 @@
 			<div ng-repeat="site in geojsonSites" class="panel panel-default" id="{{ 'anchor' + site.properties.id_site }}">
 				<div class="panel-heading" role="tab" id="{{ 'heading' + site.properties.id_site }}">
 					<h4 class="panel-title">
-						<a role="button" data-toggle="collapse" data-parent="#accordion" ng-click="test(site)" href="{{ '#collapse' + site.properties.id_site }}" aria-expanded="true" aria-controls="{{ 'collapse' + site.properties.id_site }}">
+						<a role="button" data-toggle="collapse" data-parent="#accordion" ng-click="bindListMap(site)" href="{{ '#collapse' + site.properties.id_site }}" aria-expanded="true" aria-controls="{{ 'collapse' + site.properties.id_site }}">
 						<strong id="{{site.properties.id_site}}">{{ site.properties.nom_site }}</strong>
 						</a>
 					</h4>
@@ -14,7 +14,9 @@
 				<div id="{{ 'collapse' + site.properties.id_site }}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="{{ 'heading' + site.properties.id_site }}">
 					<div class="panel-body">
 						<strong>Lieu-dit : </strong>{{ site.properties.lieudit }} <br />
-						<strong>Période d'ouverture : </strong>{{ site.properties.periode_ouverture }} <br />
+						<div ng-if="site.properties.eval_interet_patrim == 3"><strong>Intérêt patrimonial :</strong> <span>★★★</span></div>
+						<div ng-if="site.properties.eval_interet_patrim == 2"><strong>Intérêt patrimonial :</strong> <span>★★☆</span></div>
+						<div ng-if="site.properties.eval_interet_patrim == 1"><strong>Intérêt patrimonial :</strong> <span>★☆☆</span></div>
 						<strong>Superficie : </strong>{{ site.properties.superficie }} {{ site.properties.unite_superficie }}<br />
 						<strong>Rareté : </strong>{{ site.properties.rarete }} <br />
 						<a role="button" class="btn btn-default" href="#" ng-click="openDetails(site.properties)">Afficher détails &raquo </a>
