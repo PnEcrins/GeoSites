@@ -55,7 +55,7 @@ include ("dbconnect.php");
 
 		<!-- Controllers -->
 		<script src="js/controllers/homeController.js"></script>
-		<script src="js/controllers/modalController.js"></script>
+		<script src="js/controllers/modalNavbarController.js"></script>
 		<script src="js/controllers/modalDetailsController.js"></script>			
 		<script src="js/controllers/modalAccueilController.js"></script>
 

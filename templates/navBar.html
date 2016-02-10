@@ -20,7 +20,7 @@
 			<ul class="nav navbar-nav">
 				<li ng-repeat="navBarElement in contentHTML.navBarElements">
 					<!-- Je passe en paramètres le contenu et le titre pour la modal -->
-					<a role="button" href="#" ng-click="open(navBarElement.title, navBarElement.content)">
+					<a role="button" href="#" ng-click="openNavbar(navBarElement.title, navBarElement.content)">
 						<img class="icon" ng-src="{{ navBarElement.icon }}">{{ navBarElement.title }}
 					</a>							
 				</li>

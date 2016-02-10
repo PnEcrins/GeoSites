@@ -10,10 +10,10 @@ app.controller('HomeController', ['$scope', 'htmlcontent', '$uibModal', '$http',
 	});
 
 	// Ouverture de la modal, on passe en paramètre le contenu et le titre.
-	$scope.open = function (title, content) {
+	$scope.openNavbar = function (title, content) {
 		var modalInstance = $uibModal.open({
-			templateUrl: 'js/directives/modal.html',
-			controller: 'ModalInstanceCtrl',
+			templateUrl: 'js/directives/modalNavbar.html',
+			controller: 'ModalNavbarInstanceCtrl',
 			size: 'lg',
 			resolve: {
 				title: function () {
