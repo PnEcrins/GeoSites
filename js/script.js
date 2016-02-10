@@ -12,5 +12,5 @@ $(document).ready(function(){
             document.getElementById("containerCarte").className = "col-md-12";
             carte.invalidateSize();
         }
-    });    
+    });
 });

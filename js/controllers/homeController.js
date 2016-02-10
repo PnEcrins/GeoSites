@@ -26,6 +26,17 @@ app.controller('HomeController', ['$scope', 'htmlcontent', '$uibModal', '$http',
 		});
 	};
 
+	$scope.openAccueil = function () {
+		var modalInstance = $uibModal.open({
+			templateUrl: 'templates/modalAccueil.html',
+			controller: 'ModalAccueilInstanceCtrl',
+			size: 'lg',
+			resolve: {}
+		});
+	};
+
+	$scope.openAccueil();
+
 	$scope.openDetails = function (site) {
 		var modalInstance = $uibModal.open({
 			templateUrl: 'templates/modalDetails.html',
@@ -119,6 +130,7 @@ app.controller('HomeController', ['$scope', 'htmlcontent', '$uibModal', '$http',
 			}
 		);
 		$scope.loadingClass = 'isload';
+		openAccueil();		
 	})
 	.error(function(err) {
 		$scope.erreur = err;
