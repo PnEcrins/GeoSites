@@ -36,19 +36,7 @@ app.controller('HomeController', ['$scope', 'htmlcontent', '$uibModal', '$http',
 				}
 			}
 		});
-	};
-
-	$scope.test = function (site) {		
-		/*alert(site.properties.id_site);*/		
-		document.getElementById(site.properties.id_site).className="couleurNoire";
-		//$('#info-popup').show();
-		/*var id = $(this)[0].id;
-		$scope.geojsonSites.eachLayer(function(site) {
-			if(site.properties.id_site == id){
-				$('#info-popup').show();
-			}
-		});*/		
-	};
+	};	
 
 	//geojson
 	$http.get('generategeojson.php')
@@ -112,6 +100,21 @@ app.controller('HomeController', ['$scope', 'htmlcontent', '$uibModal', '$http',
 						}
 					);
 				}
+
+				// Interraction liste/carte
+				$scope.test = function (site) {			
+					document.getElementById(site.properties.id_site).className="couleurNoire";
+					$scope.mainLayer.eachLayer(function(layer) { 
+						if(site.properties.id_site == layer._siteId){
+							// alert('monsite = ' + layer._siteId);
+							var x = site.geometry.coordinates[0];                        
+							var y = site.geometry.coordinates[1];
+							// alert('x = ' + x);                            
+							var latlng = new L.LatLng(y,x);
+							layer.openPopup(latlng);
+						}
+					});		
+				};
 			}
 		);
 		$scope.loadingClass = 'isload';
