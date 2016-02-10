@@ -15,11 +15,6 @@ $(document).ready(function(){
     });    
 });
 
-// La page s'actualise lorsque l'on clique sur le logo du parc en haut à droite
-$(".navbar-brand").click(function(){
-	window.location.reload();
-});
-
 // Ajout de la couche des sites à la carte
 // Mettre le script php ici
 /*$.getJSON("data/site_geol.geojson", function(data) {
