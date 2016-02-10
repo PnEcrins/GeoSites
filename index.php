@@ -25,7 +25,7 @@ include ("dbconnect.php");
 	-->
 	<body ng-app="GeoSiteApp" ng-controller="HomeController">
 		<div id="loadmask" ng-model="loadingClass" ng-class="loadingClass">
-            <!-- <div id="loadingtext" >Chargement en cours...</div> -->
+        	<div class="row"><div class="col-md-offset-3 jumbotron col-md-6"><img alt="logoPNE" src="img/logo.png" class="img-responsive center-block" style="height: 50px;"><br /><p>L'application est en cours de chargement, veuillez patienter...</p></div></div>
  		</div>
 
 		<!-- Barre de navigation -->
