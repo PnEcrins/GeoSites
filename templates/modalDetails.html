@@ -27,12 +27,12 @@
 		</div>		
 	</div>
 
-	<hr>
+	<hr ng-if="site.code_region !== 'RHA'">
 
-	<div class="row">
+	<div ng-if="site.code_region != 'RHA'" class="row">
 		<div class="bs-callout bs-callout-primary">
 			<h2>Documents</h2>
-		</div> 
+		</div>		 
 		<table class="table table-hover">
 			<tr><th>Type de document</th><th>Nom du fichier</th><th>Commentaire</th></tr>
 			<tr ng-repeat="doc in docs"><td> {{doc.type_document}} </td><td> <a href="data/pdf/{{doc.fichier}}" target="_blank"> {{doc.fichier}} </a> </td><td> {{doc.commentaire}} </td></tr>				
@@ -47,7 +47,7 @@
 		</div> 
 		<div ng-if="site.commentaire_geol">
 			<h4>Description géologique</h4>
-			<div> {{site.commentaire_geol}} </div>
+			<div> {{site.commentaire_geol | limitTo:longueur}} <span ng-if="longueur <= longueurChaineAfficherSuite">... <a href="#" ng-click="afficherSuite(site.commentaire_geol)">afficher la suite &gt;&gt;</a></span></div>
 		</div>
 		<div ng-if="site.phenomene_geol">
 			<h4>Phénomène représentatif du site</h4>
