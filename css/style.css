@@ -102,6 +102,13 @@
 	margin: 15px;
 }
 
+.modal-subtitle{
+	margin-left: 26px;
+}
+.indent{
+	margin-left: 10px;
+}
+
 .bs-callout{
     padding: 20px;
     margin: 20px 0;
