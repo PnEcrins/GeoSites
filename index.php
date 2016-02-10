@@ -27,7 +27,7 @@ include ("dbconnect.php");
 		<div id="loadmask" ng-model="loadingClass" ng-class="loadingClass">
             <!-- <div id="loadingtext" >Chargement en cours...</div> -->
  		</div>
- 		
+
 		<!-- Barre de navigation -->
 		<div ng-include src="'templates/navBar.html'"></div>
 
@@ -62,8 +62,11 @@ include ("dbconnect.php");
 		<!-- Services -->
 		<script src="js/services/htmlContent.js"></script>
 
-		 <!-- Script JS -->
-		 <script src="js/script.js"></script>
+		<!-- Script JS -->
+		<script src="js/script.js"></script>
+
+		<!-- Config JS -->
+		<script src="js/config/config.js"></script>
 
 	</body>
 </html>
