@@ -1,9 +1,6 @@
 <?php
-	$serveur="**********"; 
-	$user ="**********";
-	$passe="***********"; 
-	$base="***********";
+	include ("config.php");
 	
 	$dbconnect = pg_connect("host=$serveur dbname=$base user=$user password=$passe") 
-or die('Connexion impossible : ' . pg_last_error());  
+    or die('Connexion impossible : ' . pg_last_error());  
 ?>
