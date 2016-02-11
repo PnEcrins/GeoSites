@@ -87,11 +87,14 @@
 }
 
 .couleurRouge{
-	color: red;
+	color: #F5F5F5;
+	box-shadow:  2px 2px 2px #000;
+	background-color: #333;
 }
 
 .couleurNoire{
 	color: #333;
+	background-color: #F5F5F5;
 }
 
 .imgModal{
@@ -107,9 +110,6 @@
 }
 .indent{
 	margin-left: 10px;
-}
-.subline{
-    margin-top: 10px;
 }
 
 .bs-callout{

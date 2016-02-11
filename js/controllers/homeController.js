@@ -140,8 +140,7 @@ app.controller('HomeController', ['$scope', 'htmlcontent', '$uibModal', '$http',
 				};
 			}
 		);
-		$scope.loadingClass = 'isload';
-		openAccueil();		
+		$scope.loadingClass = 'isload';		
 	})
 	.error(function(err) {
 		$scope.erreur = err;
