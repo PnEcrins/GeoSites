@@ -39,9 +39,13 @@
             <ul class="list-group modal-subtitle"> 
                 <li ng-repeat="doc in docs" class="list-group-item"> 
                     {{doc.commentaire}} ({{doc.type_document}})
-                    <a href="data/pdf/{{doc.fichier}}" target="_blank">
-                        <img style="float:right" src="img/newtab.png" title="ouvrir le document dans un nouvel onglet"/> 
-                    </a>
+                    <span style="float:right">	
+                        <img ng-click="updatePdfView(doc)" src="img/chevronbas.png" title="obtenir un apercu du document ci-dessous"/>
+                        &nbsp
+                        <a href="data/pdf/{{doc.fichier}}" target="_blank">
+                            <img src="img/newtab.png" title="ouvrir le document dans un nouvel onglet"/> 
+                        </a>
+                    </span>	
                 </li>
             </ul>
             <div class="wrapper">
