@@ -1,148 +1,153 @@
 <div class="modal-content" >
-    <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="ok()">&times;</button>
-    <div class="modal-header">
-        <div class="well">
-            <h1 class="text-center">{{site.nom_site}}</h1>
-        </div>
-    </div>
-    <div class="modal-body">
-        <div class="row">
-            <div class="col-md-5">
-                <img class="img-responsive img-rounded imgModal pull-left" alt="photoModal" src="{{ 'data/img/photo' + site.id_site + '.png' }}">
-            </div>
-            <div class="col-md-7">
-                <table ng-if="site.typologie3 || site.typologie2 || site.id_site || site.eval_interet_patrim" class="table table-hover">
-                    <tr ng-if="site.id_site"><td ng-if="site.id_site">Référence du site : {{site.id_site}}</td></tr>
-                    <tr ng-if="site.eval_interet_patrim">
-                        <td ng-if="site.eval_interet_patrim == 3">Intérêt patrimonial : <span>★★★</span></td>
-                        <td ng-if="site.eval_interet_patrim == 2">Intérêt patrimonial : <span>★★☆</span></td>
-                        <td ng-if="site.eval_interet_patrim == 1">Intérêt patrimonial : <span>★☆☆</span></td>
-                    </tr>
-                    <tr ng-if="site.typologie3 || site.typologie2"><td ng-if="site.typologie3 || site.typologie2">Typologie : {{site.typologie3}} {{site.typologie2}} </td></tr>
-                </table>
-                <div class="bs-callout bs-callout-primary">
-                    <h2>Localisation</h2>
-                    <div><em>Région :</em> {{site.nom_region}}</div>
-                    <div><em>Département :</em> {{site.nom_departement}}</div>
-                    <div><em>Commune(s) :</em> {{site.commune}}</div>
-                    <div><em>Lieu-dit :</em> {{site.lieudit}}</div>					
-                </div>						
-            </div>		
-        </div>
+	<button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="ok()">&times;</button>
+	<div class="modal-header">
+		<div class="well">
+			<h1 class="text-center">{{site.nom_site}}</h1>
+		</div>
+	</div>
+	<div class="modal-body">
+		<div class="row">
+			<div class="col-md-5">
+				<img class="img-responsive img-rounded imgModal pull-left" alt="photoModal" src="{{ 'data/img/photo' + site.id_site + '.png' }}">
+			</div>
+			<div class="col-md-7">
+				<table ng-if="site.typologie3 || site.typologie2 || site.id_site || site.eval_interet_patrim" class="table table-hover">
+					<tr ng-if="site.id_site"><td ng-if="site.id_site">Référence du site : {{site.id_site}}</td></tr>
+					<tr ng-if="site.eval_interet_patrim">
+						<td ng-if="site.eval_interet_patrim == 3">Intérêt patrimonial : <span>★★★</span></td>
+						<td ng-if="site.eval_interet_patrim == 2">Intérêt patrimonial : <span>★★☆</span></td>
+						<td ng-if="site.eval_interet_patrim == 1">Intérêt patrimonial : <span>★☆☆</span></td>
+					</tr>
+					<tr ng-if="site.typologie3 || site.typologie2"><td ng-if="site.typologie3 || site.typologie2">Typologie : {{site.typologie3}} {{site.typologie2}} </td></tr>
+				</table>
+				<div class="bs-callout bs-callout-primary">
+					<h2>Localisation</h2>
+					<div><em>Région :</em> {{site.nom_region}}</div>
+					<div><em>Département :</em> {{site.nom_departement}}</div>
+					<div><em>Commune(s) :</em> {{site.commune}}</div>
+					<div><em>Lieu-dit :</em> {{site.lieudit}}</div>					
+				</div>						
+			</div>		
+		</div>
 
-        <hr ng-if="site.code_region !== 'RHA'">
+		<hr>
 
-        <div ng-if="site.code_region != 'RHA'" class="row">
-            <div class="bs-callout bs-callout-primary">
-                <h2>Documents</h2>
-            </div >
-            <ul class="list-group modal-subtitle"> 
-                <li ng-repeat="doc in docs" class="list-group-item"> 
-                    {{doc.commentaire}} ({{doc.type_document}})
-                    <span style="float:right">	
-                        <img ng-click="updatePdfView(doc)" src="img/chevronbas.png" title="obtenir un apercu du document ci-dessous"/>
-                        &nbsp
-                        <a href="data/pdf/{{doc.fichier}}" target="_blank">
-                            <img src="img/newtab.png" title="ouvrir le document dans un nouvel onglet"/> 
-                        </a>
-                    </span>	
-                </li>
-            </ul>
-            <div class="wrapper">
-                <ng-pdf template-url="partials/viewer.html" canvasid="pdf" scale="page-fit" page=1></ng-pdf>
-            </div>			
-        </div>
+		<div class="row">
+			<div class="bs-callout bs-callout-primary" role="tab" id="headingOne" data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+				<h2>Description du site <div class="diminutionPolice"><small class="pull-right">cliquer pour afficher le contenu...</small></div></h2>
+			</div>
+			<div class="modal-subtitle collapse" id="collapseOne" role="tabpanel" aria-labelledby="headingOne">
+				<div ng-if="site.commentaire_geol">
+					<h4>Description géologique</h4>
+					<div class="indent"> {{site.commentaire_geol | limitTo:longueur}} <span ng-if="longueur <= longueurChaineAfficherSuite">... <a href="#" ng-click="afficherSuite(site.commentaire_geol)">afficher la suite &gt;&gt;</a></span></div>
+				</div>
+				<div ng-if="site.phenomene_geol">
+					<h4 class="subline">Phénomène représentatif du site</h4>
+					<div class="indent"><strong> {{site.phenomene_geol}} </strong></div>
+				</div>
+				<div ng-if="site.strati_ancien_phenom || site.strati_recent_phenom">
+					<h4 class="subline">Age du phénomène</h4>
+					<div class="row indent">
+						<div ng-if="site.strati_ancien_phenom" class="col-md-6">Ancien : {{site.strati_ancien_phenom}} </div>
+						<div ng-if="site.strati_recent_phenom" class="col-md-6">Récent : {{site.strati_recent_phenom}} </div>
+					</div>
+				</div>
+				<div ng-if="site.strati_ancien_terrain || site.strati_recent_terrain">
+					<h4 class="subline">Age du terrain</h4>
+					<div class="row indent">
+						<div ng-if="site.strati_ancien_terrain" class="col-md-6">Ancien : {{site.strati_ancien_terrain}} </div>
+						<div ng-if="site.strati_recent_terrain" class="col-md-6">Récent : {{site.strati_recent_terrain}} </div>
+					</div>
+				</div>
+				<div ng-if="site.coupe_geol">
+					<h4>Existance d'une coupe géologique dans la base</h4>
+					<div class="indent">{{site.coupe_geol}}.<span ng-if="site.commentaire_geol"> {{site.commentaire_geol}} </div>
+				</div>
+				<div ng-if="site.description_physique">
+					<h4 class="subline">Description physique</h4>
+					<div class="indent"> {{site.description_physique}} </div>
+				</div>
+				<div ng-if="site.comment_description">
+					<h4 class="subline">Commentaire</h4>
+					<div class="indent"> {{site.comment_description}} </div>
+				</div>
+				<div ng-if="site.etat2">
+					<h4 class="subline">Etat actuel</h4>
+					<div class="indent"> {{site.etat2}} </div>
+				</div>
+			</div>   
+		</div>
 
-        <hr>
+		<hr>
 
-        <div class="row">
-            <div class="bs-callout bs-callout-primary">
-                <h2>Description du site</h2>
-            </div>
-            <div class="modal-subtitle">
-                <div ng-if="site.commentaire_geol">
-                    <h4>Description géologique</h4>
-                    <div class="indent"> {{site.commentaire_geol | limitTo:longueur}} <span ng-if="longueur <= longueurChaineAfficherSuite">... <a href="#" ng-click="afficherSuite(site.commentaire_geol)">afficher la suite &gt;&gt;</a></span></div>
-                </div>
-                <div ng-if="site.phenomene_geol">
-                    <h4 class="subline">Phénomène représentatif du site</h4>
-                    <div class="indent"><strong> {{site.phenomene_geol}} </strong></div>
-                </div>
-                <div ng-if="site.strati_ancien_phenom || site.strati_recent_phenom">
-                    <h4 class="subline">Age du phénomène</h4>
-                    <div class="row indent">
-                        <div ng-if="site.strati_ancien_phenom" class="col-md-6">Ancien : {{site.strati_ancien_phenom}} </div>
-                        <div ng-if="site.strati_recent_phenom" class="col-md-6">Récent : {{site.strati_recent_phenom}} </div>
-                    </div>
-                </div>
-                <div ng-if="site.strati_ancien_terrain || site.strati_recent_terrain">
-                    <h4 class="subline">Age du terrain</h4>
-                    <div class="row indent">
-                        <div ng-if="site.strati_ancien_terrain" class="col-md-6">Ancien : {{site.strati_ancien_terrain}} </div>
-                        <div ng-if="site.strati_recent_terrain" class="col-md-6">Récent : {{site.strati_recent_terrain}} </div>
-                    </div>
-                </div>
-                <div ng-if="site.coupe_geol">
-                    <h4>Existance d'une coupe géologique dans la base</h4>
-                    <div class="indent">{{site.coupe_geol}}.<span ng-if="site.commentaire_geol"> {{site.commentaire_geol}} </div>
-                </div>
-                <div ng-if="site.description_physique">
-                    <h4 class="subline">Description physique</h4>
-                    <div class="indent"> {{site.description_physique}} </div>
-                </div>
-                <div ng-if="site.comment_description">
-                    <h4 class="subline">Commentaire</h4>
-                    <div class="indent"> {{site.comment_description}} </div>
-                </div>
-                <div ng-if="site.etat2">
-                    <h4 class="subline">Etat actuel</h4>
-                    <div class="indent"> {{site.etat2}} </div>
-                </div>
-            </div>   
-        </div>
+		<div class="row">
+			<div class="bs-callout bs-callout-primary" role="tab" id="headingTwo" data-toggle="collapse" href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+				<h2>Intérêts <div class="diminutionPolice"><small class="pull-right">cliquer pour afficher le contenu...</small></div></h2>
+			</div> 
+			<div class=" collapse" id="collapseTwo" role="tabpanel" aria-labelledby="headingTwo">
+				<div class="modal-subtitle">
+					<h4>Intérêt géologique principal</h4>		
+					<div class="row indent">
+						<h5><strong>{{site.interet_geol}}</strong></h5>
+						<div class="indent">{{site.justif_interet_geol}}</div>
+					</div>
+				</div>
+				<div class="modal-subtitle">
+					<h4 class="subline">Autres intérêts géologiques</h4>		
+					<div class="row indent" ng-repeat="interet in interets">
+						<h5 class="subline"><strong>Intérêt {{interet.interet1.toLowerCase()}}</strong></h5>
+						<div class="indent"><u> {{interet.interet2}}</u> : {{interet.justification}}</div>
+					</div>
+				</div>
+			</div>
+		</div>
 
-        <hr>
+		<hr ng-if="site.code_region !== 'RHA'">
 
-        <div class="row">
-            <div class="bs-callout bs-callout-primary">
-                <h2>Intérêts</h2>
-            </div> 
-            <div class="modal-subtitle">
-                <h4>Intérêt géologique principal</h4>		
-                <div class="row indent">
-                    <h5"><strong>{{site.interet_geol}}</strong></h5>
-                    <div class="indent">{{site.justif_interet_geol}}</div>
-                </div>
-            </div>
-            <div class="modal-subtitle">
-                <h4 class="subline">Autres intérêts géologiques</h4>		
-                <div class="row indent" ng-repeat="interet in interets">
-                    <h5 class="subline"><strong>Intérêt {{interet.interet1.toLowerCase()}}</strong></h5>
-                    <div class="indent"><u> {{interet.interet2}}</u> : {{interet.justification}}</div>
-                </div>
-            </div>
-        </div>
+		<div ng-if="site.code_region != 'RHA'" class="row">
+			<div class="bs-callout bs-callout-primary" role="tab" id="headingThree" data-toggle="collapse" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+				<h2>Documents <div class="diminutionPolice"><small class="pull-right">cliquer pour afficher le contenu...</small></div></h2>
+			</div >
+			<div class="collapse" id="collapseThree" role="tabpanel" aria-labelledby="headingThree">
+				<ul class="list-group modal-subtitle"> 
+					<li ng-repeat="doc in docs" class="list-group-item"> 
+						{{doc.commentaire}} ({{doc.type_document}})
+						<span style="float:right">  
+							<img ng-click="updatePdfView(doc)" src="img/chevronbas.png" title="obtenir un apercu du document ci-dessous"/>
+							&nbsp
+							<a href="data/pdf/{{doc.fichier}}" target="_blank">
+								<img src="img/newtab.png" title="ouvrir le document dans un nouvel onglet"/> 
+							</a>
+						</span> 
+					</li>
+				</ul>
+				<div class="wrapper">
+					<ng-pdf template-url="partials/viewer.html" canvasid="pdf" scale="page-fit" page=1></ng-pdf>
+				</div>
+			</div>          
+		</div>
 
-        <hr>
 
-        <div class="row">
-            <div class="bs-callout bs-callout-primary">
-                <h2>Conditions d'accès</h2>
-            </div>
-            <div class="modal-subtitle">
-                <div ng-if="site.itineraire">
-                    <h4>Itinéraire</h4>
-                    <div class="indent"> {{site.itineraire}} </div>
-                </div>
-                <div ng-if="site.accessibilite1">
-                    <h4 class="subline">Accessibilité</h4>
-                    <div class="indent"> {{site.accessibilite1}} <span ng-if="site.accessibilite2 != 'Libre'">({{site.accessibilite2 | lowercase}})</span></div>
-                </div>
-            </div>
-        </div>
+		<hr>
 
-    </div>
-    <div class="modal-footer">
-        <button class="btn btn-primary" type="button" ng-click="ok()">Fermer</button>
-    </div>
+		<div class="row">
+			<div class="bs-callout bs-callout-primary" role="tab" id="headingFour" data-toggle="collapse" href="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
+				<h2>Accès <div class="diminutionPolice"><small class="pull-right">cliquer pour afficher le contenu...</small></div></h2>
+			</div>
+			<div class="modal-subtitle collapse" id="collapseFour" role="tabpanel" aria-labelledby="headingFour">
+				<div ng-if="site.itineraire">
+					<h4>Itinéraire</h4>
+					<div class="indent"> {{site.itineraire}} </div>
+				</div>
+				<div ng-if="site.accessibilite1">
+					<h4 class="subline">Accessibilité</h4>
+					<div class="indent"> {{site.accessibilite1}} <span ng-if="site.accessibilite2 != 'Libre'">({{site.accessibilite2 | lowercase}})</span></div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+	<div class="modal-footer">
+		<button class="btn btn-primary" type="button" ng-click="ok()">Fermer</button>
+	</div>
 </div>

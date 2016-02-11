@@ -206,3 +206,21 @@
 	margin-top: 5px;
 	margin-bottom: 5px;
 }
+
+#headingOne{
+	cursor: pointer;
+}
+
+#headingTwo{
+	cursor: pointer;
+}
+#headingThree{
+	cursor: pointer;
+}
+#headingFour{
+	cursor: pointer;
+}
+
+.diminutionPolice{
+	font-size: 13px;
+}
