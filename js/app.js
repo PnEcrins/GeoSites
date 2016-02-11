@@ -33,6 +33,21 @@ app.directive('showSidebar', function() {
 	};
 });
 
+app.directive('dirFilterElement', function() {
+  return {
+	restrict: 'E',
+	scope: {
+	  key: '=key',
+	  filterInfo: '=filter',
+	  onCheck:'&'
+	},
+	templateUrl: 'templates/directive-filterpanel.html',    
+	controller: function($scope){
+		$scope.state = angular.isDefined($scope.state) ? Boolean($scope.state) : true;
+	}
+  };
+});
+
 /* ------------------- *
 * --------------------- *
 * ------ FILTRES ------ *
@@ -45,27 +60,6 @@ app.filter("sanitize", ['$sce', function($sce) {
     return $sce.trustAsHtml(htmlCode);
   }
 }]);
-
-
-/* ------------------- *
-* --------------------- *
-* ------- TODO -------- *
-* --------------------- *
-* -------------------- */
-
-/*
-- Système de route ---------------------------------------------------------------------------------- TODO
-- Afficher le GeoJSON avec AngularJS et Leaflet (pas seulement leaflet) ----------------------------- DONE
-- Faire un script php pour générer un JSON qui contient les attributs ainsi que la géométrie -------- DONE
-- Créer la liaison entre carte et liste ------------------------------------------------------------- TODO
-- Créer la modal contenant les détails d'un site et le lien du pdf ---------------------------------- TODO
-- Mettre en place le fitrage ------------------------------------------------------------------------ TODO
-- Mettre en place la recherche avec auto-complétion pour rechercher une commune --------------------- TODO
-- Mettre l'application sur GitHub ------------------------------------------------------------------- DONE
-*/
-
-
-
 
 // Système de route 
 

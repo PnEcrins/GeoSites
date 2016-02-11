@@ -22,6 +22,39 @@
 	border-bottom: 2px solid #981D97;
 }
 
+/* Filter */
+#main-menu{
+    color :#fff;
+    float:right;
+}
+#filter-panel {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+#filter-panel ul {
+  padding: 0;
+}
+
+#filter-panel li {
+  list-style: none;
+}
+
+#filter-panel label {
+  font-weight:normal;
+} 
+
+.panel {
+    border-left: 0px none;
+    border-right: 0px none;
+    margin-bottom: 0px;
+    padding: 0px;
+    background: rgba(51, 48, 48, 0.6) none repeat scroll 0% 0%;
+}
+.dropdown-menu {
+    margin: 0px;
+}
+
 /* Panneau latéral */
 #sidebar{
 	/*top: 8vh;*/
@@ -205,22 +238,4 @@
 	height: 140px;
 	margin-top: 5px;
 	margin-bottom: 5px;
-}
-
-#headingOne{
-	cursor: pointer;
-}
-
-#headingTwo{
-	cursor: pointer;
-}
-#headingThree{
-	cursor: pointer;
-}
-#headingFour{
-	cursor: pointer;
-}
-
-.diminutionPolice{
-	font-size: 13px;
 }

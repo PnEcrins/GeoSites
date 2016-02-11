@@ -171,7 +171,8 @@ app.controller('HomeController', ['$scope', 'htmlcontent', '$uibModal', '$http',
 	
 	//Action zoom sur une localisation
 	$scope.$watch('selectedLocation', function (newvalue, oldvalue) {
-		if (newvalue) {
+		// alert('xmin : '+newvalue.st_xmin);
+        if (newvalue) {
 			$scope.map.fitBounds([
 				[newvalue.st_ymin, newvalue.st_xmin],
 				[newvalue.st_ymax, newvalue.st_xmax]

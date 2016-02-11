@@ -60,10 +60,10 @@
 				"options" : "{style:function (feature) {return {weight: 1.3, opacity: 1, fillOpacity: 0.5 };},onEachFeature: function (feature, layer) {if (feature.properties, {noHide:false}) {layer.bindPopup(\"<h4>\"+feature.properties.nom_site+\"</h4>\");layer._siteId = feature.properties.id_site;}}}",
 				"filters":{
 					"code_region" :{
-						"name" : "Region",
+						"name" : "Région",
 						"values" : {
-							"PAC":{"label":"Région PACA", "color":"#FF6A00", "visible":true},
-							"RHA":{"label":"Région Rhône Alpes", "color":"maroon", "visible":true}							
+							"PAC":{"label":"PACA", "visible":true},
+							"RHA":{"label":"RHONE ALPES", "visible":true}
 						}
 					}
 				}
