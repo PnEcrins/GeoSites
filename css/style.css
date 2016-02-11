@@ -189,12 +189,20 @@
 	padding-bottom: 0px;
 	margin-bottom: 0px;
 }
+
 .espacement-modal-title{
 	padding-left: 5px;
 }
+
 .espacement-p{
 	margin-bottom: 0px;
 	padding-left: 10px;
 	padding-bottom: 10px;
 	padding-right: 10px;
+}
+
+.imgListe{
+	height: 140px;
+	margin-top: 5px;
+	margin-bottom: 5px;
 }
