@@ -43,7 +43,9 @@ include ("dbconnect.php");
 		<!-- Biliothèques js -->
 		<script src="vendors/jquery/jquery.min.js"></script>	
 		<script src="vendors/bootstrap/js/bootstrap.min.js"></script>			
-		<script src="vendors/angular/angular.min.js"></script>
+		<script src="vendors/pdfjs/pdf.js"></script>
+ 		<script src="vendors/angular/angular.min.js"></script>
+        <script src="vendors/angular/angular-pdf.min.js"></script>
 		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-animate.js"></script>
 		<script src="vendors/leaflet/leaflet.js"></script>
 		<script src="https://code.angularjs.org/1.2.28/angular-route.min.js"></script>
