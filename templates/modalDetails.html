@@ -8,7 +8,7 @@
 	<div class="modal-body">
 		<div class="row">
 			<div class="col-md-5">
-				<img class="img-responsive img-rounded imgModal pull-left" alt="photoModal" src="{{ 'data/img/photo' + site.id_site + '.png' }}">
+				<img class="img-responsive img-rounded imgModal pull-left" alt="photoModal" ng-src="{{ 'data/img/photo' + site.id_site + '.png' }}">
 			</div>
 			<div class="col-md-7">
 				<table ng-if="site.typologie3 || site.typologie2 || site.id_site || site.eval_interet_patrim" class="table table-hover">
@@ -39,7 +39,7 @@
 			<div class="modal-subtitle collapse" id="collapseOne" role="tabpanel" aria-labelledby="headingOne">
 				<div ng-if="site.commentaire_geol">
 					<h4>Description géologique</h4>
-					<div class="indent"> {{site.commentaire_geol | limitTo:longueur}} <span ng-if="longueur <= longueurChaineAfficherSuite">... <a href="#" ng-click="afficherSuite(site.commentaire_geol)">afficher la suite &gt;&gt;</a></span></div>
+					<div class="indent"> {{site.commentaire_geol | limitTo:longueur}} <!-- <span ng-if="longueur <= longueurChaineAfficherSuite">... <a href="#" ng-click="afficherSuite(site.commentaire_geol)">afficher la suite &gt;&gt;</a></span> --></div>
 				</div>
 				<div ng-if="site.phenomene_geol">
 					<h4 class="subline">Phénomène représentatif du site</h4>
@@ -127,6 +127,31 @@
 			</div>          
 		</div>
 
+		<hr>
+
+		<div class="row">
+			<div class="bs-callout bs-callout-primary" role="tab" id="headingFive" data-toggle="collapse" href="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
+				<h2>Photos <div class="diminutionPolice"><small class="pull-right">cliquer pour afficher le contenu...</small></div></h2>
+			</div >
+			<div class="collapse" id="collapseFive" role="tabpanel" aria-labelledby="headingFive">
+				
+				<div id="carouselPhotos" class="carousel slide" data-ride="carousel">
+					<div class="carousel-inner" role="listbox">
+						<div class="item"  ng-class="{active:!$index}" ng-repeat="photo in photos">
+							<img id="carouselPhotos" ng-src="{{ 'data/img/' + photo.fichier }}" alt="{{ photo.legende }}">
+							<div class="carousel-caption">
+								<p>{{ photo.legende }}</p>
+							</div>
+						</div>
+
+						<a class="carousel-control right" href="#carouselPhotos" data-slide="next"></a>
+						<a class="carousel-control left" href="#carouselPhotos" data-slide="prev"></a>
+
+					</div>
+				</div>
+
+			</div> 
+		</div>
 
 		<hr>
 
@@ -148,6 +173,11 @@
 
 	</div>
 	<div class="modal-footer">
+		<div class="pull-left diminutionPolice">
+			<p><small> Site créé le {{site.date_creat_site}} par {{site.createur}} </small></p>
+			<p ng-if="site.proprietaire"><small> Propriétaire du site : {{site.proprietaire}} </small></p>
+			<p ng-if="site.gestionnaire"><small> Gestionnaire du site : {{site.gestionnaire}} </small></p>
+		</div>
 		<button class="btn btn-primary" type="button" ng-click="ok()">Fermer</button>
 	</div>
 </div>

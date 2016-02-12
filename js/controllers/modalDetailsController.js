@@ -53,11 +53,18 @@ app.controller('ModalDetailsCtrl', function ($scope, $http, $uibModalInstance, s
 
     //chargement des intérêts du site
     var viewInterets = 'geologie.v_interets_sites';
-	var urlInterets = 'generatejson.php?view='+viewInterets+'&id_site=' + $scope.site.id_site;
+	var urlInterets = 'generatejson.php?view=' + viewInterets + '&id_site=' + $scope.site.id_site;
 	$http.get(urlInterets).success(function(response) {
 		// Tableau d'objets contenant les informations à propos des fichiers pdf pour un seul site passé en paramètre
 		$scope.interets = response;
 	});
+
+    // Chargement des photos pour la galerie d'images
+    var viewPhotos = 'geologie.v_photos';
+    var urlPhotos = 'generatejson.php?view=' + viewPhotos + '&id_site=' + $scope.site.id_site;
+    $http.get(urlPhotos).success(function(response) {
+        $scope.photos = response;
+    });
     
     //fermeture de la modale
 	$scope.ok = function () {

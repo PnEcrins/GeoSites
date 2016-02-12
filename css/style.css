@@ -22,7 +22,7 @@
 	border-bottom: 2px solid #981D97;
 }
 
-/* Filter */
+/* Filter *//*
 #main-menu{
     color :#fff;
     float:right;
@@ -53,7 +53,7 @@
 }
 .dropdown-menu {
     margin: 0px;
-}
+}*/
 
 /* Panneau latéral */
 #sidebar{
@@ -238,4 +238,35 @@
 	height: 140px;
 	margin-top: 5px;
 	margin-bottom: 5px;
+}
+
+#headingOne{
+	cursor: pointer;
+}
+
+#headingTwo{
+	cursor: pointer;
+}
+#headingThree{
+	cursor: pointer;
+}
+#headingFour{
+	cursor: pointer;
+}
+
+#headingFive{
+	cursor: pointer;
+}
+
+.diminutionPolice{
+	font-size: 13px;
+}
+
+#carouselPhotos{
+	height: 300px;
+	width: 100%;
+}
+
+.centrage{
+	text-align: center;
 }

@@ -11,12 +11,11 @@
 						</a>
 					</h4>
 				</div>
-                
 				<div id="{{ 'collapse' + site.properties.id_site }}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="{{ 'heading' + site.properties.id_site }}">
 					<div class="panel-body">
 						<div class="row">
-							<div class="col-md-5">								
-								<img class="img-responsive img-rounded imgListe pull-left" alt="photoListe" src="{{ 'data/img/photo' + site.properties.id_site + '.png' }}">
+							<div class="col-md-5" ng-if="site.properties.code_region !== 'RHA'">								
+								<img class="img-responsive img-rounded imgListe pull-left" alt="photoListe" ng-src="{{ 'data/img/photo' + site.properties.id_site + '.png' }}">
 							</div>
 							<div class="col-md-7">
 								<strong>Commune : </strong>{{ site.properties.commune}} <br />

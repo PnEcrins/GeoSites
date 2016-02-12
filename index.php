@@ -24,14 +24,8 @@ include ("dbconnect.php");
 		ng-controller défini la portée du controller, c'est à dire que les propriétés dans HomeController sont utilisables dans tout le body
 	-->
 	<body ng-app="GeoSiteApp" ng-controller="HomeController">
-		<!-- masque de chargement ; se ferme après le chargement du geojson ; fonctionne avec la modification de la variable 'loadingClass' dans le controller-->
-        <div id="loadmask" ng-model="loadingClass" ng-class="loadingClass">
-        	<div class="row">
-                <div class="col-md-offset-3 jumbotron col-md-6">
-                    <img alt="logoPNE" src="img/logo.png" class="img-responsive center-block" style="height: 50px;"><br />
-                    <p>L'application est en cours de chargement, veuillez patienter...</p>
-                </div>
-            </div>
+		<div id="loadmask" ng-model="loadingClass" ng-class="loadingClass">
+        	<div class="row"><div class="col-md-offset-3 jumbotron col-md-6"><img alt="logoPNE" src="img/logo.png" class="img-responsive center-block" style="height: 50px;"><br /><p class="centrage">L'application est en cours de chargement, veuillez patienter...</p></div></div>
  		</div>
 
 		<!-- Barre de navigation -->
@@ -49,9 +43,7 @@ include ("dbconnect.php");
 		<!-- Biliothèques js -->
 		<script src="vendors/jquery/jquery.min.js"></script>	
 		<script src="vendors/bootstrap/js/bootstrap.min.js"></script>			
-		<script src="vendors/pdfjs/pdf.js"></script>
 		<script src="vendors/angular/angular.min.js"></script>
-        <script src="vendors/angular/angular-pdf.min.js"></script>
 		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-animate.js"></script>
 		<script src="vendors/leaflet/leaflet.js"></script>
 		<script src="https://code.angularjs.org/1.2.28/angular-route.min.js"></script>
