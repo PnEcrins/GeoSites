@@ -179,11 +179,7 @@
     border-left-color: #777;
 }
 
-.bs-callout-default h2{
-    color: #777;
-}
-
-.bs-callout-default h4{
+.bs-callout-default h2, .bs-callout-default h4{
     color: #777;
 }
 
@@ -191,11 +187,11 @@
     border-left-color: #428bca;
 }
 
-.bs-callout-primary h2{
+.bs-callout-primary h2, .bs-callout-primary h4{
     color: #428bca;
 }
 
-.bs-callout-primary h4{
+.bs-callout-primary {
     color: #428bca;
 }
 
@@ -240,21 +236,7 @@
 	margin-bottom: 5px;
 }
 
-#headingOne{
-	cursor: pointer;
-}
-
-#headingTwo{
-	cursor: pointer;
-}
-#headingThree{
-	cursor: pointer;
-}
-#headingFour{
-	cursor: pointer;
-}
-
-#headingFive{
+#headingFour, #headingFive, #headingThree, #headingTwo, #headingOne{
 	cursor: pointer;
 }
 

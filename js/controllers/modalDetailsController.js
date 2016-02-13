@@ -33,14 +33,11 @@ app.controller('ModalDetailsCtrl', function ($scope, $http, $uibModalInstance, s
         $scope.pdfName = doc.commentaire;
     }
     
-	// On récupère dans le fichier Json toutes les données de la barre de navigation (le logo, le titre, les liens)
-	$scope.longueurChaineAfficherSuite = longueurChaineAfficherSuite;
-	$scope.longueur = $scope.longueurChaineAfficherSuite;
-
-	$scope.afficherSuite = function (chaine) {
-		$scope.longueur = chaine.length + 1;
-	}
-    
+    //hack to display the first pdf
+    $scope.renderPdf = false;
+    $scope.expandDocs = function(){
+        $scope.renderPdf = true;
+    }
     //chargement des documents du site
     var viewDocs = 'geologie.v_documents_sites';
 	var urlDocs = 'generatejson.php?view='+viewDocs+'&id_site=' + $scope.site.id_site;

@@ -105,7 +105,7 @@
 		<hr ng-if="site.code_region !== 'RHA'">
 
 		<div ng-if="site.code_region != 'RHA'" class="row">
-			<div class="bs-callout bs-callout-primary" role="tab" id="headingThree" data-toggle="collapse" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+			<div class="bs-callout bs-callout-primary" role="tab" id="headingThree" ng-click="expandDocs()" data-toggle="collapse" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
 				<h2>Documents <div class="diminutionPolice"><small class="pull-right">cliquer pour afficher le contenu...</small></div></h2>
 			</div >
 			<div class="collapse" id="collapseThree" role="tabpanel" aria-labelledby="headingThree">
@@ -121,7 +121,7 @@
 						</span> 
 					</li>
 				</ul>
-				<div class="wrapper">
+				<div class="wrapper" ng-if="renderPdf">
 					<ng-pdf template-url="partials/viewer.html" canvasid="pdf" scale="page-fit" page=1></ng-pdf>
 				</div>
 			</div>          
