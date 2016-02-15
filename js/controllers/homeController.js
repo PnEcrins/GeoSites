@@ -161,7 +161,7 @@ app.controller('HomeController', ['$scope', 'htmlcontent', '$uibModal', '$http',
 		$('#info-popup').show();
 		$location.hash('anchor'+item.feature.properties.id_site);
 		$anchorScroll();
-        $scope.bindListMap(item.feature);	    	   
+        $scope.bindListMap(item.feature); // interraction carte --> liste    	   
 	});
 	
 	//Action zoom sur une localisation
@@ -200,7 +200,21 @@ app.controller('HomeController', ['$scope', 'htmlcontent', '$uibModal', '$http',
 			arrayFilter.visible = toggleStatus;
 		});
 		$scope.dofilterOnMap();
-	}		
+	}
+
+    $("show-sidebar").click(function(){
+        $("#sidebar").toggle();
+        if($("#sidebar").is(":visible")){
+        	var isVisible = true;
+            document.getElementById("containerCarte").className = "col-md-offset-4 col-md-8";
+            $scope.map.invalidateSize();            
+        }
+        else{
+        	var isVisible = false;
+            document.getElementById("containerCarte").className = "col-md-12";
+            $scope.map.invalidateSize();
+        }
+    });    
 }]);
 
 app.factory('LeafletServices', ['$http', function($http) {

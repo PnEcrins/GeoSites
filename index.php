@@ -64,9 +64,6 @@ include ("dbconnect.php");
 		<!-- Services -->
 		<script src="js/services/htmlContent.js"></script>
 
-		<!-- Script JS -->
-		<script src="js/script.js"></script>
-
 		<!-- Config JS -->
 		<script src="js/config/config.js"></script>
 
