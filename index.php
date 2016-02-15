@@ -18,7 +18,7 @@ include ("dbconnect.php");
 		<link href="css/style.css" rel="stylesheet" />			
 
 		<!-- La balise meta viewport sert à forcer le niveau de zoom pour les navigateurs mobiles, elle est indispensable pour faire l'application en responsive, ici je ne permet pas à l'utilisateur de zoomer (le zoom sur la page n'est pas utile, il l'est par contre pour la carte) -->
-		<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />		
+		<meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width" />		
 	</head>
 	<!-- 
 		ng-app et ng-controller sont des directives.
@@ -38,7 +38,7 @@ include ("dbconnect.php");
 		<div ng-include src="'templates/listeSidebar.html'"></div>
 
 		<!-- La carte -->
-		<div id="containerCarte" class="col-md-offset-4 col-md-8">
+		<div id="containerCarte" class="col-lg-offset-3 col-md-offset-4 col-sm-offset-6 col-xs-offset-2 col-lg-9 col-md-8 col-sm-6 col-xs-10">
 			<div id="carte"></div>
 		</div>		
 
