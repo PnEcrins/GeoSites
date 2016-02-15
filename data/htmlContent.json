@@ -18,6 +18,11 @@
 			"icon": "img/contact2.png",
 			"title": "Contact",
 			"content": "le contenu 4"
+		},
+		{
+			"icon": "img/help.png",
+			"title": "Aide",
+			"content": "<div>Aide à l'utilisation de l'application<div><p>Il est possible de modifier le fond de carte ... <img src=\"img/layersControls.jpg\" /></p><p> ...ou d'afficher la carte géologique avec une transparence modifiable <img src=\"img/opacityLayerControls.jpg\" /></p></div>"
 		}
 	],
 	"sideBarContent": {

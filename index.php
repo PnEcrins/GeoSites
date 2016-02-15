@@ -11,6 +11,8 @@ include ("dbconnect.php");
 		<!-- Feuilles de styles -->
 		<link href="vendors/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
 		<link href="vendors/leaflet/leaflet.css" rel="stylesheet" />
+        <link rel="stylesheet" href="vendors/opacity/Control.Opacity.css" />
+        <link rel="stylesheet" href="vendors/jquery/jquery-ui-1.10.3.custom.min.css" />
 		<link href="vendors/angular-bootstrap/ui-bootstrap-custom-1.1.1-csp.css" rel="stylesheet" />
 		<link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 		<link href="css/style.css" rel="stylesheet" />			
@@ -42,12 +44,14 @@ include ("dbconnect.php");
 
 		<!-- Biliothèques js -->
 		<script src="vendors/jquery/jquery.min.js"></script>	
+		<script src="vendors/jquery/jquery-ui-1.10.3.custom.min.js"></script>	
 		<script src="vendors/bootstrap/js/bootstrap.min.js"></script>			
 		<script src="vendors/pdfjs/pdf.js"></script>
  		<script src="vendors/angular/angular.min.js"></script>
         <script src="vendors/angular/angular-pdf.min.js"></script>
 		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-animate.js"></script>
 		<script src="vendors/leaflet/leaflet.js"></script>
+        <script src="vendors/opacity/Control.Opacity.js"></script>
 		<script src="https://code.angularjs.org/1.2.28/angular-route.min.js"></script>
 		<script src="vendors/angular-bootstrap/ui-bootstrap-custom-1.1.1.min.js"></script>
 		<script src="vendors/angular-bootstrap/ui-bootstrap-custom-tpls-1.1.1.min.js"></script>

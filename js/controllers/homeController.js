@@ -68,7 +68,8 @@ app.controller('HomeController', ['$scope', 'htmlcontent', '$uibModal', '$http',
 		$scope.geojsonSites = response.features;
 		//carte
 		$scope.baselayers = {},
-		$scope.controllayers = {},
+		$scope.controlBaseLayers = {},
+		$scope.controlOverlayLayers = {},
 		$scope.mainLayer = null,
 		$scope.mainLayerData = null,		
 		
@@ -77,6 +78,8 @@ app.controller('HomeController', ['$scope', 'htmlcontent', '$uibModal', '$http',
 		$scope.map = L.map('carte', { zoomControl: false });
 		L.control.zoom({position: 'topright', zoomInTitle: 'Zoomer', zoomOutTitle: 'Dézoomer'}).addTo($scope.map);
 		L.control.scale({position: 'bottomright', imperial: false}).addTo($scope.map);
+        var opacitySlider = new L.Control.opacitySlider();
+        $scope.map.addControl(opacitySlider);
 
 		$http.get("data/map.json").then(
 			function(results) {
@@ -84,16 +87,25 @@ app.controller('HomeController', ['$scope', 'htmlcontent', '$uibModal', '$http',
 				angular.forEach(results.data.layers.baselayers, function(value, key) {
 					var l = LeafletServices.loadData(value);
 					$scope.baselayers[key] = l;
-					$scope.controllayers[l.name] = l.map;
+					$scope.controlBaseLayers[l.name] = l.map;
 					if (value.active) {
 					  $scope.baselayers[key].map.addTo($scope.map);
 					}
+					// if (value.changeopacity) {
+                      // opacitySlider.setOpacityLayer($scope.baselayers[key].map);
+					// }
 				});
+                
 				$scope.map.setView(new L.LatLng(results.data.center.lat, results.data.center.lng),results.data.center.zoom);
-				
 				$scope.mapOptions = results.data;
 
-				$scope.map.addControl(new L.Control.Layers($scope.controllayers));
+				//couche opacity
+                var l = LeafletServices.loadData(results.data.layers.opacitylayer);
+                $scope.opacitylayer = l;
+                $scope.map.addLayer(l.map);
+                $scope.controlOverlayLayers[l.name] = l.map;
+                opacitySlider.setOpacityLayer(l.map);
+                l.map.setOpacity(0)
 				
 				//----Couche principale
 				//options
@@ -115,7 +127,11 @@ app.controller('HomeController', ['$scope', 'htmlcontent', '$uibModal', '$http',
 				$scope.mainLayerData = $scope.geojsonSites;
 				$scope.mainLayer = new L.geoJson($scope.geojsonSites,$scope.mainLayerOptions);
 				$scope.map.addLayer($scope.mainLayer );
-				
+                
+                //ajout du Layer Control pour gérer les couches affichées
+                $scope.controlOverlayLayers[results.data.layers.overlay.name] = $scope.mainLayer;
+				$scope.map.addControl(new L.Control.Layers($scope.controlBaseLayers,$scope.controlOverlayLayers));
+                
 				//----Selecteur de localisation
 				if (results.data.location) {
 					$http.get(results.data.location.url).then(
