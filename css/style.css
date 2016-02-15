@@ -13,7 +13,7 @@
 }
 
 /* Le même curseur que lorsque l'on clique sur un lien, là il est sur le titre de la barre de nav */
-.navbar-brand{
+.cursor{
 	cursor: pointer;
 }
 
@@ -119,15 +119,10 @@
 	margin-top: 5px;
 }
 
-.couleurRouge{
-	color: #F5F5F5;
+.listHighlight{
+	color: #F5F5F5 ! important;
 	box-shadow:  2px 2px 2px #000;
-	background-color: #333;
-}
-
-.couleurNoire{
-	color: #333;
-	background-color: #F5F5F5;
+	background-color: #333 ! important;
 }
 
 .imgModal{

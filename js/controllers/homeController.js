@@ -4,6 +4,8 @@ app.controller('HomeController', ['$scope', 'htmlcontent', '$uibModal', '$http',
 
 	// Initialisation
 	$scope.loadingClass = 'onloading';
+    $scope.previousLinkSelected = null;
+    
 	$scope.abbrListe1 = abbrListe1;
 	$scope.abbrListe2 = abbrListe2;
 	$scope.abbrListe3 = abbrListe3;
@@ -13,7 +15,6 @@ app.controller('HomeController', ['$scope', 'htmlcontent', '$uibModal', '$http',
 	$scope.abbrListe7 = abbrListe7;
 	$scope.abbrListe8 = abbrListe8;
 	$scope.abbrListe9 = abbrListe9;
-
 
 	// On récupère dans le fichier Json toutes les données de la barre de navigation (le logo, le titre, les liens)
 	htmlcontent.success(function(data) {
@@ -36,7 +37,7 @@ app.controller('HomeController', ['$scope', 'htmlcontent', '$uibModal', '$http',
 			}
 		});
 	};
-
+    // Modal accueil
 	$scope.openAccueil = function () {
 		var modalInstance = $uibModal.open({
 			templateUrl: 'templates/modalAccueil.html',
@@ -45,10 +46,10 @@ app.controller('HomeController', ['$scope', 'htmlcontent', '$uibModal', '$http',
 			resolve: {}
 		});
 	};
+	$scope.openAccueil(); //ouverture de la modal
 
-	$scope.openAccueil();
-
-	$scope.openDetails = function (site) {
+	// Modal affichant les détails d'un site
+    $scope.openDetails = function (site) {
 		var modalInstance = $uibModal.open({
 			templateUrl: 'templates/modalDetails.html',
 			controller: 'ModalDetailsCtrl',
@@ -126,13 +127,20 @@ app.controller('HomeController', ['$scope', 'htmlcontent', '$uibModal', '$http',
 
 				// Interraction liste/carte
 				$scope.bindListMap = function (site) {			
-					document.getElementById(site.properties.id_site).className="couleurNoire";
+					document.getElementById('heading' + site.properties.id_site).className="panel-heading";
+                    $('.collapse').collapse('hide');
+                    $('#collapse' + site.properties.id_site).collapse('show');
+                    if(document.getElementById('heading' + site.properties.id_site).className!="panel-heading listHighlight"){
+                        if($scope.previousLinkSelected != null && $scope.previousLinkSelected != 'heading' + site.properties.id_site){
+                            document.getElementById($scope.previousLinkSelected).className="panel-heading";
+                        }			
+                        document.getElementById('heading' + site.properties.id_site).className="panel-heading listHighlight";
+                        $scope.previousLinkSelected = 'heading' + site.properties.id_site;							
+                    }
 					$scope.mainLayer.eachLayer(function(layer) { 
 						if(site.properties.id_site == layer._siteId){
-							// alert('monsite = ' + layer._siteId);
 							var x = site.geometry.coordinates[0];                        
-							var y = site.geometry.coordinates[1];
-							// alert('x = ' + x);                            
+							var y = site.geometry.coordinates[1];                           
 							var latlng = new L.LatLng(y,x);
 							layer.openPopup(latlng);
 						}
@@ -145,28 +153,15 @@ app.controller('HomeController', ['$scope', 'htmlcontent', '$uibModal', '$http',
 	.error(function(err) {
 		$scope.erreur = err;
 	});
-
-	$scope.previousLinkSelected = null;
+    
 	//Action selection d'un élément sur la carte
 	$scope.$on('feature:click', function(ev, item){
 		$scope.infoObj = item.feature.properties;
 		$('#filter-panel').collapse('hide');
 		$('#info-popup').show();
 		$location.hash('anchor'+item.feature.properties.id_site);
-		// call $anchorScroll()
 		$anchorScroll();
-		//$scope.couleurPolice = "couleurRouge";
-		/*$scope.collapser = "panel-collapse collapse";*/
-		document.getElementById(item.feature.properties.id_site).className="couleurNoire";
-		if(document.getElementById(item.feature.properties.id_site).className!="couleurRouge"){
-			/*var x =document.getElementByClassName("couleurRouge");
-			x[0].className="panel-collapse collapse in";*/
-			if($scope.previousLinkSelected != null && $scope.previousLinkSelected != item.feature.properties.id_site){
-				document.getElementById($scope.previousLinkSelected).className="couleurNoire";
-			}			
-			document.getElementById(item.feature.properties.id_site).className="couleurRouge";
-			$scope.previousLinkSelected = item.feature.properties.id_site;							
-		}	    	   
+        $scope.bindListMap(item.feature);	    	   
 	});
 	
 	//Action zoom sur une localisation

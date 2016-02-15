@@ -3,12 +3,18 @@
 		<div class="row" ng-bind-html="contentHTML.sideBarContent.content | sanitize"></div>
 		<hr>
 		<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">				
-			<div ng-repeat="site in geojsonSites" class="panel panel-default" id="{{ 'anchor' + site.properties.id_site }}">
-				<div class="panel-heading" role="tab" id="{{ 'heading' + site.properties.id_site }}">
+			<div ng-repeat="site in geojsonSites" class="panel panel-default" id="{{ 'anchor' + site.properties.id_site }}" ng-click="bindListMap(site)">
+				<div 
+                    class="panel-heading" 
+                    role="button" id="{{ 'heading' + site.properties.id_site }}" 
+                    data-toggle="collapse" 
+                    data-parent="#accordion" 
+                    data-target="{{ '#collapse' + site.properties.id_site }}" 
+                    aria-expanded="true" 
+                    aria-controls="{{ 'collapse' + site.properties.id_site }}"
+                >
 					<h4 class="panel-title">
-						<a role="button" data-toggle="collapse" data-parent="#accordion" ng-click="bindListMap(site)" href="{{ '#collapse' + site.properties.id_site }}" aria-expanded="true" aria-controls="{{ 'collapse' + site.properties.id_site }}">
 						<strong id="{{site.properties.id_site}}">{{ site.properties.nom_site }}</strong>
-						</a>
 					</h4>
 				</div>
 				<div id="{{ 'collapse' + site.properties.id_site }}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="{{ 'heading' + site.properties.id_site }}">
