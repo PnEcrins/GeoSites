@@ -32,6 +32,7 @@ app.controller('ModalDetailsCtrl', function ($scope, $http, $uibModalInstance, s
     $scope.renderPdf = false;
     $scope.expandDocs = function(){
         $scope.renderPdf = true;
+        $scope.loading = '';
     }
     
     //chargement des documents du site
