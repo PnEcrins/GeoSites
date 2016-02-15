@@ -12,11 +12,6 @@
 	margin-top: -10px;
 }
 
-/* Le même curseur que lorsque l'on clique sur un lien, là il est sur le titre de la barre de nav */
-.cursor{
-	cursor: pointer;
-}
-
 /* Petit trait violet de la couleur du logo juste en dessous de la barre de navigation */
 .navbar-inverse{
 	border-bottom: 2px solid #981D97;

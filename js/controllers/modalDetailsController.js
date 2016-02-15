@@ -8,15 +8,11 @@ app.controller('ModalDetailsCtrl', function ($scope, $http, $uibModalInstance, s
     $scope.pdfName = '';
     $scope.pdfUrl = '';
     $scope.scroll = 0;
-    $scope.loading = 'Chargement...';
+    $scope.loading = 'Chargement en cours...';
 
     $scope.getNavStyle = function(scroll) {
         if(scroll > 100) return 'pdf-controls fixed';
         else return 'pdf-controls';
-    }
-
-    $scope.onError = function(error) {
-        console.log(error);
     }
 
     $scope.onLoad = function() {
@@ -24,7 +20,6 @@ app.controller('ModalDetailsCtrl', function ($scope, $http, $uibModalInstance, s
     }
 
     $scope.onProgress = function(progress) {
-        console.log(progress);
         $scope.loading = 'Chargement en cours...';
     }
     
@@ -38,6 +33,7 @@ app.controller('ModalDetailsCtrl', function ($scope, $http, $uibModalInstance, s
     $scope.expandDocs = function(){
         $scope.renderPdf = true;
     }
+    
     //chargement des documents du site
     var viewDocs = 'geologie.v_documents_sites';
 	var urlDocs = 'generatejson.php?view='+viewDocs+'&id_site=' + $scope.site.id_site;

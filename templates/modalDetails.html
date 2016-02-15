@@ -82,7 +82,7 @@
 
 		<div class="row">
 			<div class="bs-callout bs-callout-primary" role="tab" id="headingTwo" data-toggle="collapse" href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-				<h2>Intérêts <div class="diminutionPolice"><small class="pull-right">cliquer pour afficher le contenu...</small></div></h2>
+				<h2>Intérêts ({{interets.length +1}})<div class="diminutionPolice"><small class="pull-right">cliquer pour afficher le contenu...</small></div></h2>
 			</div> 
 			<div class=" collapse" id="collapseTwo" role="tabpanel" aria-labelledby="headingTwo">
 				<div class="modal-subtitle">
@@ -106,19 +106,21 @@
 
 		<div ng-if="site.code_region != 'RHA'" class="row">
 			<div class="bs-callout bs-callout-primary" role="tab" id="headingThree" ng-click="expandDocs()" data-toggle="collapse" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
-				<h2>Documents <div class="diminutionPolice"><small class="pull-right">cliquer pour afficher le contenu...</small></div></h2>
+				<h2>Documents ({{docs.length}})<div class="diminutionPolice"><small class="pull-right">cliquer pour afficher le contenu...</small></div></h2>
 			</div >
 			<div class="collapse" id="collapseThree" role="tabpanel" aria-labelledby="headingThree">
 				<ul class="list-group modal-subtitle"> 
 					<li ng-repeat="doc in docs" class="list-group-item"> 
-						{{doc.commentaire}} ({{doc.type_document}})
-						<span style="float:right">  
-							<img ng-click="updatePdfView(doc)" src="img/chevronbas.png" title="obtenir un apercu du document ci-dessous"/>
-							&nbsp
-							<a href="data/pdf/{{doc.fichier}}" target="_blank">
-								<img src="img/newtab.png" title="ouvrir le document dans un nouvel onglet"/> 
-							</a>
-						</span> 
+						<div ng-click="updatePdfView(doc)" role="button">
+                            {{doc.commentaire}} ({{doc.type_document}})
+                            <span style="float:right">  
+                                <img  src="img/chevronbas.png" title="obtenir un apercu du document ci-dessous"/>
+                                &nbsp
+                                <a href="data/pdf/{{doc.fichier}}" target="_blank">
+                                    <img src="img/newtab.png" title="ouvrir le document dans un nouvel onglet"/> 
+                                </a>
+                            </span> 
+                        </div>
 					</li>
 				</ul>
 				<div class="wrapper" ng-if="renderPdf">
@@ -131,11 +133,11 @@
 
 		<div class="row">
 			<div class="bs-callout bs-callout-primary" role="tab" id="headingFive" data-toggle="collapse" href="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
-				<h2>Photos <div class="diminutionPolice"><small class="pull-right">cliquer pour afficher le contenu...</small></div></h2>
+				<h2>Photos ({{photos.length}})<div class="diminutionPolice"><small class="pull-right">cliquer pour afficher le contenu...</small></div></h2>
 			</div >
 			<div class="collapse" id="collapseFive" role="tabpanel" aria-labelledby="headingFive">
 				
-				<div id="carouselPhotos" class="carousel slide" data-ride="carousel">
+				<div ng-if="photos.length > 0" id="carouselPhotos" class="carousel slide" data-ride="carousel">
 					<div class="carousel-inner" role="listbox">
 						<div class="item"  ng-class="{active:!$index}" ng-repeat="photo in photos">
 							<img id="carouselPhotos" ng-src="{{ 'data/img/' + photo.fichier }}" alt="{{ photo.legende }}">
