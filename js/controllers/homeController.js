@@ -20,6 +20,78 @@ app.controller('HomeController', ['$scope', 'htmlcontent', '$uibModal', '$http',
 	htmlcontent.success(function(data) {
 		$scope.contentHTML = data;
 	});
+    
+    // Comportement de la barre de navigation
+    $scope.navBarCollapse = function() {
+        $(".navbar-collapse").collapse("toggle");
+        return false;
+    };
+    
+    $scope.SideBarToggle = function () {
+        $("#sidebar").toggle();
+        if($("#sidebar").is(":visible")){
+        	var isVisible = true;
+            document.getElementById("containerCarte").className = "col-lg-offset-3 col-md-offset-4 col-sm-offset-6 col-lg-9 col-md-8 col-sm-6 hidden-xs";
+            document.getElementById("sidebar").className = "col-lg-3 col-md-4 col-sm-6 col-xs-12";
+            $scope.map.invalidateSize();            
+        }
+        else{
+        	var isVisible = false;
+            document.getElementById("containerCarte").className = "col-lg-12 col-md-12 col-sm-12 col-xs-12";
+            document.getElementById("sidebar").className = "";
+            $scope.map.invalidateSize();
+        }
+        // $(".navbar-collapse").collapse("toggle");
+        return false;
+    };
+    
+    $("show-sidebar").click(function(){
+        $scope.SideBarToggle();
+    });
+    
+    $scope.pne = function () {
+        var modalInstance = $uibModal.open({
+			templateUrl: 'templates/modalPne.html',
+			controller: 'ModalPneInstanceCtrl',
+			size: 'lg',
+			resolve: {}
+		});
+        $(".navbar-collapse.in").collapse("hide");
+        return false;
+    };
+    
+    $scope.info = function () {
+        var modalInstance = $uibModal.open({
+			templateUrl: 'templates/modalAccueil.html',
+			controller: 'ModalAccueilInstanceCtrl',
+			size: 'lg',
+			resolve: {}
+		});
+        $(".navbar-collapse.in").collapse("hide");
+        return false;
+    };
+    
+    $scope.contact = function () {
+        var modalInstance = $uibModal.open({
+			templateUrl: 'templates/modalContact.html',
+			controller: 'ModalContactInstanceCtrl',
+			size: 'lg',
+			resolve: {}
+		});
+        $(".navbar-collapse.in").collapse("hide");
+        return false;
+    };
+    
+    $scope.help = function () {
+        var modalInstance = $uibModal.open({
+			templateUrl: 'templates/modalAide.html',
+			controller: 'ModalAideInstanceCtrl',
+			size: 'lg',
+			resolve: {}
+		});
+        $(".navbar-collapse.in").collapse("hide");
+        return false;
+    };
 
 	// Ouverture de la modal, on passe en paramètre le contenu et le titre.
 	$scope.openNavbar = function (title, content) {
@@ -130,6 +202,7 @@ app.controller('HomeController', ['$scope', 'htmlcontent', '$uibModal', '$http',
                 
                 //ajout du Layer Control pour gérer les couches affichées
                 $scope.controlOverlayLayers[results.data.layers.overlay.name] = $scope.mainLayer;
+				// $scope.map.addControl(new L.Control.Layers($scope.controlBaseLayers));
 				$scope.map.addControl(new L.Control.Layers($scope.controlBaseLayers,$scope.controlOverlayLayers));
                 
 				//----Selecteur de localisation
@@ -144,7 +217,7 @@ app.controller('HomeController', ['$scope', 'htmlcontent', '$uibModal', '$http',
 				// Interraction liste/carte
 				$scope.bindListMap = function (site) {			
 					document.getElementById('heading' + site.properties.id_site).className="panel-heading";
-                    $('.collapse').collapse('hide');
+                    $('.chimereClass').collapse('hide');
                     $('#collapse' + site.properties.id_site).collapse('show');
                     if(document.getElementById('heading' + site.properties.id_site).className!="panel-heading listHighlight"){
                         if($scope.previousLinkSelected != null && $scope.previousLinkSelected != 'heading' + site.properties.id_site){
@@ -217,20 +290,7 @@ app.controller('HomeController', ['$scope', 'htmlcontent', '$uibModal', '$http',
 		});
 		$scope.dofilterOnMap();
 	}
-
-    $("show-sidebar").click(function(){
-        $("#sidebar").toggle();
-        if($("#sidebar").is(":visible")){
-        	var isVisible = true;
-            document.getElementById("containerCarte").className = "col-md-offset-4 col-md-8";
-            $scope.map.invalidateSize();            
-        }
-        else{
-        	var isVisible = false;
-            document.getElementById("containerCarte").className = "col-md-12";
-            $scope.map.invalidateSize();
-        }
-    });    
+    
 }]);
 
 app.factory('LeafletServices', ['$http', function($http) {

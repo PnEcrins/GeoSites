@@ -1,31 +1,52 @@
-<nav class="navbar navbar-inverse navbar-fixed-top">
-	<div class="container-fluid">
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
         <!--<div ng-include src="'templates/filterpanel.html'"></div>-->
         <!-- Entête de la barre de navigation (le logo et l'affichage mobile) -->
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false">
-				<span class="sr-only">Toggle navigation</span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</button>
-			<a class="cursor" href="#">
-				<img class="logoPNE" alt="Logo Parc National des Ecrins" ng-src="{{contentHTML.navBarHeader.icon}}">
-			</a>
-			<!-- Titre de l'appli -->
-			<span class="cursor" >{{ contentHTML.navBarHeader.title }}</span>
-		</div>
+        <div class="navbar-header">
+            <!-- bouton de navigation mobile -->
+            <div class="navbar-icon-container">
+                <a href="#" class="navbar-icon pull-right visible-xs" id="nav-btn" ng-click="navBarCollapse()"><i class="fa fa-bars fa-lg white"></i></a>
+                <a href="#" class="navbar-icon pull-right visible-xs" id="sidebar-toggle-btn" ng-click="SideBarToggle()"><i class="fa fa-search fa-lg white"></i></a>
+            </div>
+            <!-- Titre de l'appli -->
+            <img class="logoPNE" alt="Logo Parc National des Ecrins" ng-src="{{contentHTML.navBarHeader.icon}}">
+            <span class="cursor" >{{ contentHTML.navBarHeader.title }}</span>
+        </div>
         
-		<!-- Les autres éléments de la barre de navigation, on récupère les données dans le controller et on fait une boucle avec ng-repeat -->
-		<div class="collapse navbar-collapse">
-			<ul class="nav navbar-nav">
-				<li ng-repeat="navBarElement in contentHTML.navBarElements">
-					<!-- Je passe en paramètres le contenu et le titre pour la modal -->
-					<a role="button" href="#" ng-click="openNavbar(navBarElement.title, navBarElement.content)">
-						<img class="icon" ng-src="{{ navBarElement.icon }}">{{ navBarElement.title }}
-					</a>							
-				</li>
-			</ul>
-		</div>
+        <!-- Les autres éléments de la barre de navigation, on récupère les données dans le controller et on fait une boucle avec ng-repeat -->
+        <div class="navbar-collapse collapse" >
+            <ul class="nav navbar-nav">
+                <!--<li ng-repeat="navBarElement in contentHTML.navBarElements">
+                    <!-- Je passe en paramètres le contenu et le titre pour la modal 
+                    <a role="button" href="#" ng-click="openNavbar(navBarElement.title, navBarElement.content)">
+                        <img class="icon" ng-src="{{ navBarElement.icon }}">{{ navBarElement.title }}
+                    </a>							
+                </li>-->
+                <li>
+                    <a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="about-btn" ng-click="pne()">
+                        <img class="icon" ng-src="img/spirale.png">&nbsp;&nbsp;Parc national des Ecrins
+                    </a>
+                </li><li>
+                    <a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="about-btn" ng-click="info()">
+                        <i class="fa fa-info-circle white"></i>&nbsp;&nbsp;Informations
+                    </a>
+                </li>
+                <li>
+                    <a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="about-btn" ng-click="help()">
+                        <i class="fa fa-question-circle white"></i>&nbsp;&nbsp;Aide
+                    </a>
+                </li>
+                <li>
+                    <a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="about-btn" ng-click="contact()">
+                        <i class="fa fa-envelope-o white"></i>&nbsp;&nbsp;Contact
+                    </a>
+                </li>
+                <li class="hidden-xs">
+                    <a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" class="collapsed" id="list-btn" aria-expanded="false" ng-click="SideBarToggle()">
+                        <i class="fa fa-list white"></i>&nbsp;&nbsp;Liste
+                    </a>
+                </li>
+            </ul>
+        </div>
 	</div>
 </nav>
