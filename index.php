@@ -5,7 +5,7 @@ include ("dbconnect.php");
 <!doctype html>
 <html ng-app="GeoSiteApp">
 	<head>
-		<title>Sites géologiques du Parc national des Écrins</title>
+		<title><?php echo $title;?></title>
 		<meta charset="utf-8" />
 
 		<!-- Feuilles de styles -->
@@ -54,9 +54,6 @@ include ("dbconnect.php");
 		<script src="js/controllers/modalAideController.js"></script>
 		<script src="js/controllers/modalContactController.js"></script>
 		<script src="js/controllers/modalPneController.js"></script>
-
-		<!-- Services -->
-		<script src="js/services/htmlContent.js"></script>
 
 		<!-- Config JS -->
 		<script src="js/config/config.js"></script>

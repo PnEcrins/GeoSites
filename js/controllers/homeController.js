@@ -1,6 +1,6 @@
 // Création du controller HomeController
 // Un controller gère les données de l'application
-app.controller('HomeController', ['$scope','$routeParams', 'htmlcontent', '$uibModal', '$http','LeafletServices', '$location', '$anchorScroll', '$rootScope', function ($scope, $routeParams, htmlcontent, $uibModal, $http, LeafletServices, $location, $anchorScroll, $rootScope) {
+app.controller('HomeController', ['$scope', '$compile', '$routeParams', '$uibModal', '$http','LeafletServices', '$location', '$anchorScroll', '$rootScope', function ($scope, $compile, $routeParams, $uibModal, $http, LeafletServices, $location, $anchorScroll, $rootScope) {
 
 	// Initialisation
 	$scope.loadingClass = 'onloading';
@@ -18,17 +18,13 @@ app.controller('HomeController', ['$scope','$routeParams', 'htmlcontent', '$uibM
 	$scope.abbrListe8 = abbrListe8;
 	$scope.abbrListe9 = abbrListe9;
 
-	// On récupère dans le fichier Json toutes les données de la barre de navigation (le logo, le titre, les liens)
-	htmlcontent.success(function(data) {
-		$scope.contentHTML = data;
-	});
-    
-    // Comportement de la barre de navigation
+	// Comportement de la barre de navigation
     $scope.navBarCollapse = function() {
         $(".navbar-collapse").collapse("toggle");
         return false;
     };
     
+    //ouverture et fermeture de la side bar contenant la liste des sites
     $scope.SideBarToggle = function () {
         $("#sidebar").toggle();
         if($("#sidebar").is(":visible")){
@@ -155,7 +151,7 @@ app.controller('HomeController', ['$scope','$routeParams', 'htmlcontent', '$uibM
         var opacitySlider = new L.Control.opacitySlider();
         $scope.map.addControl(opacitySlider);
 
-		$http.get("data/map.json").then(
+		$http.get("config/configmap.json").then(
 			function(results) {
 				//----Fonds de carte
 				angular.forEach(results.data.layers.baselayers, function(value, key) {

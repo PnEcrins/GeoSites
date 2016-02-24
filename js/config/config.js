@@ -1,6 +1,4 @@
-// Initialisation de la longueur max du texte dans la modal de détails
-var longueurChaineAfficherSuite = 200;
-
+//liste des abbréviations documentées
 var abbrListe1 = "La fréquence de présence du site sur le territoire Français";
 var abbrListe2 = "";
 var abbrListe3 = "";

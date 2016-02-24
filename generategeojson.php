@@ -1,8 +1,9 @@
 <?php
-include ("config.php");
 include ("dbconnect.php");
+
 header('Content-type: application/json');
 $mavue = "geologie.v_sites";
+
 $query = "Select * from $mavue";
 $rs = pg_query($dbconnect, $query) or die("La requete suivante ne peut pas etre executee : $query\n");
 

@@ -1,9 +1,10 @@
 <?php
-include ("config.php");
 include ("dbconnect.php");
+
 $idSite = $_GET['id_site'];
 $view = $_GET['view'];
 header('Content-type: application/json');
+
 $query = "SELECT * FROM ".$view." WHERE id_site = '".$idSite."'";
 $rs = pg_query($dbconnect, $query) or die("La requete suivante ne peut pas etre executee : $query\n");
 
