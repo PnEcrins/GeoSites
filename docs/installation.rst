@@ -12,7 +12,8 @@ Création de la base de données
 TODO : script sql de création de la base.
 
 Une vue doit renvoyer les sites avec les informations suivantes :
-CREATE OR REPLACE VIEW geologie.v_sites AS 
+::
+    CREATE OR REPLACE VIEW geologie.v_sites AS 
     SELECT DISTINCT 
        s.id_site, 
        s.nom_site, 
@@ -79,7 +80,7 @@ CREATE OR REPLACE VIEW geologie.v_sites AS
    ORDER BY s.id_site;
 
 3 autres vues retournes des données nécessaires à un bon affichage du contenu de l'application
-
+::
   CREATE OR REPLACE VIEW geologie.v_interets_sites AS 
     SELECT i.id_site, i.interet1, i.interet2, i.justification
     FROM geologie.interet_second i
@@ -116,9 +117,10 @@ Personnalisez le contenu en modifiant la valeur des variables disponibles dans `
 
 Modifiez les images dans le répertoire `img`
 
-    * Par exemple : `img/logo.png` pour le logo de votre organisme.
+    * Par exemple  `img/logo.png` pour le logo de votre organisme
 
 Modifier les templates html dans le répertoire `templates` et notamment, adaptez le contenu des fichiers
+
     * modalAccueil.html
     * modalAccueil.html
     * modalAide.html
@@ -126,6 +128,7 @@ Modifier les templates html dans le répertoire `templates` et notamment, adapte
     * modalAPne.html
     
 quelques éléments de personnalisation se trouvent également dans
+
     * navBar.html
     * listeSidebar.html
 
