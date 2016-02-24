@@ -9,8 +9,10 @@
                 <a href="#" class="navbar-icon pull-right visible-xs" id="sidebar-toggle-btn" ng-click="SideBarToggle()"><i class="fa fa-search fa-lg white"></i></a>
             </div>
             <!-- Titre de l'appli -->
-            <img class="logoPNE" alt="Logo Parc National des Ecrins" ng-src="{{contentHTML.navBarHeader.icon}}">
-            <span class="cursor" >{{ contentHTML.navBarHeader.title }}</span>
+            <!-- <img class="logoPNE" alt="Logo Parc National des Ecrins" ng-src="{{contentHTML.navBarHeader.icon}}"> -->
+            <!-- <span class="cursor" >{{ contentHTML.navBarHeader.title }}</span> -->
+			<img class="logoPNE" alt="Logo Parc National des Ecrins" ng-src="{{contentHTML.navBarHeader.icon}}">
+			<span class="navbar-titre"> {{ contentHTML.navBarHeader.title }}</span>
         </div>
         
         <!-- Les autres éléments de la barre de navigation, on récupère les données dans le controller et on fait une boucle avec ng-repeat -->
@@ -22,13 +24,14 @@
                         <img class="icon" ng-src="{{ navBarElement.icon }}">{{ navBarElement.title }}
                     </a>							
                 </li>-->
-                <li>
-                    <a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="about-btn" ng-click="pne()">
-                        <img class="icon" ng-src="img/spirale.png">&nbsp;&nbsp;Parc national des Ecrins
-                    </a>
-                </li><li>
+				<li>
                     <a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="about-btn" ng-click="info()">
                         <i class="fa fa-info-circle white"></i>&nbsp;&nbsp;Informations
+                    </a>
+                </li>
+				<li>
+                    <a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="about-btn" ng-click="pne()">
+                        <img class="icon" ng-src="img/spirale.png">&nbsp;&nbsp;Parc national des Ecrins
                     </a>
                 </li>
                 <li>

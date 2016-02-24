@@ -1,5 +1,5 @@
 // Création du module
-var app = angular.module('GeoSiteApp', ['ui.bootstrap','pdf']);
+var app = angular.module('GeoSiteApp', ['ngRoute','ui.bootstrap','pdf']);
 
 
 /* ------------------- *
@@ -46,37 +46,32 @@ app.filter("sanitize", ['$sce', function($sce) {
   }
 }]);
 
-
 /* ------------------- *
 * --------------------- *
-* ------- TODO -------- *
+* ------ ROUTING ------ *
 * --------------------- *
 * -------------------- */
-
-/*
-- Système de route ---------------------------------------------------------------------------------- TODO
-- Afficher le GeoJSON avec AngularJS et Leaflet (pas seulement leaflet) ----------------------------- DONE
-- Faire un script php pour générer un JSON qui contient les attributs ainsi que la géométrie -------- DONE
-- Créer la liaison entre carte et liste ------------------------------------------------------------- TODO
-- Créer la modal contenant les détails d'un site et le lien du pdf ---------------------------------- TODO
-- Mettre en place le fitrage ------------------------------------------------------------------------ TODO
-- Mettre en place la recherche avec auto-complétion pour rechercher une commune --------------------- TODO
-- Mettre l'application sur GitHub ------------------------------------------------------------------- DONE
-*/
-
-
-
-
-// Système de route 
-
-/*,['ngRoute']);
-app.config(function ($routeProvider) {
-	$routeProvider
-	.when('/', {
-		controller: 'HomeController',
-		templateUrl: 'views/home.html'		
-	})
-	.otherwise({
-		redirectTo: '/'
-	});
-});*/
+// app.config(['$routeProvider',
+    // function($routeProvider) {
+        // $routeProvider
+            // .when('/site/:siteId', {
+                // templateUrl: 'templates/home.html',
+                // controller: 'HomeController'
+            // })
+            // .when('/#anchor:siteId', {})
+            // .when('/', {
+                // templateUrl: 'templates/home.html',
+                // controller: 'HomeController'
+            // })
+            // .otherwise({
+                // redirectTo: '/'
+            // });
+    // }
+// ]);
+// gestion d'un conflit entre anchorscroll et le routing
+// app.run(function($rootScope, $location, $anchorScroll, $routeParams) {
+  // $rootScope.$on('$routeChangeSuccess', function(newRoute, oldRoute) {
+    // $location.hash($routeParams.scrollTo);
+    // $anchorScroll();  
+  // });
+// });

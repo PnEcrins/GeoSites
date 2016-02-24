@@ -1,10 +1,12 @@
 // Création du controller HomeController
 // Un controller gère les données de l'application
-app.controller('HomeController', ['$scope', 'htmlcontent', '$uibModal', '$http','LeafletServices', '$location', '$anchorScroll', '$rootScope', function ($scope, htmlcontent, $uibModal, $http, LeafletServices, $location, $anchorScroll, $rootScope) {
+app.controller('HomeController', ['$scope','$routeParams', 'htmlcontent', '$uibModal', '$http','LeafletServices', '$location', '$anchorScroll', '$rootScope', function ($scope, $routeParams, htmlcontent, $uibModal, $http, LeafletServices, $location, $anchorScroll, $rootScope) {
 
 	// Initialisation
 	$scope.loadingClass = 'onloading';
     $scope.previousLinkSelected = null;
+    $scope.monsite = null;
+    $scope.siteId = null;
     
 	$scope.abbrListe1 = abbrListe1;
 	$scope.abbrListe2 = abbrListe2;
@@ -192,7 +194,7 @@ app.controller('HomeController', ['$scope', 'htmlcontent', '$uibModal', '$http',
 						popupclose: function() {
 							$('#info-popup').hide();
 						}
-					});					
+					});
 				};				
 
 				//Chargement des données et affichage sur la carte    
@@ -227,14 +229,14 @@ app.controller('HomeController', ['$scope', 'htmlcontent', '$uibModal', '$http',
                         $scope.previousLinkSelected = 'heading' + site.properties.id_site;							
                     }
 					$scope.mainLayer.eachLayer(function(layer) { 
-						if(site.properties.id_site == layer._siteId){
+						if(site.properties.id_site == layer._properties.id_site){
 							var x = site.geometry.coordinates[0];                        
 							var y = site.geometry.coordinates[1];                           
 							var latlng = new L.LatLng(y,x);
 							layer.openPopup(latlng);
 						}
 					});		
-				};
+				};         
 			}
 		);
 		$scope.loadingClass = 'isload';		
@@ -243,13 +245,20 @@ app.controller('HomeController', ['$scope', 'htmlcontent', '$uibModal', '$http',
 		$scope.erreur = err;
 	});
     
+    $scope.scrollTo = function(id) {
+        var old = $location.hash();
+        $location.hash(id);
+        $anchorScroll();
+        //reset to old to keep any additional routing logic from kicking in
+        $location.hash(old);
+    }
+    
 	//Action selection d'un élément sur la carte
 	$scope.$on('feature:click', function(ev, item){
 		$scope.infoObj = item.feature.properties;
 		$('#filter-panel').collapse('hide');
-		$('#info-popup').show();
-		$location.hash('anchor'+item.feature.properties.id_site);
-		$anchorScroll();
+        $('#info-popup').show();
+		$scope.scrollTo('anchor'+item.feature.properties.id_site);
         $scope.bindListMap(item.feature); // interraction carte --> liste    	   
 	});
 	

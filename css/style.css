@@ -1,3 +1,15 @@
+html, body, #container {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+#container {
+    position:fixed;
+    top: 50px;
+    height: 92vmin;
+}
+
 /* Les icônes dans la barre de nav */
 .icon{
 	height: 20px;
@@ -9,12 +21,53 @@
 .logoPNE{
 	height: 40px;
 	padding: 0px;
-	margin-top: -10px;
 }
+
+/* CAMILLE*/
+.navbar .navbar-titre {
+	font-weight: bold;
+	font-size: 18px;
+	color: white;
+	white-space: nowrap;
+}
+
+.navbar-header{
+	padding-top: 6px;
+}
+
+@media (max-width: 992px) {
+	html 
+	{
+		font-size:70%;
+	}
+	
+	.navbar .navbar-titre {
+		font-size: 1em;
+		float: left;
+	}	
+}
+
 
 /* Petit trait violet de la couleur du logo juste en dessous de la barre de navigation */
 .navbar-inverse{
-	border-bottom: 2px solid #981D97;
+	border-bottom: 1px solid #981D97;
+}
+
+.white {
+    color: #FFF;
+}
+
+.navbar-header .navbar-icon {
+    line-height: 50px;
+    height: 50px;
+}
+
+.navbar-header a.navbar-icon {
+    margin-left: 25px;
+}
+
+.navbar-header .navbar-icon-container {
+    margin-right: 15px;
 }
 
 /* Filter *//*
@@ -51,11 +104,13 @@
 }*/
 
 /* Panneau latéral */
+
 #sidebar{
 	/*top: 8vh;*/
 	/*margin-top: 50px;*/	
 	/*height: 92%;*/
-	top: 50px;
+    height: 100%;
+    max-width: 100%;
 	bottom: 0px;
 	position: fixed;
 	display: block;
@@ -64,7 +119,17 @@
 	position: absolute;
 	box-shadow: inset 0 0 10px #000000;
 	margin-bottom: auto;
+    float: left;
+    -webkit-transition: all 0.25s ease-out;
+    -moz-transition: all 0.25s ease-out;
+    transition: all 0.25s ease-out;
 }
+/*
+#sidebar.col-xs-12 {
+    height: 45% ;
+    top : 50%;
+    margin-top:50px;
+}*/
 
 /* Contenu du panneau latéral */
 #containerSidebar{
@@ -91,13 +156,17 @@
 
 /* La carte */
 #carte{
-	margin-top: 51px;
+    width: auto;
 	height: 92vmin;
 	margin-bottom: 0px;
 	margin-left: -15px;
 	margin-right: -15px;
 	overflow: none;
 }
+/*
+#containerCarte.col-xs-12 {
+    height: 50% ;
+}*/
 
 #imgPNE{
 	height: 100px;
@@ -108,6 +177,7 @@
 	font-size: 1em;
 	margin-right: 5px;
 	margin-left: 10px;
+	background: url('img/background_geologie.jpg');
 }
 
 .sautLigne{
