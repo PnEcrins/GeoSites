@@ -61,7 +61,7 @@
 		"overlay":{
             "name": "sites geologiques",
             "type": "geojson",
-            "url": "http://dev.ecrins-parcnational.fr/pne_maps/GeoSiteApp/generategeojson.php",
+            "url": "generategeojson.php",
             "options" : "{style:function (feature) {return {weight: 1.3, opacity: 1, fillOpacity: 0.5 };},onEachFeature: function (feature, layer) {if (feature.properties, {noHide:false}) {layer.bindPopup('<h4>'+feature.properties.nom_site+'</h4><a role=\"button\" href=\"#\" ng-click=\"openDetails(infoObj)\" tooltip=\"Voir les détails de ce site\"><i class=\"fa fa-plus-square-o\"></i>&nbsp;Détails</a>');layer._properties = feature.properties;}}}",
             "filters":{
                 "code_region" :{

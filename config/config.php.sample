@@ -1,7 +1,13 @@
 <?php
+// connexion à la base de données
 $serveur = ""; 
 $user = "";
 $passe = ""; 
 $base = "";
-$mavue = "";
+
+//vue permettant la création du geojson des sites
+$mavue = "geologie.v_sites";
+
+//titre de l'application (balise 'title' du <head> dans le html)
+$title = 'Mes sites géologiques';
 ?>
