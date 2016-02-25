@@ -8,3 +8,6 @@ var abbrListe6 = "";
 var abbrListe7 = "";
 var abbrListe8 = "";
 var abbrListe9 = "";
+
+//nom de la couche principale (geojson)
+var mainLayerName = "sites geologiques";
