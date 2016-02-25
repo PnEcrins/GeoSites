@@ -56,7 +56,7 @@ include ("dbconnect.php");
 		<script src="js/controllers/modalPneController.js"></script>
 
 		<!-- Config JS -->
-		<script src="js/config/config.js"></script>
+		<script src="config/config.js"></script>
 
 	</body>
 </html>

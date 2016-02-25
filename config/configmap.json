@@ -12,7 +12,8 @@
 		"url":"data/communes.json",
 		"name":"Communes"
 	},
-	"layers": { 
+	"layers": {
+        "mainLayerName" : "Sites geologiques",
 		"baselayers": [
 			{
 				"name": "OpenCycleMap",

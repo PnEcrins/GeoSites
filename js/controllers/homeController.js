@@ -137,11 +137,10 @@ app.controller('HomeController', ['$scope','$rootScope', '$compile', '$routePara
     .success(function(response) {
         $scope.geojsonSites = response.features;
         //carte
-        $scope.baselayers = {},
-        $scope.controlBaseLayers = {},
-        $scope.controlOverlayLayers = {},
-        $scope.mainLayer = null,
-        $scope.mainLayerData = null,        
+        $scope.baselayers = {};
+        $scope.controlBaseLayers = {};
+        $scope.controlOverlayLayers = {};
+        $scope.mainLayer = null;       
         
         $('#info-popup').hide();
         
@@ -201,10 +200,9 @@ app.controller('HomeController', ['$scope','$rootScope', '$compile', '$routePara
                     }
                 };
                 //Chargement des données et affichage sur la carte    
-                $scope.mainLayerData = $scope.geojsonSites;
                 $scope.mainLayer = new L.geoJson($scope.geojsonSites,mainLayerOptions);
                 $scope.map.addLayer($scope.mainLayer );
-                $scope.controlOverlayLayers[mainLayerName] = $scope.mainLayer; //pour l'ajout de la couche dans le LayerControl
+                $scope.controlOverlayLayers[results.data.layers.mainLayerName] = $scope.mainLayer; //pour l'ajout de la couche dans le LayerControl
                 
                 //ajout du Layer Control pour gérer les couches affichées
                 $scope.map.addControl(new L.Control.Layers($scope.controlBaseLayers,$scope.controlOverlayLayers));
@@ -267,7 +265,6 @@ app.controller('HomeController', ['$scope','$rootScope', '$compile', '$routePara
 
     //Action zoom sur une localisation
     $scope.$watch('selectedLocation', function (newvalue, oldvalue) {
-        // alert('xmin : '+newvalue.st_xmin);
         if (newvalue) {
             $scope.map.fitBounds([
                 [newvalue.st_ymin, newvalue.st_xmin],
@@ -291,7 +288,7 @@ app.controller('HomeController', ['$scope','$rootScope', '$compile', '$routePara
                 }
             }
         );
-        $scope.mainLayer = new L.geoJson($scope.mainLayerData,options);
+        $scope.mainLayer = new L.geoJson($scope.geojsonSites,options);
         $scope.mainLayer.addTo($scope.map);
     }
     
