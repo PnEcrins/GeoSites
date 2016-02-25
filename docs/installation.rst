@@ -112,7 +112,7 @@ Renseignez vos informations de connexion dans le fichier `config/config.php`.
 
 
 Personnalisation de l'application
-==============================
+=================================
 Personnalisez le contenu en modifiant la valeur des variables disponibles dans `config/config.php`.
 
 Modifiez les images dans le répertoire `img`
