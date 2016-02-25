@@ -47,7 +47,6 @@ html, body, #container {
 	}	
 }
 
-
 /* Petit trait violet de la couleur du logo juste en dessous de la barre de navigation */
 .navbar-inverse{
 	border-bottom: 1px solid #981D97;
@@ -177,7 +176,6 @@ html, body, #container {
 	font-size: 1em;
 	margin-right: 5px;
 	margin-left: 10px;
-	background: url('img/background_geologie.jpg');
 }
 
 .sautLigne{
@@ -258,11 +256,21 @@ html, body, #container {
 /* Load mask */
 #loadmask{
     position: absolute;
-    background: url('../img/load.gif') center no-repeat #fff;
+   /* background: url('../img/load.gif') center no-repeat #fff; */
+   background: url('../img/background_geologie.jpg') center no-repeat #fff;
     height: 100%;
     width: 100%;
     overflow: none;
     z-index:9999;    
+}
+#loadingTitle{
+    position: fixed; 
+    background: transparent none repeat scroll 0% 0%;
+    top: 20%;
+}
+#loadGif{
+    position: relative;
+    top: 25%;
 }
 
 .onloading{
