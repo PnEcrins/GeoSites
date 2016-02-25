@@ -69,14 +69,16 @@ html, body, #container {
     margin-right: 15px;
 }
 
-/* Filter *//*
+/* Filter */
 #main-menu{
     color :#fff;
     float:right;
 }
+
 #filter-panel {
   overflow-y: auto;
   overflow-x: hidden;
+  background : rgba(51, 48, 48, 0.6) none repeat scroll 0% 0%;
 }
 
 #filter-panel ul {
@@ -91,19 +93,50 @@ html, body, #container {
   font-weight:normal;
 } 
 
-.panel {
+#filter-panel .panel {
     border-left: 0px none;
     border-right: 0px none;
     margin-bottom: 0px;
     padding: 0px;
-    background: rgba(51, 48, 48, 0.6) none repeat scroll 0% 0%;
+    background : rgba(51, 48, 48, 0.6) none repeat scroll 0% 0%;
 }
-.dropdown-menu {
+#filter-panel .dropdown-menu {
     margin: 0px;
-}*/
+    background : rgba(51, 48, 48, 0.6) none repeat scroll 0% 0%;
+}
+.panel-heading span {
+    font-size: 15px;
+    margin-right: -9px;
+    margin-left: 9px;
+}
+
+.caret{
+    width: 0; 
+    height: 0; 
+    border-left: 4px solid rgba(0, 0, 0, 0);
+    border-right: 4px solid rgba(0, 0, 0, 0);
+    border-bottom: 4px solid;
+    border-top:0;
+    
+    display: inline-block;
+    margin-left: 2px;
+    vertical-align: middle;
+}
+
+.collapsed .caret{
+    width: 0; 
+    height: 0; 
+    border-left: 4px solid rgba(0, 0, 0, 0);
+    border-right: 4px solid rgba(0, 0, 0, 0);
+    border-bottom: 0;
+    border-top: 4px solid;
+    
+    display: inline-block;
+    margin-left: 2px;
+    vertical-align: middle;
+}
 
 /* Panneau latéral */
-
 #sidebar{
 	/*top: 8vh;*/
 	/*margin-top: 50px;*/	
@@ -123,12 +156,6 @@ html, body, #container {
     -moz-transition: all 0.25s ease-out;
     transition: all 0.25s ease-out;
 }
-/*
-#sidebar.col-xs-12 {
-    height: 45% ;
-    top : 50%;
-    margin-top:50px;
-}*/
 
 /* Contenu du panneau latéral */
 #containerSidebar{
@@ -162,10 +189,6 @@ html, body, #container {
 	margin-right: -15px;
 	overflow: none;
 }
-/*
-#containerCarte.col-xs-12 {
-    height: 50% ;
-}*/
 
 #imgPNE{
 	height: 100px;

@@ -166,7 +166,8 @@ app.controller('HomeController', ['$scope','$rootScope', '$compile', '$routePara
                 });
                 
                 $scope.map.setView(new L.LatLng(results.data.center.lat, results.data.center.lng),results.data.center.zoom);
-
+                $scope.mapOptions = results.data;
+                
                 //couche opacity
                 var l = LeafletServices.loadData(results.data.layers.opacitylayer);
                 $scope.opacitylayer = l;
@@ -177,7 +178,7 @@ app.controller('HomeController', ['$scope','$rootScope', '$compile', '$routePara
 
                 //----Couche principale
                 //options
-                var mainLayerOptions = {
+                $scope.mainLayerOptions = {
                     style: function (feature) {return {weight: 1.3, opacity: 1, fillOpacity: 0.5 };}
                     ,onEachFeature: function (feature, layer) {
                         var popup = '<div><h4>'+feature.properties.nom_site+'</h4><a role="button" href="#" ng-model="infoObj" ng-click="openDetails(infoObj)" tooltip="Voir les détails de ce site"><iclass="fa fa-plus-square-o"></i>&nbsp;Détails</a></div>';
@@ -200,7 +201,7 @@ app.controller('HomeController', ['$scope','$rootScope', '$compile', '$routePara
                     }
                 };
                 //Chargement des données et affichage sur la carte    
-                $scope.mainLayer = new L.geoJson($scope.geojsonSites,mainLayerOptions);
+                $scope.mainLayer = new L.geoJson($scope.geojsonSites,$scope.mainLayerOptions);
                 $scope.map.addLayer($scope.mainLayer );
                 $scope.controlOverlayLayers[results.data.layers.mainLayerName] = $scope.mainLayer; //pour l'ajout de la couche dans le LayerControl
                 
@@ -262,16 +263,15 @@ app.controller('HomeController', ['$scope','$rootScope', '$compile', '$routePara
         $scope.bindListMap(item.feature); // interraction carte --> liste           
     });
     
-
     //Action zoom sur une localisation
     $scope.$watch('selectedLocation', function (newvalue, oldvalue) {
-        if (newvalue) {
-            $scope.map.fitBounds([
-                [newvalue.st_ymin, newvalue.st_xmin],
-                [newvalue.st_ymax, newvalue.st_xmax]
-            ], {zoom:17});
-        }
-    });
+			if (newvalue) {
+				$scope.map.fitBounds([
+					[newvalue.st_ymin, newvalue.st_xmin],
+					[newvalue.st_ymax, newvalue.st_xmax]
+				], {zoom:17});
+			}
+		});
     
     //Action filtre d'un élément sur la carte
     $scope.dofilterOnMap= function () {

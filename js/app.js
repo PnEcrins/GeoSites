@@ -39,6 +39,21 @@ app.directive('showSidebar', function() {
 * --------------------- *
 * -------------------- */
 
+app.directive('dirFilterElement', function() {
+  return {
+	restrict: 'E',
+	scope: {
+	  key: '=key',
+	  filterInfo: '=filter',
+	  onCheck:'&'
+	},
+	templateUrl: 'templates/directive-filterpanel.html',    
+	controller: function($scope){
+		$scope.state = angular.isDefined($scope.state) ? Boolean($scope.state) : true;
+	}
+  };
+});
+
 // Filtre pour afficher du html dans la modal, sce est un service qui permet à AngularJS de lire du HTML depuis un fichier Json
 app.filter("sanitize", ['$sce', function($sce) {
   return function(htmlCode){
