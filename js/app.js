@@ -66,27 +66,30 @@ app.filter("sanitize", ['$sce', function($sce) {
 * ------ ROUTING ------ *
 * --------------------- *
 * -------------------- */
-// app.config(['$routeProvider',
-    // function($routeProvider) {
-        // $routeProvider
-            // .when('/site/:siteId', {
-                // templateUrl: 'templates/home.html',
-                // controller: 'HomeController'
-            // })
+app.config(['$routeProvider', '$locationProvider',
+    function($routeProvider, $locationProvider) {
+        // $locationProvider.html5Mode({ enabled: true, requireBase: true });	
+        $routeProvider
+            .when('/', {
+                templateUrl: 'templates/home.html',
+                controller: 'HomeController'
+            })
+            .when('/site/:siteId', {
+                templateUrl: 'templates/home.html',
+                controller: 'HomeController'
+            })
             // .when('/#anchor:siteId', {})
-            // .when('/', {
-                // templateUrl: 'templates/home.html',
-                // controller: 'HomeController'
-            // })
-            // .otherwise({
-                // redirectTo: '/'
-            // });
-    // }
-// ]);
+            
+            .otherwise({
+                redirectTo: '/'
+            });
+    }
+]);
+
 // gestion d'un conflit entre anchorscroll et le routing
-// app.run(function($rootScope, $location, $anchorScroll, $routeParams) {
-  // $rootScope.$on('$routeChangeSuccess', function(newRoute, oldRoute) {
-    // $location.hash($routeParams.scrollTo);
-    // $anchorScroll();  
-  // });
-// });
+app.run(function($rootScope, $location, $anchorScroll, $routeParams) {
+  $rootScope.$on('$routeChangeSuccess', function(newRoute, oldRoute) {
+    $location.hash($routeParams.scrollTo);
+    $anchorScroll();  
+  });
+});

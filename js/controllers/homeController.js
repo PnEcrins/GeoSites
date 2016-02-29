@@ -17,7 +17,17 @@ app.controller('HomeController', ['$scope','$rootScope', '$compile', '$routePara
     $scope.abbrListe7 = abbrListe7;
     $scope.abbrListe8 = abbrListe8;
     $scope.abbrListe9 = abbrListe9;
-
+    
+    // Modal accueil
+    $scope.openAccueil = function () {
+        var modalInstance = $uibModal.open({
+            templateUrl: 'templates/modalAccueil.html',
+            controller: 'ModalAccueilInstanceCtrl',
+            size: 'lg',
+            resolve: {}
+        });
+    };
+    
     // Comportement de la barre de navigation
     $scope.navBarCollapse = function() {
         $(".navbar-collapse").collapse("toggle");
@@ -106,17 +116,7 @@ app.controller('HomeController', ['$scope','$rootScope', '$compile', '$routePara
                 }
             }
         });
-    };
-    // Modal accueil
-    $scope.openAccueil = function () {
-        var modalInstance = $uibModal.open({
-            templateUrl: 'templates/modalAccueil.html',
-            controller: 'ModalAccueilInstanceCtrl',
-            size: 'lg',
-            resolve: {}
-        });
-    };
-    $scope.openAccueil(); //ouverture de la modal
+    };    
 
     // Modal affichant les détails d'un site
     $rootScope.openDetails = function (site) {
@@ -130,7 +130,12 @@ app.controller('HomeController', ['$scope','$rootScope', '$compile', '$routePara
                 }
             }
         });
-    };    
+    };
+    $scope.$watch('siteId', function (newvalue, oldvalue) {
+        if (newvalue) {
+            // alert(newvalue);
+        }
+    });    
 
     //geojson
     $http.get('generategeojson.php')
@@ -181,7 +186,7 @@ app.controller('HomeController', ['$scope','$rootScope', '$compile', '$routePara
                 $scope.mainLayerOptions = {
                     style: function (feature) {return {weight: 1.3, opacity: 1, fillOpacity: 0.5 };}
                     ,onEachFeature: function (feature, layer) {
-                        var popup = '<div><h4>'+feature.properties.nom_site+'</h4><a role="button" href="#" ng-model="infoObj" ng-click="openDetails(infoObj)" tooltip="Voir les détails de ce site"><iclass="fa fa-plus-square-o"></i>&nbsp;Détails</a></div>';
+                        var popup = '<div><h4>'+feature.properties.nom_site+'</h4><a role="button" href="" ng-model="infoObj" ng-click="openDetails(infoObj)" tooltip="Voir les détails de ce site"><iclass="fa fa-plus-square-o"></i>&nbsp;Détails</a></div>';
                         var popupContent = $compile(popup)($scope); //On doit compiler le html pour que les directives angular comme ici 'ng-clik' soient interprétées
                         layer.bindPopup(popupContent[0]);
                         layer._properties = feature.properties;
@@ -240,7 +245,20 @@ app.controller('HomeController', ['$scope','$rootScope', '$compile', '$routePara
                 };         
             }
         );
-        $scope.loadingClass = 'isload';        
+        $scope.loadingClass = 'isload'; 
+        //réception de l'id site passé dans l'URL
+        $scope.siteId = $routeParams.siteId;
+        if($routeParams.siteId != null && $routeParams.siteId != '') {
+            for(var i= 0; i < $scope.geojsonSites.length; i++)
+            {
+                if ($scope.geojsonSites[i].properties.id_site == $routeParams.siteId ) {
+                    $rootScope.openDetails($scope.geojsonSites[i].properties);
+                }
+            }
+        }
+        else{
+            $scope.openAccueil(); //ouverture de la modal
+        }
     })
     .error(function(err) {
         $scope.erreur = err;
@@ -265,13 +283,13 @@ app.controller('HomeController', ['$scope','$rootScope', '$compile', '$routePara
     
     //Action zoom sur une localisation
     $scope.$watch('selectedLocation', function (newvalue, oldvalue) {
-			if (newvalue) {
-				$scope.map.fitBounds([
-					[newvalue.st_ymin, newvalue.st_xmin],
-					[newvalue.st_ymax, newvalue.st_xmax]
-				], {zoom:17});
-			}
-		});
+        if (newvalue) {
+            $scope.map.fitBounds([
+                [newvalue.st_ymin, newvalue.st_xmin],
+                [newvalue.st_ymax, newvalue.st_xmax]
+            ], {zoom:17});
+        }
+    });
     
     //Action filtre d'un élément sur la carte
     $scope.dofilterOnMap= function () {
@@ -298,8 +316,7 @@ app.controller('HomeController', ['$scope','$rootScope', '$compile', '$routePara
             arrayFilter.visible = toggleStatus;
         });
         $scope.dofilterOnMap();
-    }
-    
+    }    
 }]);
 
 app.factory('LeafletServices', ['$http', function($http) {

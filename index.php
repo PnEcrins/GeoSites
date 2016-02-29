@@ -7,8 +7,8 @@ include ("dbconnect.php");
 	<head>
 		<title><?php echo $title;?></title>
 		<meta charset="utf-8" />
-
-		<!-- Feuilles de styles -->
+        
+		<!-- Feuilles de styles <base href="/">-->
 		<link href="vendors/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
 		<link href="vendors/leaflet/leaflet.css" rel="stylesheet" />
         <link rel="stylesheet" href="vendors/opacity/Control.Opacity.css" />
@@ -25,9 +25,10 @@ include ("dbconnect.php");
 		ng-app défini la portée de l'application (le scope)
 		ng-controller défini la portée du controller, c'est à dire que les propriétés dans HomeController sont utilisables dans tout le body
 	-->
-	<body ng-controller="HomeController">
-            <!-- <div ng-view></div>-->
-            <div ng-include src="'templates/home.html'"></div>		
+	<!--<body ng-controller="HomeController"> -->
+	<body >
+            <div ng-view></div>
+            <!--  <div ng-include src="'templates/home.html'"></div>-->	
 
 		<!-- Biliothèques js -->
 		<script src="vendors/jquery/jquery.min.js"></script>	
