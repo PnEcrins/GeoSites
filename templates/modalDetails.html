@@ -36,7 +36,7 @@
 			<div class="bs-callout bs-callout-primary" role="tab" id="headingOne" data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
 				<h2>Description du site <div class="diminutionPolice"><small class="pull-right">cliquer pour afficher le contenu...</small></div></h2>
 			</div>
-			<div class="modal-subtitle collapse" id="collapseOne" role="tabpanel" aria-labelledby="headingOne">
+			<div class="modal-subtitle collapse in" id="collapseOne" role="tabpanel" aria-labelledby="headingOne">
 				<div ng-if="site.commentaire_geol">
 					<h4>Description géologique</h4>
 					<div class="indent"> {{site.commentaire_geol | limitTo:longueur}} <!-- <span ng-if="longueur <= longueurChaineAfficherSuite">... <a href="#" ng-click="afficherSuite(site.commentaire_geol)">afficher la suite &gt;&gt;</a></span> --></div>

@@ -67,8 +67,7 @@ app.filter("sanitize", ['$sce', function($sce) {
 * --------------------- *
 * -------------------- */
 app.config(['$routeProvider', '$locationProvider',
-    function($routeProvider, $locationProvider) {
-        // $locationProvider.html5Mode({ enabled: true, requireBase: true });	
+    function($routeProvider, $locationProvider) {	
         $routeProvider
             .when('/', {
                 templateUrl: 'templates/home.html',
@@ -83,6 +82,7 @@ app.config(['$routeProvider', '$locationProvider',
             .otherwise({
                 redirectTo: '/'
             });
+        $locationProvider.html5Mode({ enabled: true, requireBase: true });	
     }
 ]);
 

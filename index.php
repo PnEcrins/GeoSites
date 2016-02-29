@@ -3,12 +3,12 @@ include ("dbconnect.php");
 ?>
 
 <!doctype html>
-<html ng-app="GeoSiteApp">
+<html ng-app="GeoSiteApp" class="no-js">
 	<head>
 		<title><?php echo $title;?></title>
 		<meta charset="utf-8" />
-        
-		<!-- Feuilles de styles <base href="/">-->
+        <base href="/geologie/"></base>
+		<!-- Feuilles de styles -->
 		<link href="vendors/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
 		<link href="vendors/leaflet/leaflet.css" rel="stylesheet" />
         <link rel="stylesheet" href="vendors/opacity/Control.Opacity.css" />

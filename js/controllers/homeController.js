@@ -302,7 +302,8 @@ app.controller('HomeController', ['$scope','$rootScope', '$compile', '$routePara
                     angular.forEach($scope.mainLayerFilters, function(arrayFilter, key) {
                         if (feature.properties[key]) fil += arrayFilter.values[feature.properties[key]].visible;
                     });
-                    return fil > 1 ? true : false ;
+                    console.log(fil > 1 ? true : false);
+                    return fil > 0 ? true : false ;
                 }
             }
         );
