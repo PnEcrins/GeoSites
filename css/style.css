@@ -102,7 +102,6 @@ html, body, #container {
 }
 #filter-panel .dropdown-menu {
     margin: 0px;
-    background : rgba(51, 48, 48, 0.6) none repeat scroll 0% 0%;
 }
 .panel-heading span {
     font-size: 15px;

@@ -73,7 +73,7 @@ app.config(['$routeProvider', '$locationProvider',
                 templateUrl: 'templates/home.html',
                 controller: 'HomeController'
             })
-            .when('/site/:siteId', {
+            .when('/site-:siteId', {
                 templateUrl: 'templates/home.html',
                 controller: 'HomeController'
             })

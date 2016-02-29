@@ -7,7 +7,7 @@ include ("dbconnect.php");
 	<head>
 		<title><?php echo $title;?></title>
 		<meta charset="utf-8" />
-        <base href="/geologie/"></base>
+        <base href="<?php echo $base_url;?>"></base>
 		<!-- Feuilles de styles -->
 		<link href="vendors/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
 		<link href="vendors/leaflet/leaflet.css" rel="stylesheet" />
