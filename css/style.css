@@ -281,16 +281,19 @@ html, body, #container {
     position: absolute;
    /* background: url('../img/load.gif') center no-repeat #fff; */
    background: url('../img/background_geologie.jpg') center no-repeat #fff;
+   background-size: cover;
     height: 100%;
     width: 100%;
-    overflow: none;
+    overflow: hidden;
     z-index:9999;    
 }
+
 #loadingTitle{
     position: fixed; 
     background: transparent none repeat scroll 0% 0%;
     top: 20%;
 }
+
 #loadGif{
     position: relative;
     top: 25%;
