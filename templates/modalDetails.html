@@ -176,7 +176,7 @@
 	</div>
 	<div class="modal-footer">
 		<div class="pull-left diminutionPolice">
-			<p><small> Site créé le {{site.date_creat_site}} par {{site.createur}} </small></p>
+			<p><small> Site créé le {{site.date_creat_site | date:'dd MMMM yyyy'}} par {{site.createur}} </small></p>
 			<p ng-if="site.proprietaire"><small> Propriétaire du site : {{site.proprietaire}} </small></p>
 			<p ng-if="site.gestionnaire"><small> Gestionnaire du site : {{site.gestionnaire}} </small></p>
 		</div>

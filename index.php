@@ -36,6 +36,7 @@ include ("dbconnect.php");
 		<script src="vendors/bootstrap/js/bootstrap.min.js"></script>			
 		<script src="vendors/pdfjs/pdf.js"></script>
  		<script src="vendors/angular/angular.min.js"></script>
+        <script src="vendors/angular/angular-locale_fr-fr.js"></script>
         <script src="vendors/angular/angular-pdf.min.js"></script>
 		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-animate.js"></script>
 		<script src="vendors/leaflet/leaflet.js"></script>
