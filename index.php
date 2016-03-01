@@ -15,7 +15,7 @@ include ("dbconnect.php");
         <link rel="stylesheet" href="vendors/jquery/jquery-ui-1.10.3.custom.min.css" />
 		<link href="vendors/angular-bootstrap/ui-bootstrap-custom-1.1.1-csp.css" rel="stylesheet" />
 		<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-		<link href="css/style.css" rel="stylesheet" />			
+        <link href="css/style.css" rel="stylesheet" />			
 
 		<!-- La balise meta viewport sert à forcer le niveau de zoom pour les navigateurs mobiles, elle est indispensable pour faire l'application en responsive, ici je ne permet pas à l'utilisateur de zoomer (le zoom sur la page n'est pas utile, il l'est par contre pour la carte) -->
 		<meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width" />		

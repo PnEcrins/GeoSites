@@ -16,16 +16,19 @@ app.directive('showSidebar', function() {
 		templateUrl: 'js/directives/showSidebar.html',
 		
 		link: function(scope, element, attrs) {
-			scope.sensChevron = "icon-chevron-left",
+			// scope.sensChevron = "icon-chevron-left",
+			scope.sensChevron = "fa fa-chevron-left",
 			scope.shown = false,
 
 			scope.showPanel = function() {
 				element.toggleClass('btn-default')
 				if(scope.shown) {
-					scope.sensChevron = "icon-chevron-left";
+					scope.sensChevron = "fa fa-chevron-left";
+					// scope.sensChevron = "icon-chevron-left";
 					scope.shown = false;
 				} else {
-					scope.sensChevron = "icon-chevron-right";
+					// scope.sensChevron = "icon-chevron-right";
+					scope.sensChevron = "fa fa-chevron-right";
 					scope.shown = true;
 				}
 			}
