@@ -20,7 +20,6 @@ Une vue doit renvoyer les sites avec les informations suivantes :
        s.typologie3, 
        s.typologie2, 
        s.eval_interet_patrim, 
-       s.confidentialite, 
        s.lieudit, 
        s.description_physique, 
        s.superficie, 
