@@ -39,8 +39,8 @@ app.controller('HomeController', ['$scope','$rootScope', '$compile', '$routePara
         $("#sidebar").toggle();
         if($("#sidebar").is(":visible")){
             var isVisible = true;
-            document.getElementById("containerCarte").className = "col-lg-offset-3 col-md-offset-4 col-sm-offset-6 col-lg-9 col-md-8 col-sm-6 hidden-xs";
-            document.getElementById("sidebar").className = "col-lg-3 col-md-4 col-sm-6 col-xs-12";
+            document.getElementById("containerCarte").className = "col-lg-offset-4 col-md-offset-5 col-sm-offset-6 col-lg-8 col-md-7 col-sm-6 hidden-xs";
+            document.getElementById("sidebar").className = "col-lg-4 col-md-5 col-sm-6 col-xs-12";
             $scope.map.invalidateSize();            
         }
         else{
@@ -186,7 +186,7 @@ app.controller('HomeController', ['$scope','$rootScope', '$compile', '$routePara
                 $scope.mainLayerOptions = {
                     style: function (feature) {return {weight: 1.3, opacity: 1, fillOpacity: 0.5 };}
                     ,onEachFeature: function (feature, layer) {
-                        var popup = '<div><h4>'+feature.properties.nom_site+'</h4><a role="button" href="" ng-model="infoObj" ng-click="openDetails(infoObj)" tooltip="Voir les détails de ce site"><iclass="fa fa-plus-square-o"></i>&nbsp;Détails</a></div>';
+                        var popup = '<div><h4>'+feature.properties.nom_site+'</h4><a role="button" href="" ng-model="infoObj" ng-click="openDetails(infoObj)" ><span class="fa fa-file-text-o"></span> Afficher détails  </a>';
                         var popupContent = $compile(popup)($scope); //On doit compiler le html pour que les directives angular comme ici 'ng-clik' soient interprétées
                         layer.bindPopup(popupContent[0]);
                         layer._properties = feature.properties;
@@ -222,7 +222,7 @@ app.controller('HomeController', ['$scope','$rootScope', '$compile', '$routePara
                     );
                 }
 
-                // Interraction liste/carte
+                // Interaction liste/carte
                 $scope.bindListMap = function (site) {            
                     document.getElementById('heading' + site.properties.id_site).className="panel-heading";
                     $('.chimereClass').collapse('hide');

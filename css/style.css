@@ -356,3 +356,7 @@ html, body, #container {
 .centrage{
 	text-align: center;
 }
+
+.smalltext{
+	font-size: 0.7em;
+}
