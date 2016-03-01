@@ -60,8 +60,8 @@
 					</div>
 				</div>
 				<div ng-if="site.coupe_geol">
-					<h4>Existance d'une coupe géologique dans la base</h4>
-					<div class="indent">{{site.coupe_geol}}.<span ng-if="site.commentaire_geol"> {{site.commentaire_geol}} </div>
+					<h4>Existence d'une coupe géologique : {{site.coupe_geol}}</h4>
+					<div class="indent"><span ng-if="site.commentaire_geol"> {{site.commentaire_geol}} </div>
 				</div>
 				<div ng-if="site.description_physique">
 					<h4 class="subline">Description physique</h4>
