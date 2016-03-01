@@ -6,7 +6,7 @@
         </div>
 		<hr>
 		<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">				
-			<div ng-repeat="site in geojsonSites" class="panel panel-default" id="{{ 'anchor' + site.properties.id_site }}" ng-click="bindListMap(site)">
+			<div ng-repeat="site in geojsonSites" class="panel panel-default" id="{{ 'anchor' + site.properties.id_site }}" >
 				<div 
                     class="panel-heading" 
                     role="button" id="{{ 'heading' + site.properties.id_site }}" 
@@ -15,6 +15,7 @@
                     data-target="{{ '#collapse' + site.properties.id_site }}" 
                     aria-expanded="true" 
                     aria-controls="{{ 'collapse' + site.properties.id_site }}"
+                    ng-click="bindListMap(site)"
                 >
 					<h4 class="panel-title">
 						<strong id="{{site.properties.id_site}}">{{ site.properties.nom_site }}</strong>
@@ -23,7 +24,7 @@
 				<div id="{{ 'collapse' + site.properties.id_site }}" class="panel-collapse collapse chimereClass" role="tabpanel" aria-labelledby="{{ 'heading' + site.properties.id_site }}">
 					<div class="panel-body">
 						<div class="row">
-							<div class="col-md-5" ng-if="site.properties.code_region !== 'RHA'">								
+							<div class="col-md-5" >								
 								<img class="img-responsive img-rounded imgListe pull-left" alt="photoListe" ng-src="{{ 'data/img/photo' + site.properties.id_site + '.png' }}">
 							</div>
 							<div class="col-md-7">
