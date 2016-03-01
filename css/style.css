@@ -135,6 +135,21 @@ html, body, #container {
     vertical-align: middle;
 }
 
+.caretbig{
+    border-left: 10px solid rgba(0, 0, 0, 0);
+    border-right: 10px solid rgba(0, 0, 0, 0);
+    border-bottom: 10px solid;
+    border-top:0;
+    margin-top: 10px;
+}
+
+.collapsed .caretbig{
+    border-left: 10px solid rgba(0, 0, 0, 0);
+    border-right: 10px solid rgba(0, 0, 0, 0);
+    border-bottom: 0;
+    border-top: 10px solid;
+}
+
 /* Panneau latéral */
 #sidebar{
 	/*top: 8vh;*/
@@ -331,10 +346,6 @@ html, body, #container {
 
 #headingFour, #headingFive, #headingThree, #headingTwo, #headingOne{
 	cursor: pointer;
-}
-
-.diminutionPolice{
-	font-size: 13px;
 }
 
 #carouselPhotos{
