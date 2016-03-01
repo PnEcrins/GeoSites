@@ -23,7 +23,8 @@ html, body, #container {
 	padding: 0px;
 }
 
-/* CAMILLE*/
+/* Barre de navigation */
+
 .navbar .navbar-titre {
 	font-weight: bold;
 	font-size: 18px;
@@ -67,6 +68,15 @@ html, body, #container {
 
 .navbar-header .navbar-icon-container {
     margin-right: 15px;
+}
+
+/* BOUTON DETAIL */
+.button-droite{
+	position:absolute;bottom:5px;right:5px;
+}
+
+.img10{
+	margin-right:10px;
 }
 
 /* Filter */
