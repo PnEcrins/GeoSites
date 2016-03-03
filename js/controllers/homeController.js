@@ -1,12 +1,14 @@
 // Création du controller HomeController
 // Un controller gère les données de l'application
-app.controller('HomeController', ['$scope','$rootScope', '$compile', '$routeParams', '$uibModal', '$http','LeafletServices', '$location', '$anchorScroll', '$rootScope', function ($scope,$rootScope, $compile, $routeParams, $uibModal, $http, LeafletServices, $location, $anchorScroll, $rootScope) {
+app.controller('HomeController', ['$scope','$rootScope', '$timeout', '$compile', '$routeParams', '$uibModal', '$http','LeafletServices', '$location', '$anchorScroll', '$rootScope', function ($scope, $rootScope, $timeout,$compile, $routeParams, $uibModal, $http, LeafletServices, $location, $anchorScroll, $rootScope) {
 
     // Initialisation
     $scope.loadingClass = 'onloading';
     $scope.previousLinkSelected = null;
     $scope.monsite = null;
     $scope.siteId = null;
+    $scope.syncSidebar = function(){};
+    $scope.siteOnScreen = [];
     
     $scope.abbrListe1 = abbrListe1;
     $scope.abbrListe2 = abbrListe2;
@@ -131,16 +133,12 @@ app.controller('HomeController', ['$scope','$rootScope', '$compile', '$routePara
             }
         });
     };
-    $scope.$watch('siteId', function (newvalue, oldvalue) {
-        if (newvalue) {
-            // alert(newvalue);
-        }
-    });    
 
     //geojson
     $http.get('generategeojson.php')
     .success(function(response) {
         $scope.geojsonSites = response.features;
+        $scope.filteredSites = response.features;
         //carte
         $scope.baselayers = {};
         $scope.controlBaseLayers = {};
@@ -150,10 +148,14 @@ app.controller('HomeController', ['$scope','$rootScope', '$compile', '$routePara
         $('#info-popup').hide();
         
         $scope.map = L.map('carte', { zoomControl: false });
-        L.control.zoom({position: 'topright', zoomInTitle: 'Zoomer', zoomOutTitle: 'Dézoomer'}).addTo($scope.map);
+        L.control.zoom({position: 'topleft', zoomInTitle: 'Zoomer', zoomOutTitle: 'Dézoomer'}).addTo($scope.map);
         L.control.scale({position: 'bottomright', imperial: false}).addTo($scope.map);
         var opacitySlider = new L.Control.opacitySlider();
         $scope.map.addControl(opacitySlider);
+        
+        $scope.map.on("moveend", function (e) {
+            $scope.syncSidebar();
+        });
 
         $http.get("config/configmap.json").then(
             function(results) {
@@ -197,21 +199,31 @@ app.controller('HomeController', ['$scope','$rootScope', '$compile', '$routePara
                     }
                 };
                 $scope.mainLayerFilters = {
-                    "code_region" :{
-                        "name" : "Région"
+                    "interet_geol" :{
+                        "name" : "Intérêt géologique"
                         ,"values" : {
-                            "PAC":{"label":"PACA", "visible":true}
-                            ,"RHA":{"label":"RHONE ALPES", "visible":true}
+                            "Géomorphologie":{"label":"Géomorphologie", "visible":true}
+                            ,"Métamorphisme":{"label":"Métamorphisme", "visible":true}
+                            ,"Plutonisme":{"label":"Plutonisme", "visible":true}
+                            ,"Ressources naturelles":{"label":"Ressources naturelles", "visible":true}
+                            ,"Tectonique":{"label":"Tectonique", "visible":true}
+                            ,"Hydrothermalisme":{"label":"Hydrothermalisme", "visible":true}
+                            ,"Hydrogéologie":{"label":"Hydrogéologie", "visible":true}
+                            ,"Stratigraphie":{"label":"Stratigraphie", "visible":true}
+                            ,"Minéralogie":{"label":"Minéralogie", "visible":true}
+                            ,"Volcanisme":{"label":"Volcanisme", "visible":true}
+                            ,"Paléontologie":{"label":"Paléontologie", "visible":true}
                         }
                     }
                 };
+                
                 //Chargement des données et affichage sur la carte    
-                $scope.mainLayer = new L.geoJson($scope.geojsonSites,$scope.mainLayerOptions);
+                $scope.mainLayer = new L.geoJson($scope.filteredSites,$scope.mainLayerOptions);
                 $scope.map.addLayer($scope.mainLayer );
                 $scope.controlOverlayLayers[results.data.layers.mainLayerName] = $scope.mainLayer; //pour l'ajout de la couche dans le LayerControl
                 
                 //ajout du Layer Control pour gérer les couches affichées
-                $scope.map.addControl(new L.Control.Layers($scope.controlBaseLayers,$scope.controlOverlayLayers));
+                $scope.map.addControl(new L.Control.Layers($scope.controlBaseLayers,$scope.controlOverlayLayers,{position: 'topleft'}));
                 
                 //----Selecteur de localisation
                 if (results.data.location) {
@@ -242,17 +254,101 @@ app.controller('HomeController', ['$scope','$rootScope', '$compile', '$routePara
                             layer.openPopup(latlng);
                         }
                     });        
-                };         
+                }; 
+                
+                $scope.filtreSidebar = function(siteOnScreen){
+                    //Filtre de la liste de la sideBar
+                    for(var i= 0; i < $scope.filteredSites.length; i++)
+                    {
+                        $scope.filteredSites[i].properties.display = 'hideme';
+                        if (siteOnScreen.indexOf($scope.filteredSites[i].properties.id_site) != -1 ) {
+                            $scope.filteredSites[i].properties.display = 'showme';
+                        }
+                    }
+                    $timeout(function() {
+                        $scope.$apply($scope.filteredSites);//rafraichir l'affichage des sites
+                    }, 0);
+                };
+
+                $scope.syncSidebar = function () {
+                    $scope.siteOnScreen = [];
+                    /* boucler sur la couche sites et afficher seulement les features qui sont dans les limites de la carte */
+                    $scope.mainLayer.eachLayer(function (layer) {
+                        if ($scope.map.hasLayer($scope.mainLayer)) {
+                          if ($scope.map.getBounds().contains(layer.getLatLng())) {
+                            $scope.siteOnScreen.push(layer._properties.id_site);
+                          }
+                        }
+                    });
+                    $scope.filtreSidebar($scope.siteOnScreen);  
+                };
+                
+                //Action filtre d'un élément sur la carte
+                $scope.dofilterOnMap= function () {
+                    //filtre sur la carte
+                    $scope.siteNameFilter = '';
+                    $scope.siteOnScreen = [];
+                    $scope.map.removeLayer($scope.mainLayer);
+                    var options = angular.extend(
+                        $scope.mainLayerOptions,
+                        {
+                            filter: function(feature, layer) {
+                                var fil=0;
+                                angular.forEach($scope.mainLayerFilters, function(arrayFilter, key) {
+                                    if (feature.properties[key]) {
+                                        fil += arrayFilter.values[feature.properties[key]].visible;
+                                    }
+                                    if(fil > 0){$scope.siteOnScreen.push(feature.properties.id_site);}
+                                });
+                                return fil > 0 ? true : false ;
+                            }
+                        }
+                    );
+                    $scope.mainLayer = new L.geoJson($scope.filteredSites,options);
+                    $scope.mainLayer.addTo($scope.map);
+                    //Filtre de la liste de la sideBar
+                    $scope.syncSidebar();
+                };
+                
+                //Action zoom sur une localisation
+                $scope.$watch('selectedLocation', function (newvalue, oldvalue) {
+                    if (newvalue) {
+                        $scope.siteNameFilter = '';
+                        $scope.map.fitBounds([
+                            [newvalue.st_ymin, newvalue.st_xmin],
+                            [newvalue.st_ymax, newvalue.st_xmax]
+                        ], {zoom:17});
+                    }
+                });
+                
+                //action de cocher et tout décocher dans les filtres
+                $scope.checkUncheckAll= function (filterType, val) {
+                    var toggleStatus = val;
+                    angular.forEach($scope.mainLayerFilters[filterType].values, function(arrayFilter, key) {
+                        arrayFilter.visible = toggleStatus;
+                    });
+                    $scope.dofilterOnMap();
+                }
+                
+                //Action du filtre rechercher sur la liste des sites
+                $scope.$watchCollection('filteredSites', function (newvalue, oldvalue) {
+                        //suppression de la couche principale
+                        $scope.map.removeLayer($scope.mainLayer);
+                        //remplacement de la couche principale par la couche filtrée
+                        $scope.mainLayer = new L.geoJson($scope.filteredSites,$scope.mainLayerOptions);
+                        $scope.mainLayer.addTo($scope.map);  
+                });
             }
         );
         $scope.loadingClass = 'isload'; 
+        
         //réception de l'id site passé dans l'URL
         $scope.siteId = $routeParams.siteId;
         if($routeParams.siteId != null && $routeParams.siteId != '') {
-            for(var i= 0; i < $scope.geojsonSites.length; i++)
+            for(var i= 0; i < $scope.filteredSites.length; i++)
             {
-                if ($scope.geojsonSites[i].properties.id_site == $routeParams.siteId ) {
-                    $rootScope.openDetails($scope.geojsonSites[i].properties);
+                if ($scope.filteredSites[i].properties.id_site == $routeParams.siteId ) {
+                    $rootScope.openDetails($scope.filteredSites[i].properties);
                 }
             }
         }
@@ -280,44 +376,6 @@ app.controller('HomeController', ['$scope','$rootScope', '$compile', '$routePara
         $scope.scrollTo('anchor'+item.feature.properties.id_site);
         $scope.bindListMap(item.feature); // interraction carte --> liste           
     });
-    
-    //Action zoom sur une localisation
-    $scope.$watch('selectedLocation', function (newvalue, oldvalue) {
-        if (newvalue) {
-            $scope.map.fitBounds([
-                [newvalue.st_ymin, newvalue.st_xmin],
-                [newvalue.st_ymax, newvalue.st_xmax]
-            ], {zoom:17});
-        }
-    });
-    
-    //Action filtre d'un élément sur la carte
-    $scope.dofilterOnMap= function () {
-        $scope.map.removeLayer($scope.mainLayer);
-        var options = angular.extend(
-            $scope.mainLayerOptions,
-            {
-                filter: function(feature, layer) {
-                    var fil=0;
-                    angular.forEach($scope.mainLayerFilters, function(arrayFilter, key) {
-                        if (feature.properties[key]) fil += arrayFilter.values[feature.properties[key]].visible;
-                    });
-                    console.log(fil > 1 ? true : false);
-                    return fil > 0 ? true : false ;
-                }
-            }
-        );
-        $scope.mainLayer = new L.geoJson($scope.geojsonSites,options);
-        $scope.mainLayer.addTo($scope.map);
-    }
-    
-    $scope.checkUncheckAll= function (filterType, val) {
-        var toggleStatus = val;
-        angular.forEach($scope.mainLayerFilters[filterType].values, function(arrayFilter, key) {
-            arrayFilter.visible = toggleStatus;
-        });
-        $scope.dofilterOnMap();
-    }    
 }]);
 
 app.factory('LeafletServices', ['$http', function($http) {

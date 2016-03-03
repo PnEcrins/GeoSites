@@ -25,5 +25,22 @@
     <!-- La carte -->
     <div id="containerCarte" class="col-lg-offset-4 col-md-offset-5 col-sm-offset-6 col-lg-8 col-md-7 col-sm-6 col-xs-12">
         <div id="carte"></div>
+        <div id="button-wrapper">
+            <input type="text" id="searchCommune" class="form-control"
+                ng-model="selectedLocation" 
+                uib-typeahead="loc as loc.label for loc in ::locationData | filter:{label:$viewValue} | limitTo:8" 
+                typeahead-editable="false"
+                placeholder="{{::mapOptions.location.name}}">
+        </div>
+        <div class="collapse navbar-collapse" id="main-menu" >
+                <div class="navbar-nav pull-right">
+                    <div class="panel-heading filter-collapse collapsed" type="button" data-toggle="collapse" data-target="#filter-panel">Filtres<span class="caret"></span></div>
+                    <div class="panel dropdown-menu collapsed" id="filter-panel">
+                       <dir-filter-element ng-repeat="(key, obj) in ::mainLayerFilters" 
+                            on-check="dofilterOnMap()" filter="obj" key="key"/> 
+                    </div>
+                    
+                </div>
+            </div>
     </div>		
 </div>

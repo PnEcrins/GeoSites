@@ -81,14 +81,23 @@ html, body, #container {
 
 /* Filter */
 #main-menu{
-    color :#fff;
-    float:right;
+    position: absolute;
+    top: 60px;
+    float: right;
+    right: 20px;
+    width: 120px;
+    border: 1px solid #808080;
+    border-radius: 4px;
+    background: rgba(240, 240, 240, 0.9);
+    color: #aaa;
 }
 
 #filter-panel {
   overflow-y: auto;
   overflow-x: hidden;
-  background : rgba(51, 48, 48, 0.6) none repeat scroll 0% 0%;
+  background : transparent none repeat scroll 0% 0%;
+  color: #222;
+  min-width: 250px;
 }
 
 #filter-panel ul {
@@ -108,7 +117,7 @@ html, body, #container {
     border-right: 0px none;
     margin-bottom: 0px;
     padding: 0px;
-    background : rgba(51, 48, 48, 0.6) none repeat scroll 0% 0%;
+    background : rgba(240, 240, 240, 0.9) none repeat scroll 0% 0%;
 }
 #filter-panel .dropdown-menu {
     margin: 0px;
@@ -212,6 +221,19 @@ html, body, #container {
 	margin-left: -15px;
 	margin-right: -15px;
 	overflow: none;
+}
+#button-wrapper{
+    position: absolute;
+    top: 20px;
+    float: right;
+    right: 20px;
+    width: 250px;
+    border: 1px solid #808080;
+    border-radius: 4px;
+}
+#button-wrapper input{
+    background: rgba(240, 240, 240, 0.9);
+    color: rgb(34, 34, 34)
 }
 
 #imgPNE{
@@ -363,10 +385,22 @@ html, body, #container {
 	width: 100%;
 }
 
+.gauche{
+	text-align: left;
+}
+
 .centrage{
 	text-align: center;
 }
 
 .smalltext{
 	font-size: 0.7em;
+}
+
+.hideme {
+    display:none;
+}
+
+.showme {
+    display:block;
 }

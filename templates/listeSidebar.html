@@ -3,12 +3,16 @@
 		<!-- <img id="imgPNE" class="img-responsive" alt="imgPNE" src="img/imgPNE.png"><br/> -->
         <div class="texteContainerSidebar">
             <em>Inventaire des sites géologiques du Parc National des Ecrins.</em>
+            <div >
+                <input class="form-control search" type="text" placeholder="Rechercher" ng-model="$parent.siteNameFilter"></input>
+            </div>
         </div>
+        
 		<hr>
 		<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">				
-			<div ng-repeat="site in geojsonSites" class="panel panel-default" id="{{ 'anchor' + site.properties.id_site }}" >
+			<div ng-repeat="site in ($parent.filteredSites = (geojsonSites | filter: siteNameFilter))" class="panel panel-default" id="{{ 'anchor' + site.properties.id_site }}" ng-class="site.properties.display">
 				<div 
-                    class="panel-heading" 
+                    class="panel-heading"
                     role="button" id="{{ 'heading' + site.properties.id_site }}" 
                     data-toggle="chimereClass" 
                     data-parent="#accordion" 
@@ -23,17 +27,17 @@
 				</div>
 				<div id="{{ 'collapse' + site.properties.id_site }}" class="panel-collapse collapse chimereClass" role="tabpanel" aria-labelledby="{{ 'heading' + site.properties.id_site }}">
 					<div class="panel-body" style="position:relative;">
-							<div>								
-								<img class="img-responsive img-rounded imgListe pull-left img10" alt="photoListe" ng-src="{{ 'data/img/photo' + site.properties.id_site + '.png' }}">
-							</div>
-							<div>
-								Site {{ site.properties.typologie2 }} / {{ site.properties.typologie3 }} <br />
-								<div ng-if="site.properties.eval_interet_patrim == 3"><strong>Valeur patrimoniale :</strong> <span>★★★</span></div>
-								<div ng-if="site.properties.eval_interet_patrim == 2"><strong>Valeur patrimoniale :</strong> <span>★★☆</span></div>
-								<div ng-if="site.properties.eval_interet_patrim == 1"><strong>Valeur patrimoniale :</strong> <span>★☆☆</span></div>
-								<strong>Intérêt : </strong>{{ site.properties.interet_geol }} <br />
-                                <strong>Lieu-dit : </strong>{{ site.properties.lieudit }} <span class="smalltext">({{ site.properties.commune}})</span>
-							</div>
+						<div>								
+							<img class="img-responsive img-rounded imgListe pull-left img10" alt="photoListe" ng-src="{{ 'data/img/photo' + site.properties.id_site + '.png' }}">
+						</div>
+						<div>
+							Site {{ site.properties.typologie2 }} / {{ site.properties.typologie3 }} <br />
+							<div ng-if="site.properties.eval_interet_patrim == 3"><strong>Valeur patrimoniale :</strong> <span>★★★</span></div>
+							<div ng-if="site.properties.eval_interet_patrim == 2"><strong>Valeur patrimoniale :</strong> <span>★★☆</span></div>
+							<div ng-if="site.properties.eval_interet_patrim == 1"><strong>Valeur patrimoniale :</strong> <span>★☆☆</span></div>
+							<strong>Intérêt : </strong>{{ site.properties.interet_geol }} <br />
+                            <strong>Lieu-dit : </strong>{{ site.properties.lieudit }} <span class="smalltext">({{ site.properties.commune}})</span>
+						</div>
 						<a role="button" class="btn btn-default button-droite" href="" ng-click="openDetails(site.properties)"><span class="fa fa-file-text-o"></span> Afficher détails &raquo </a>
 					</div>
 				</div>

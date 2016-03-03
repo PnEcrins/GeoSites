@@ -12,7 +12,7 @@ var opacity_layer;
 //Create a control to increase the opacity value. This makes the image more opaque.
 L.Control.higherOpacity = L.Control.extend({
     options: {
-        position: 'topright'
+        position: 'topleft'
     },
     setOpacityLayer: function (layer) {
             opacity_layer = layer;
@@ -32,7 +32,7 @@ L.Control.higherOpacity = L.Control.extend({
 //Create a control to decrease the opacity value. This makes the image more transparent.
 L.Control.lowerOpacity = L.Control.extend({
     options: {
-        position: 'topright'
+        position: 'topleft'
     },
     setOpacityLayer: function (layer) {
             opacity_layer = layer;
@@ -52,7 +52,7 @@ L.Control.lowerOpacity = L.Control.extend({
 //Create a jquery-ui slider with values from 0 to 100. Match the opacity value to the slider value divided by 100.
 L.Control.opacitySlider = L.Control.extend({
     options: {
-        position: 'topright'
+        position: 'topleft'
     },
     setOpacityLayer: function (layer) {
             opacity_layer = layer;

@@ -40,26 +40,7 @@
                         <i class="fa fa-list white"></i>&nbsp;&nbsp;Liste
                     </a>
                 </li>
-            </ul>
-            <div class="collapse navbar-collapse"  id="main-menu" >
-                <div class="navbar-nav pull-right">
-                    <div class="panel-heading filter-collapse collapsed" type="button" data-toggle="collapse" data-target="#filter-panel">Filtres<span class="caret"></span></div>
-                    <div class="panel dropdown-menu collapsed" id="filter-panel">
-                        <div class="panel">
-                            <div class="panel-heading">{{::mapOptions.location.name}}</div>
-                            <div class="panel-body">
-                            <input type="text" id="searchCommune" ng-model="$parent.selectedLocation" 
-                                uib-typeahead="loc as loc.label for loc in ::locationData | filter:{label:$viewValue} | limitTo:8" 
-                                class="form-control"
-                                typeahead-editable="false">
-                            </div>
-                        </div>
-                        <dir-filter-element ng-repeat="(key, obj) in ::mainLayerFilters" 
-                            on-check="dofilterOnMap()" filter="obj" key="key"/>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
+            </ul>           
+        </div>  
 	</div>
 </nav>
