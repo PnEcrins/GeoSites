@@ -79,7 +79,7 @@ L.Control.opacitySlider = L.Control.extend({
             opacity_layer.setOpacity(slider_value);
           }
         });
-        
+        opacity_slider_div.title= 'Opacité de la carte géologique';
         return opacity_slider_div;
     }
 });
