@@ -11,6 +11,6 @@ $mavue = "geologie.v_sites";
 //titre de l'application (balise 'title' du <head> dans le html)
 $title = 'Mes sites géologiques';
 
-//url de base de l'application. necessaire pour le fonctionnement avec l'url rewriting et le $locationProvider.html5Mode d'angular
+//url de base de l'application. Nécessaire pour le fonctionnement avec l'url rewriting et le $locationProvider.html5Mode d'angular
 $base = '/geologie/';
 ?>
