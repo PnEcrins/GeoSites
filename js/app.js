@@ -76,6 +76,11 @@ app.config(['$routeProvider', '$locationProvider',
                 templateUrl: 'templates/home.html',
                 controller: 'HomeController'
             })
+            .when('/carouselPhotos', {
+                templateUrl: 'templates/home.html',
+                controller: 'HomeController',
+                reloadOnSearch: false
+            })
             .when('/site-:siteId', {
                 templateUrl: 'templates/home.html',
                 controller: 'HomeController'
