@@ -2,4 +2,5 @@
 config/config.php
 config/configmap.json
 config/config.js
+data/communes.json
 favicon.ico

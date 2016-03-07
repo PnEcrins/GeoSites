@@ -169,7 +169,15 @@ Et indiquez le chemin après le ``/``. Par exemple si votre application se trouv
     ::
        RewriteBase /geologie/ 
        
+**Configuration de la recherche par localisation géographique** 
 
+Créez un fichier de configuration apache ``.htaccess`` à partir du fichier d'exemple :
+    ::
+        cp data/communes.json.sample data/communes.json
+        
+Adaptez le contenu du fichier ``communes.json`` à votre contexte.
+        
+        
 Personnalisation de l'application
 =================================
 
