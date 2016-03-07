@@ -1,3 +1,4 @@
+.htaccess
 config/config.php
 config/configmap.json
 config/config.js

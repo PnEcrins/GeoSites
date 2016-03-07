@@ -138,16 +138,37 @@ Installation de l'application
 =============================
 
 Exécutez la commande suivante :
-::
-  wget https://github.com/PnEcrins/GeoSiteApp/archive/master.zip
-  unzip master.zip
 
-Connexion à la base de données. Créez un fichier de configuration à partir du fichier d'exemple :
-::
-  cp config/config.php.sample config/config.php
+    ::
+        wget https://github.com/PnEcrins/GeoSiteApp/archive/master.zip
+        unzip master.zip
+
+**Connexion à la base de données.** 
+
+Créez un fichier de configuration à partir du fichier d'exemple :
+
+    ::
+        cp config/config.php.sample config/config.php
 
 Renseignez vos informations de connexion dans le fichier ``config/config.php``.
 
+
+**Configuration apache** 
+
+Créez un fichier de configuration apache ``.htaccess`` à partir du fichier d'exemple :
+    ::
+        cp .htaccess.sample .htaccess
+
+Si l'url de votre application n'est pas celle de votre domaine (ou sous domaine), modifiez la partie 
+
+    ::
+        RewriteBase / 
+
+Et indiquez le chemin après le ``/``. Par exemple si votre application se trouve à cette url ``http://mondomaine/geologie``, modifiez la variable ``RewriteBase`` ainsi
+
+    ::
+       RewriteBase /geologie/ 
+       
 
 Personnalisation de l'application
 =================================
