@@ -12,7 +12,7 @@
         
 		<hr>
 		<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">				
-			<div ng-repeat="site in ($parent.filteredSites = (geojsonSites | filter: siteNameFilter))" class="panel panel-default" id="{{ 'anchor' + site.properties.id_site }}" ng-class="site.properties.display">
+			<div ng-repeat="site in ($parent.filteredSites = (geojsonSites | filter: siteNameFilter | orderBy:'properties.nom_site'))" class="panel panel-default" id="{{ 'anchor' + site.properties.id_site }}" ng-class="site.properties.display">
 				<div 
                     class="panel-heading"
                     role="button" id="{{ 'heading' + site.properties.id_site }}" 
