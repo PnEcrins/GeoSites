@@ -148,10 +148,9 @@ app.controller('HomeController', ['$scope','$rootScope', '$timeout', '$compile',
         $('#info-popup').hide();
         
         $scope.map = L.map('carte', { zoomControl: false });
-        L.control.zoom({position: 'topleft', zoomInTitle: 'Zoomer', zoomOutTitle: 'Dézoomer'}).addTo($scope.map);
+        
         L.control.scale({position: 'bottomright', imperial: false}).addTo($scope.map);
         var opacitySlider = new L.Control.opacitySlider();
-        $scope.map.addControl(opacitySlider);
         
         $scope.map.on("moveend", function (e) {
             $scope.syncSidebar();
@@ -222,8 +221,10 @@ app.controller('HomeController', ['$scope','$rootScope', '$timeout', '$compile',
                 $scope.map.addLayer($scope.mainLayer );
                 $scope.controlOverlayLayers[results.data.layers.mainLayerName] = $scope.mainLayer; //pour l'ajout de la couche dans le LayerControl
                 
-                //ajout du Layer Control pour gérer les couches affichées
+                //ajout des Control 
+                $scope.map.addControl(L.control.zoom({position: 'topleft', zoomInTitle: 'Zoomer', zoomOutTitle: 'Dézoomer'}));
                 $scope.map.addControl(new L.Control.Layers($scope.controlBaseLayers,$scope.controlOverlayLayers,{position: 'topleft'}));
+                $scope.map.addControl(opacitySlider);
                 
                 //----Selecteur de localisation
                 if (results.data.location) {
