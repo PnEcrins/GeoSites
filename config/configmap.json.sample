@@ -64,6 +64,15 @@
             "type": "wms",
             "url" : "http://geoservices.brgm.fr/geologie",
             "options": {"layers":"Geologie","transparent":"true","opacity": 0,"format":"image/png","srs":"EPSG:4326"}
-        }
+        },
+        "limiteslayers":[
+            {
+                "name": "Limites name",
+                "type": "xyz",
+                "url" : "http://mydomaine.fr/myappdir/data/mbtiles/mylimitedir/{z}/{x}/{y}.png",
+                "active": true,
+                "options":{}
+            }
+        ]
 	}
 }

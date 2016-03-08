@@ -141,6 +141,7 @@ app.controller('HomeController', ['$scope','$rootScope', '$timeout', '$compile',
         $scope.filteredSites = response.features;
         //carte
         $scope.baselayers = {};
+        $scope.limiteslayers = {};
         $scope.controlBaseLayers = {};
         $scope.controlOverlayLayers = {};
         $scope.mainLayer = null;       
@@ -164,11 +165,8 @@ app.controller('HomeController', ['$scope','$rootScope', '$timeout', '$compile',
                     $scope.baselayers[key] = l;
                     $scope.controlBaseLayers[l.name] = l.map;
                     if (value.active) {
-                      $scope.baselayers[key].map.addTo($scope.map);
+                        $scope.baselayers[key].map.addTo($scope.map);
                     }
-                    // if (value.changeopacity) {
-                      // opacitySlider.setOpacityLayer($scope.baselayers[key].map);
-                    // }
                 });
                 
                 $scope.map.setView(new L.LatLng(results.data.center.lat, results.data.center.lng),results.data.center.zoom);
@@ -177,11 +175,19 @@ app.controller('HomeController', ['$scope','$rootScope', '$timeout', '$compile',
                 //couche opacity
                 var l = LeafletServices.loadData(results.data.layers.opacitylayer);
                 $scope.opacitylayer = l;
+                l.map.setZIndex(98);//forcer l'ordre d'affichage
                 $scope.map.addLayer(l.map);
-                $scope.controlOverlayLayers[l.name] = l.map;//pour l'ajout de la couche dans le LayerControl
+                // $scope.controlOverlayLayers[l.name] = l.map;//pour l'ajout de la couche dans le LayerControl
                 opacitySlider.setOpacityLayer(l.map);
                 l.map.setOpacity(0);
 
+                //----Surcouche limites
+                angular.forEach(results.data.layers.limiteslayers, function(value, key) {
+                    var l = LeafletServices.loadData(value);
+                    $scope.limiteslayers[key] = l;
+                    $scope.limiteslayers[key].map.setZIndex(99);//forcer l'ordre d'affichage
+                    $scope.limiteslayers[key].map.addTo($scope.map);
+                });
                 //----Couche principale
                 //options
                 $scope.mainLayerOptions = {
@@ -219,7 +225,7 @@ app.controller('HomeController', ['$scope','$rootScope', '$timeout', '$compile',
                 //Chargement des données et affichage sur la carte    
                 $scope.mainLayer = new L.geoJson($scope.filteredSites,$scope.mainLayerOptions);
                 $scope.map.addLayer($scope.mainLayer );
-                $scope.controlOverlayLayers[results.data.layers.mainLayerName] = $scope.mainLayer; //pour l'ajout de la couche dans le LayerControl
+                // $scope.controlOverlayLayers[results.data.layers.mainLayerName] = $scope.mainLayer; //pour l'ajout de la couche dans le LayerControl
                 
                 //ajout des Control 
                 $scope.map.addControl(L.control.zoom({position: 'topleft', zoomInTitle: 'Zoomer', zoomOutTitle: 'Dézoomer'}));
