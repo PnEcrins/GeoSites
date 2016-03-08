@@ -184,14 +184,11 @@ Personnalisation de l'application
 Personnalisez le contenu en modifiant la valeur des variables disponibles dans ``config/config.php``.
 
 Personnalisez la carte en créant le fichier de configuration ``/config/configmap.json`` à partir du fichier exemple ``/config/configmap.json.sample`` :
-::
-  cp config/configmap.json.sample config/configmap.json
+    ::
+        cp config/configmap.json.sample config/configmap.json
   
 Complétez le fichier ``/config/configmap.json`` avec le centre de votre territoire, votre clé IGN...
 
-Personnalisez les abbréviations en créant le fichier de configuration ``/config/configmap.json`` à partir du fichier exemple ``/config/configmap.json.sample`` :
-::
-  cp config/config.js.sample config/config.js
 
 Modifiez les images dans le répertoire ``img``.
 

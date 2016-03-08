@@ -10,16 +10,6 @@ app.controller('HomeController', ['$scope','$rootScope', '$timeout', '$compile',
     $scope.syncSidebar = function(){};
     $scope.siteOnScreen = [];
     
-    $scope.abbrListe1 = abbrListe1;
-    $scope.abbrListe2 = abbrListe2;
-    $scope.abbrListe3 = abbrListe3;
-    $scope.abbrListe4 = abbrListe4;
-    $scope.abbrListe5 = abbrListe5;
-    $scope.abbrListe6 = abbrListe6;
-    $scope.abbrListe7 = abbrListe7;
-    $scope.abbrListe8 = abbrListe8;
-    $scope.abbrListe9 = abbrListe9;
-    
     // Modal accueil
     $scope.openAccueil = function () {
         var modalInstance = $uibModal.open({
