@@ -119,7 +119,6 @@ La photo principale de chaque site (affichée dans la liste des résultats et da
 Il est possible d'ajouter des photos complémentaires pour chaque site. Elles seront affichées dans une galerie dans la fiche détail du site. Elles doivent être chargées dans le dossier ``/data/img/`` et être renseignées dans la table ``geologie.photos``.
 
 Les coordonnées des sites géologiques sont stockées dans la table ``geologie.emprise`` en L2E (27572). A partir de ces suites ordonnées de coordonnées, il est possible de récréer la géométrie des polygones pour les stocker dans un champs géométrie ajouté dans la BDD (en WGS 84 / 4326). 
-
 ::
 	SELECT AddGeometryColumn('geologie', 'site', 'the_geom_4326', 4326, 'POLYGON', 2);
 
@@ -138,41 +137,37 @@ Installation de l'application
 =============================
 
 Exécutez la commande suivante :
-
-    ::
+::
         wget https://github.com/PnEcrins/GeoSiteApp/archive/master.zip
         unzip master.zip
 
-**Connexion à la base de données.** 
+**Connexion à la base de données** 
 
 Créez un fichier de configuration à partir du fichier d'exemple :
-
-    ::
+::
         cp config/config.php.sample config/config.php
 
 Renseignez vos informations de connexion dans le fichier ``config/config.php``.
 
 
-**Configuration apache** 
+**Configuration Apache** 
 
 Créez un fichier de configuration apache ``.htaccess`` à partir du fichier d'exemple :
-    ::
+::
         cp .htaccess.sample .htaccess
 
 Si l'url de votre application n'est pas celle de votre domaine (ou sous domaine), modifiez la partie 
-
-    ::
+::
         RewriteBase / 
 
 Et indiquez le chemin après le ``/``. Par exemple si votre application se trouve à cette url ``http://mondomaine/geologie``, modifiez la variable ``RewriteBase`` ainsi
-
-    ::
+::
        RewriteBase /geologie/ 
        
 **Configuration de la recherche par localisation géographique** 
 
 Créez un fichier de configuration apache ``.htaccess`` à partir du fichier d'exemple :
-    ::
+::
         cp data/communes.json.sample data/communes.json
         
 Adaptez le contenu du fichier ``communes.json`` à votre contexte.
@@ -184,7 +179,7 @@ Personnalisation de l'application
 Personnalisez le contenu en modifiant la valeur des variables disponibles dans ``config/config.php``.
 
 Personnalisez la carte en créant le fichier de configuration ``/config/configmap.json`` à partir du fichier exemple ``/config/configmap.json.sample`` :
-    ::
+::
         cp config/configmap.json.sample config/configmap.json
   
 Complétez le fichier ``/config/configmap.json`` avec le centre de votre territoire, votre clé IGN...
