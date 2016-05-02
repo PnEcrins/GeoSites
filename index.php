@@ -14,6 +14,7 @@ include ("dbconnect.php");
         <link rel="stylesheet" href="vendors/opacity/Control.Opacity.css" />
         <link rel="stylesheet" href="vendors/jquery/jquery-ui-1.10.3.custom.min.css" />
 		<link href="vendors/angular-bootstrap/ui-bootstrap-custom-1.1.1-csp.css" rel="stylesheet" />
+		<link href="vendors/angular/multiple-select.min.css" rel="stylesheet" />
 		<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
         <link href="css/style.css" rel="stylesheet" />			
 
@@ -38,6 +39,7 @@ include ("dbconnect.php");
  		<script src="vendors/angular/angular.min.js"></script>
         <script src="vendors/angular/angular-locale_fr-fr.js"></script>
         <script src="vendors/angular/angular-pdf.min.js"></script>
+        <script src="vendors/angular/multiple-select.min.js"></script>
 		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-animate.js"></script>
 		<script src="vendors/leaflet/leaflet.js"></script>
         <script src="vendors/opacity/Control.Opacity.js"></script>
@@ -56,9 +58,6 @@ include ("dbconnect.php");
 		<script src="js/controllers/modalAideController.js"></script>
 		<script src="js/controllers/modalContactController.js"></script>
 		<script src="js/controllers/modalPneController.js"></script>
-
-		<!-- Config JS -->
-		<script src="config/config.js"></script>
 
 	</body>
 </html>

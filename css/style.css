@@ -85,14 +85,10 @@ html, body, #container {
 
 /* Filter */
 #main-menu{
-    position: absolute;
-    top: 60px;
-    float: right;
-    right: 20px;
-    width: 120px;
+    position: relative;
     border: 1px solid #808080;
     border-radius: 4px;
-    background: rgba(240, 240, 240, 0.9);
+    background: rgba(255, 255, 255, 1);
     color: #aaa;
 }
 
@@ -121,7 +117,6 @@ html, body, #container {
     border-right: 0px none;
     margin-bottom: 0px;
     padding: 0px;
-    background : rgba(240, 240, 240, 0.9) none repeat scroll 0% 0%;
 }
 #filter-panel .dropdown-menu {
     margin: 0px;
