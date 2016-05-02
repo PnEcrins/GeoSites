@@ -9,6 +9,7 @@ app.controller('HomeController', ['$scope','$rootScope', '$timeout', '$compile',
     $scope.siteId = null;
     $scope.syncSidebar = function(){};
     $scope.siteOnScreen = [];
+    $scope.interetsGeolArray = [];
     
     // Modal accueil
     $scope.openAccueil = function () {
@@ -212,6 +213,20 @@ app.controller('HomeController', ['$scope','$rootScope', '$timeout', '$compile',
                     }
                 };
                 
+                $scope.interetsGeolFilters = [
+                    {id:1,"name":"Géomorphologie"}
+                    ,{id:2,"name":"Métamorphisme"}
+                    ,{id:3,"name":"Plutonisme"}
+                    ,{id:4,"name":"Ressources naturelles"}
+                    ,{id:5,"name":"Tectonique"}
+                    ,{id:6,"name":"Hydrothermalisme"}
+                    ,{id:7,"name":"Hydrogéologie"}
+                    ,{id:8,"name":"Stratigraphie"}
+                    ,{id:9,"name":"Minéralogie"}
+                    ,{id:10,"name":"Volcanisme"}
+                    ,{id:11,"name":"Paléontologie"}
+                ];
+                
                 //Chargement des données et affichage sur la carte    
                 $scope.mainLayer = new L.geoJson($scope.filteredSites,$scope.mainLayerOptions);
                 $scope.map.addLayer($scope.mainLayer );
@@ -281,7 +296,7 @@ app.controller('HomeController', ['$scope','$rootScope', '$timeout', '$compile',
                 };
                 
                 //Action filtre d'un élément sur la carte
-                $scope.dofilterOnMap= function () {
+                $scope.doFilter = function () {
                     //filtre sur la carte
                     $scope.siteNameFilter = '';
                     $scope.siteOnScreen = [];
@@ -291,12 +306,23 @@ app.controller('HomeController', ['$scope','$rootScope', '$timeout', '$compile',
                         {
                             filter: function(feature, layer) {
                                 var fil=0;
-                                angular.forEach($scope.mainLayerFilters, function(arrayFilter, key) {
-                                    if (feature.properties[key]) {
-                                        fil += arrayFilter.values[feature.properties[key]].visible;
+                                // angular.forEach($scope.mainLayerFilters, function(arrayFilter, key) {
+                                    // if (feature.properties[key]) {
+                                        // fil += arrayFilter.values[feature.properties[key]].visible;
+                                    // }
+                                    // if(fil > 0){$scope.siteOnScreen.push(feature.properties.id_site);}
+                                // });
+                                if($scope.interetsGeolArray.length > 0){
+                                    for(var i= 0; i < $scope.interetsGeolArray.length; i++)
+                                    {
+                                        if($scope.interetsGeolArray[i].name==feature.properties['interet_geol']){fil = fil+1;}
+                                        if(fil > 0){$scope.siteOnScreen.push(feature.properties.id_site);}
                                     }
-                                    if(fil > 0){$scope.siteOnScreen.push(feature.properties.id_site);}
-                                });
+                                }
+                                else{
+                                    $scope.siteOnScreen.push(feature.properties.id_site);
+                                    fil = 1;
+                                }
                                 return fil > 0 ? true : false ;
                             }
                         }
@@ -324,7 +350,7 @@ app.controller('HomeController', ['$scope','$rootScope', '$timeout', '$compile',
                     angular.forEach($scope.mainLayerFilters[filterType].values, function(arrayFilter, key) {
                         arrayFilter.visible = toggleStatus;
                     });
-                    $scope.dofilterOnMap();
+                    $scope.doFilter();
                 }
                 
                 //Action du filtre rechercher sur la liste des sites

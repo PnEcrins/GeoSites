@@ -1,0 +1,18 @@
+<div class="panel" >
+	<div class="panel-body">
+		<ul id="filter-{{::key}}">
+			<li>
+				<label>
+					<input id="f-toogle-{{::key}}" type="checkbox" ng-click="$parent.checkUncheckAll(key, state)" ng-model="state">
+					Tout cocher/décocher
+				</label>
+			</li>
+			<li ng-repeat="(fkey, fobj) in ::filterInfo.values"> 
+				<label>
+					<input ng-model="fobj.visible" id="f-{{::key}}-{{::fkey}}" type="checkbox" ng-change="onCheck()" >
+					{{::fobj.label}}
+				</label> 
+			</li>
+		</ul>
+	</div>
+</div>

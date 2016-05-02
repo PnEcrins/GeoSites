@@ -8,6 +8,17 @@
             <div >
                 <input class="form-control search" type="text" placeholder="Rechercher" ng-model="$parent.siteNameFilter"></input>
             </div>
+            <!--<div class="collapse navbar-collapse" id="main-menu" >
+                <div class="navbar-nav">
+                    <div class="panel-heading filter-collapse collapsed" type="button" data-toggle="collapse" data-target="#filter-panel">{{::mainLayerFilters.interet_geol.name}} (Filtre)<span class="caret"></span></div>
+                    <div class="panel dropdown-menu collapsed" id="filter-panel">
+                       <dir-filter-element ng-repeat="(key, obj) in ::mainLayerFilters" 
+                            on-check="dofilterOnMap()" filter="obj" key="key"/> 
+                    </div>
+                </div>
+            </div >-->
+            <multiple-autocomplete ng-model="$parent.interetsGeolArray" object-property="name" suggestions-arr="interetsGeolFilters" ng-change="doFilter()"></multiple-autocomplete>
+            <button type="button" class="btn btn-default" ng-click="doFilter()">Filtrer</button>
         </div>
         
 		<hr>

@@ -32,15 +32,6 @@
                 typeahead-editable="false"
                 placeholder="{{::mapOptions.location.name}}">
         </div>
-        <div class="collapse navbar-collapse" id="main-menu" >
-                <div class="navbar-nav pull-right">
-                    <div class="panel-heading filter-collapse collapsed" type="button" data-toggle="collapse" data-target="#filter-panel">Filtres<span class="caret"></span></div>
-                    <div class="panel dropdown-menu collapsed" id="filter-panel">
-                       <dir-filter-element ng-repeat="(key, obj) in ::mainLayerFilters" 
-                            on-check="dofilterOnMap()" filter="obj" key="key"/> 
-                    </div>
-                    
-                </div>
-            </div>
+        
     </div>		
 </div>

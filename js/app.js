@@ -1,5 +1,5 @@
 // Création du module
-var app = angular.module('GeoSiteApp', ['ngRoute','ui.bootstrap','pdf']);
+var app = angular.module('GeoSiteApp', ['ngRoute','ui.bootstrap','pdf','multipleSelect']);
 
 
 /* ------------------- *
