@@ -138,7 +138,7 @@ Installation de l'application
 
 Exécutez la commande suivante :
 ::
-        wget https://github.com/PnEcrins/GeoSiteApp/archive/master.zip
+        wget https://github.com/PnEcrins/GeoSites/archive/master.zip
         unzip master.zip
 
 **Connexion à la base de données** 
