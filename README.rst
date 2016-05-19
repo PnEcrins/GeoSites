@@ -1,11 +1,11 @@
-GeoSiteApp
-==========
+GeoSites
+========
 
 Application WEB permettant de consulter l'inventaire du patrimoine géologique. 
 
 Développée par le Parc national des Ecrins pour mettre à disposition du grand public les sites géologiques remarquables de son territoire : `<http://geologie.ecrins-parcnational.fr/>`_.
 
-GeoSiteApp permet de mettre en ligne une application WEB grand public pour consulter l'inventaire du patrimoine géologique d'un territoire. Cet inventaire est coordonné au niveau national par la CPPG (Commission permanente du patrimoine géologique) et validé scientifiquement par le MNHN (Muséum national d'Histoire naturelle) et le BRGM (Bureau de Recherches Géologiques et Minières). 
+GeoSites permet de mettre en ligne une application WEB grand public pour consulter l'inventaire du patrimoine géologique d'un territoire. Cet inventaire est coordonné au niveau national par la CPPG (Commission permanente du patrimoine géologique) et validé scientifiquement par le MNHN (Muséum national d'Histoire naturelle) et le BRGM (Bureau de Recherches Géologiques et Minières). 
 `<https://inpn.mnhn.fr/programme/patrimoine-geologique/presentation>`_
 `<http://www.brgm.fr/projet/patrimoine-geologique-outil-saisie-inventaire-i-geotope>`_
 
@@ -40,7 +40,7 @@ Fonctionnalités
 Installation
 ------------
 
-Consulter la documentation :  `<https://github.com/PnEcrins/GeoSiteApp/blob/master/docs/installation.rst>`_
+Consulter la documentation :  `<https://github.com/PnEcrins/GeoSites/blob/master/docs/installation.rst>`_
 
 License
 -------
