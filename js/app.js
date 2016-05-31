@@ -70,27 +70,16 @@ app.filter("sanitize", ['$sce', function($sce) {
 * --------------------- *
 * -------------------- */
 app.config(['$routeProvider', '$locationProvider',
-    function($routeProvider, $locationProvider) {	
+    function($routeProvider, $locationProvider) {
         $routeProvider
             .when('/', {
-                templateUrl: 'templates/home.html',
-                controller: 'HomeController'
-            })
-            .when('/carouselPhotos', {
-                templateUrl: 'templates/home.html',
-                controller: 'HomeController',
-                reloadOnSearch: false
+                template: ''
             })
             .when('/site-:siteId', {
-                templateUrl: 'templates/home.html',
-                controller: 'HomeController'
-            })
-            // .when('/#anchor:siteId', {})
-            
-            .otherwise({
-                redirectTo: '/'
+                template: '',
+                controller: 'SiteDetailController'
             });
-        $locationProvider.html5Mode({ enabled: true, requireBase: true });	
+        $locationProvider.html5Mode({ enabled: true, requireBase: false });
     }
 ]);
 

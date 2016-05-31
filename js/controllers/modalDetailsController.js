@@ -1,6 +1,5 @@
 // Controller de la modal, ici on s'occupe de ce qui est fermeture au clic sur le bouton
-app.controller('ModalDetailsCtrl', function ($scope, $http, $uibModalInstance, site) {
-
+app.controller('ModalDetailsCtrl', ['$scope', '$http', '$uibModalInstance', 'site', '$location', function ($scope, $http, $uibModalInstance, site, $location) {
     // Initialisation
     $scope.site = site;
     
@@ -63,5 +62,6 @@ app.controller('ModalDetailsCtrl', function ($scope, $http, $uibModalInstance, s
     //fermeture de la modale
 	$scope.ok = function () {
 		$uibModalInstance.close();
+    $location.path('/');
 	};
-});
+}]);

@@ -1,6 +1,5 @@
 
 	<div class="sidebar-wrapper">
-		<!-- <img id="imgPNE" class="img-responsive" alt="imgPNE" src="img/imgPNE.png"><br/> -->
         <div class="texteContainerSidebar">
             <p>
 				<em>Inventaire des sites géologiques du Parc national des Ecrins.</em>
@@ -51,7 +50,7 @@
 							<strong>Intérêt : </strong>{{ site.properties.interet_geol }} <br />
                             <strong>Lieu-dit : </strong>{{ site.properties.lieudit }} <span class="smalltext">({{ site.properties.commune}})</span>
 						</div>
-						<a role="button" class="btn btn-default button-droite" href="" ng-click="openDetails(site.properties)"><span class="fa fa-file-text-o"></span> Afficher détails &raquo </a>
+						<a role="button" class="btn btn-default button-droite" href="site-{{site.properties.id_site}}" ><span class="fa fa-file-text-o"></span> Afficher détails &raquo </a>
 					</div>
 				</div>
 			</div>
