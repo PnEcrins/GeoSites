@@ -1,7 +1,6 @@
 // Création du controller HomeController
 // Un controller gère les données de l'application
 app.controller('HomeController', ['$scope','$rootScope', '$timeout', '$compile', '$routeParams', '$uibModal', '$http','LeafletServices', '$location', '$anchorScroll', '$rootScope', function ($scope, $rootScope, $timeout,$compile, $routeParams, $uibModal, $http, LeafletServices, $location, $anchorScroll, $rootScope) {
-
     // Initialisation
     $scope.loadingClass = 'onloading';
     $scope.previousLinkSelected = null;
@@ -128,8 +127,13 @@ app.controller('HomeController', ['$scope','$rootScope', '$timeout', '$compile',
     //geojson
     $http.get('generategeojson.php')
     .success(function(response) {
+        var mapSites = {};
+        angular.forEach(response.features, function(site, key){
+          mapSites[site.properties.id_site] = site;
+        });
         $scope.geojsonSites = response.features;
         $scope.filteredSites = response.features;
+        $rootScope.mapSites = mapSites;
         //carte
         $scope.baselayers = {};
         $scope.limiteslayers = {};
@@ -184,7 +188,7 @@ app.controller('HomeController', ['$scope','$rootScope', '$timeout', '$compile',
                 $scope.mainLayerOptions = {
                     style: function (feature) {return {weight: 1.3, opacity: 1, fillOpacity: 0.5 };}
                     ,onEachFeature: function (feature, layer) {
-                        var popup = '<div><h4>'+feature.properties.nom_site+'</h4><a role="button" href="" ng-model="infoObj" ng-click="openDetails(infoObj)" ><span class="fa fa-file-text-o"></span> Afficher détails  </a>';
+                        var popup = '<div><h4>'+feature.properties.nom_site+'</h4><a role="button" href="site-' + feature.properties.id_site + '"><span class="fa fa-file-text-o"></span> Afficher détails  </a>';
                         var popupContent = $compile(popup)($scope); //On doit compiler le html pour que les directives angular comme ici 'ng-clik' soient interprétées
                         layer.bindPopup(popupContent[0]);
                         layer._properties = feature.properties;
@@ -365,18 +369,12 @@ app.controller('HomeController', ['$scope','$rootScope', '$timeout', '$compile',
         );
         $scope.loadingClass = 'isload'; 
         
-        //réception de l'id site passé dans l'URL
+        // Réception de l'id site passé dans l'URL en cas d'accès direct
         $scope.siteId = $routeParams.siteId;
-        if($routeParams.siteId != null && $routeParams.siteId != '') {
-            for(var i= 0; i < $scope.filteredSites.length; i++)
-            {
-                if ($scope.filteredSites[i].properties.id_site == $routeParams.siteId ) {
-                    $rootScope.openDetails($scope.filteredSites[i].properties);
-                }
-            }
-        }
-        else{
-            $scope.openAccueil(); //ouverture de la modal
+        if($routeParams.siteId) {
+          $rootScope.openDetails($rootScope.mapSites[$routeParams.siteId].properties);
+        } else {
+          $scope.openAccueil(); //ouverture de la modal
         }
     })
     .error(function(err) {
@@ -393,7 +391,6 @@ app.controller('HomeController', ['$scope','$rootScope', '$timeout', '$compile',
     
     //Action selection d'un élément sur la carte
     $scope.$on('feature:click', function(ev, item){
-        $rootScope.infoObj = item.feature.properties;
         $('#filter-panel').collapse('hide');
         $('#info-popup').show();
         $scope.scrollTo('anchor'+item.feature.properties.id_site);
