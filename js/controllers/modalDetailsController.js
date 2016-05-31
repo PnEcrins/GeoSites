@@ -2,6 +2,7 @@
 app.controller('ModalDetailsCtrl', ['$scope', '$http', '$uibModalInstance', 'site', '$location', function ($scope, $http, $uibModalInstance, site, $location) {
     // Initialisation
     $scope.site = site;
+    $rootScope.pageTitle = $scope.site.nom_site + ' | ';
     
     // Insertion PDF
     $scope.pdfName = '';
@@ -62,6 +63,7 @@ app.controller('ModalDetailsCtrl', ['$scope', '$http', '$uibModalInstance', 'sit
     //fermeture de la modale
 	$scope.ok = function () {
 		$uibModalInstance.close();
-    $location.path('/');
+        $location.path('/');
+        $rootScope.pageTitle = '';
 	};
 }]);

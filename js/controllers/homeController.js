@@ -9,6 +9,7 @@ app.controller('HomeController', ['$scope','$rootScope', '$timeout', '$compile',
     $scope.syncSidebar = function(){};
     $scope.siteOnScreen = [];
     $scope.interetsGeolArray = [];
+    $rootScope.pageTitle = '';
     
     // Modal accueil
     $scope.openAccueil = function () {
