@@ -1,5 +1,5 @@
 // Controller de la modal, ici on s'occupe de ce qui est fermeture au clic sur le bouton
-app.controller('ModalDetailsCtrl', ['$scope', '$http', '$uibModalInstance', 'site', '$location', function ($scope, $http, $uibModalInstance, site, $location) {
+app.controller('ModalDetailsCtrl', ['$scope', '$rootScope', '$http', '$uibModalInstance', 'site', '$location', function ($scope, $rootScope, $http, $uibModalInstance, site, $location) {
     // Initialisation
     $scope.site = site;
     $rootScope.pageTitle = $scope.site.nom_site + ' | ';
