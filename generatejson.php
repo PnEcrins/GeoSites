@@ -5,9 +5,7 @@ $idSite = $_GET['id_site'];
 $view = $_GET['view'];
 header('Content-type: application/json');
 
-$query = "SELECT * FROM ".$view." WHERE id_site = '".$idSite."'";
-$rs = pg_query($dbconnect, $query) or die("La requete suivante ne peut pas etre executee : $query\n");
-
+$rs = pg_query_params($dbconnect, "SELECT * FROM " . pg_escape_string($view). " WHERE id_site = $1" , array($idSite)) or die("La requete suivante ne peut pas etre executee : $query\n");
 //Construction du GeoJSON
 $json = array();
 
