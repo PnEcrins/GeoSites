@@ -44,7 +44,6 @@ app.controller('HomeController', ['$scope','$rootScope', '$timeout', '$compile',
         // $(".navbar-collapse").collapse("toggle");
         return false;
     };
-    
     $("show-sidebar").click(function(){
         $scope.SideBarToggle();
     });
@@ -301,8 +300,6 @@ app.controller('HomeController', ['$scope','$rootScope', '$timeout', '$compile',
                 
                 //Action filtre d'un élément sur la carte
                 $scope.doFilter = function () {
-                    //filtre sur la carte
-                    $scope.siteNameFilter = '';
                     $scope.siteOnScreen = [];
                     $scope.map.removeLayer($scope.mainLayer);
                     var options = angular.extend(
@@ -365,6 +362,16 @@ app.controller('HomeController', ['$scope','$rootScope', '$timeout', '$compile',
                         $scope.mainLayer = new L.geoJson($scope.filteredSites,$scope.mainLayerOptions);
                         $scope.mainLayer.addTo($scope.map);  
                 });
+                // Au changement d'un site sur le multiselect, on lance le filtre
+                $scope.$watch('interetsGeolArray', function(before, after, scope){
+                  scope.doFilter();
+                }, true);
+                $(".searchclear").click(function(){
+                  var input = $(this).prev();
+                  input.val('');
+                  // On force l'event change pour angular
+                  input.change();
+                });
             }
         );
         $scope.loadingClass = 'isload'; 
@@ -376,6 +383,10 @@ app.controller('HomeController', ['$scope','$rootScope', '$timeout', '$compile',
         } else {
           $scope.openAccueil(); //ouverture de la modal
         }
+
+        // N'étant pas possible de configurer le placeholder du multi-select
+        // on le met à jour manuellement
+        $('input[name="interets-geologique"]').attr('placeholder', 'Intérêt Géologique');
     })
     .error(function(err) {
         $scope.erreur = err;

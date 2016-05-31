@@ -4,8 +4,9 @@
             <p>
 				<em>Inventaire des sites géologiques du Parc national des Ecrins.</em>
 			</p>
-            <div >
-                <input class="form-control search" type="text" placeholder="Rechercher" ng-model="$parent.siteNameFilter"></input>
+            <div class="search-wrapper">
+                <input class="form-control search" type="text" placeholder="Rechercher" ng-model="$parent.siteNameFilter">
+                <span class="searchclear glyphicon glyphicon-remove-circle"></span>
             </div>
             <!--<div class="collapse navbar-collapse" id="main-menu" >
                 <div class="navbar-nav">
@@ -16,8 +17,7 @@
                     </div>
                 </div>
             </div >-->
-            <multiple-autocomplete ng-model="$parent.interetsGeolArray" object-property="name" suggestions-arr="interetsGeolFilters" ng-change="doFilter()"></multiple-autocomplete>
-            <button type="button" class="btn btn-default" ng-click="doFilter()">Filtrer</button>
+            <multiple-autocomplete ng-model="$parent.interetsGeolArray" object-property="name" suggestions-arr="interetsGeolFilters" name="interets-geologique"></multiple-autocomplete>
         </div>
         
 		<hr>
