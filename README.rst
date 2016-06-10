@@ -15,6 +15,8 @@ Initialement saisi dans la base de données GEOTOPE mis en place avec Microsoft 
 
 Cette application WEB peut aussi être utilisée pour mettre en ligne d'autres types de données localisées. Voir rubrique Développement de la documentation.
 
+Présentation au `Forum TIC 2016 <http://forum-tic.espaces-naturels.fr/edition/2016>`_ : http://forum-tic.espaces-naturels.fr/sites/default/files/fichiers/presentations/5_geosites_cmonchicourt.pdf
+
 Technologies
 ------------
 
