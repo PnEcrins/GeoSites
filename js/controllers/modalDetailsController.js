@@ -28,14 +28,14 @@ app.controller('ModalDetailsCtrl', ['$scope', '$rootScope', '$http', '$uibModalI
         $scope.pdfName = doc.commentaire;
     }
     
-    //hack to display the first pdf
+    // Hack to display the first pdf
     $scope.renderPdf = false;
     $scope.expandDocs = function(){
         $scope.renderPdf = true;
         $scope.loading = '';
     }
     
-    //chargement des documents du site
+    // Chargement des documents du site
     var viewDocs = 'geologie.v_documents_sites';
 	var urlDocs = 'generatejson.php?view='+viewDocs+'&id_site=' + $scope.site.id_site;
 	$http.get(urlDocs).success(function(response) {
@@ -45,7 +45,7 @@ app.controller('ModalDetailsCtrl', ['$scope', '$rootScope', '$http', '$uibModalI
         $scope.pdfName = $scope.docs[0].commentaire;
 	});
 
-    //chargement des intérêts du site
+    // Chargement des intérêts du site
     var viewInterets = 'geologie.v_interets_sites';
 	var urlInterets = 'generatejson.php?view=' + viewInterets + '&id_site=' + $scope.site.id_site;
 	$http.get(urlInterets).success(function(response) {
@@ -60,10 +60,13 @@ app.controller('ModalDetailsCtrl', ['$scope', '$rootScope', '$http', '$uibModalI
         $scope.photos = response;
     });
     
-    //fermeture de la modale
+    // Fermeture de la modale
 	$scope.ok = function () {
-		$uibModalInstance.close();
-        $location.path('/');
-        $rootScope.pageTitle = '';
+	  $uibModalInstance.close();
 	};
+
+	$scope.$on('modal.closing', function(){
+	  $location.path('/');
+ 	 $rootScope.pageTitle = '';
+	});
 }]);
