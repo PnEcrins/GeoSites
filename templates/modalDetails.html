@@ -80,6 +80,38 @@
 
 		<hr>
 
+		<div ng-if="photos.length > 0" class="row">
+			<div class="bs-callout bs-callout-primary collapsed" role="tab" id="headingFive" data-toggle="collapse" href="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
+				<div><h2>Photos ({{photos.length}})<span class="caretbig pull-right"></span></h2></div>
+			</div >
+			<div class="collapse" id="collapseFive" role="tabpanel" aria-labelledby="headingFive">
+				
+				<div ng-if="photos.length > 0" id="carouselPhotos" class="carousel slide" data-ride="carousel">
+					<div class="carousel-inner" role="listbox">
+						<div class="item"  ng-class="{active:!$index}" ng-repeat="photo in photos">
+							<img id="carouselPhotos" ng-src="{{ 'data/img/' + photo.fichier }}" alt="{{ photo.legende }}">
+							<div class="carousel-caption">
+								<p>{{ photo.legende }}</p>
+							</div>
+						</div>
+
+						<a class="carousel-control right" href="#carouselPhotos" ng-click="$event.preventDefault()" data-slide="next">
+							<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+							<span class="sr-only">Next</span>
+						</a>
+						<a class="carousel-control left" href="#carouselPhotos" ng-click="$event.preventDefault()" data-slide="prev">
+							<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+							<span class="sr-only">Previous</span>
+						</a>
+
+					</div>
+				</div>
+
+			</div> 
+		</div>
+
+		<hr>
+		
 		<div class="row">
 			<div class="bs-callout bs-callout-primary collapsed" role="tab" id="headingTwo" data-toggle="collapse" href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
 				<div><h2>Intérêts<span class="caretbig pull-right"></span></h2></div>
@@ -127,32 +159,6 @@
 					<ng-pdf template-url="templates/viewerpdf.html" canvasid="pdf" scale="page-fit" page=1></ng-pdf>
 				</div>
 			</div>          
-		</div>
-
-		<hr>
-
-		<div ng-if="photos.length > 0" class="row">
-			<div class="bs-callout bs-callout-primary collapsed" role="tab" id="headingFive" data-toggle="collapse" href="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
-				<div><h2>Photos ({{photos.length}})<span class="caretbig pull-right"></span></h2></div>
-			</div >
-			<div class="collapse" id="collapseFive" role="tabpanel" aria-labelledby="headingFive">
-				
-				<div ng-if="photos.length > 0" id="carouselPhotos" class="carousel slide" data-ride="carousel">
-					<div class="carousel-inner" role="listbox">
-						<div class="item"  ng-class="{active:!$index}" ng-repeat="photo in photos">
-							<img id="carouselPhotos" ng-src="{{ 'data/img/' + photo.fichier }}" alt="{{ photo.legende }}">
-							<div class="carousel-caption">
-								<p>{{ photo.legende }}</p>
-							</div>
-						</div>
-
-						<a class="carousel-control right" href="#carouselPhotos" ng-click="$event.preventDefault()" data-slide="next"></a>
-						<a class="carousel-control left" href="#carouselPhotos" ng-click="$event.preventDefault()" data-slide="prev"></a>
-
-					</div>
-				</div>
-
-			</div> 
 		</div>
 
 		<hr>
