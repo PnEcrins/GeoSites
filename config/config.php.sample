@@ -10,12 +10,12 @@ $base = "";
 $mavue = "geologie.v_sites";
 
 // Titre de l'application (balise <title> du <head> dans le html)
-$title = 'Mes sites géologiques';
+$title = "Mes sites géologiques";
 
 // URL de base de l'application. Nécessaire pour le fonctionnement avec l'URL rewriting et le $locationProvider.html5Mode d'angular
-$base_url = '/geologie/';
+$base_url = "/geologie/";
 
 // Identifiant de suivi de Google Analytics pour disposer de statistiques de consultation
-$ID_GA = 'UA-XXXXXXX-XX';
+$ID_GA = "UA-XXXXXXX-XX";
 
 ?>
