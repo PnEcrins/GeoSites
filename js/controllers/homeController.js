@@ -203,14 +203,14 @@ app.controller('HomeController', ['$scope','$rootScope', '$timeout', '$compile',
                         "name" : "Intérêt géologique"
                         ,"values" : {
                             "Géomorphologie":{"label":"Géomorphologie", "visible":true}
-							,"Hydrogéologie":{"label":"Hydrogéologie", "visible":true}
-							,"Hydrothermalisme":{"label":"Hydrothermalisme", "visible":true}
+                            ,"Hydrogéologie":{"label":"Hydrogéologie", "visible":true}
+                            ,"Hydrothermalisme":{"label":"Hydrothermalisme", "visible":true}
                             ,"Métamorphisme":{"label":"Métamorphisme", "visible":true}
-							,"Minéralogie":{"label":"Minéralogie", "visible":true}
-							,"Paléontologie":{"label":"Paléontologie", "visible":true}
+                            ,"Minéralogie":{"label":"Minéralogie", "visible":true}
+                            ,"Paléontologie":{"label":"Paléontologie", "visible":true}
                             ,"Plutonisme":{"label":"Plutonisme", "visible":true}
                             ,"Ressources naturelles":{"label":"Ressources naturelles", "visible":true}
-							,"Stratigraphie":{"label":"Stratigraphie", "visible":true}
+                            ,"Stratigraphie":{"label":"Stratigraphie", "visible":true}
                             ,"Tectonique":{"label":"Tectonique", "visible":true}
                             ,"Volcanisme":{"label":"Volcanisme", "visible":true}
                         }
