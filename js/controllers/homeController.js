@@ -219,16 +219,16 @@ app.controller('HomeController', ['$scope','$rootScope', '$timeout', '$compile',
                 
                 $scope.interetsGeolFilters = [
                     {id:1,"name":"Géomorphologie"}
-                    ,{id:2,"name":"Métamorphisme"}
-                    ,{id:3,"name":"Plutonisme"}
-                    ,{id:4,"name":"Ressources naturelles"}
-                    ,{id:5,"name":"Tectonique"}
-                    ,{id:6,"name":"Hydrothermalisme"}
-                    ,{id:7,"name":"Hydrogéologie"}
-                    ,{id:8,"name":"Stratigraphie"}
-                    ,{id:9,"name":"Minéralogie"}
-                    ,{id:10,"name":"Volcanisme"}
-                    ,{id:11,"name":"Paléontologie"}
+                    ,{id:2,"name":"Hydrogéologie"}
+                    ,{id:3,"name":"Hydrothermalisme"}
+                    ,{id:4,"name":"Métamorphisme"}
+                    ,{id:5,"name":"Minéralogie"}
+                    ,{id:6,"name":"Paléontologie"}
+                    ,{id:7,"name":"Plutonisme"}
+                    ,{id:8,"name":"Ressources naturelles"}
+                    ,{id:9,"name":"Stratigraphie"}
+                    ,{id:10,"name":"Tectonique"}
+                    ,{id:11,"name":"Volcanisme"}
                 ];
                 
                 //Chargement des données et affichage sur la carte    
