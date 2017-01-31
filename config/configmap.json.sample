@@ -2,7 +2,7 @@
 	"order" : 1,
 	"id": "default", 
 	"clustering": false,
-	"name": "Carte des sites géologiques du PNE", 
+	"name": "Carte des sites géologiques", 
 	"center": {
 		"lat": 44.83,
 		"lng": 6.18,
@@ -32,7 +32,7 @@
 				"options":{}
 			},
 			{
-              "name": "Scan 25",
+              "name": "IGN SCAN",
               "type": "ign",
               "key" : "94zzr2fl3uvw9y9mzqskwyuo",
               "layer" : "GEOGRAPHICALGRIDSYSTEMS.MAPS", 
@@ -41,7 +41,7 @@
               "options": {"maxZoom": 17, "attribution": "IGN", "subdomains": ""}
             },
             {
-              "name": "Ortho Photographie",
+              "name": "IGN Orthophotographie",
               "type": "ign",
               "key" : "94zzr2fl3uvw9y9mzqskwyuo",
               "layer" : "ORTHOIMAGERY.ORTHOPHOTOS", 
@@ -50,7 +50,7 @@
               "options": {"maxZoom": 19, "attribution": "IGN", "subdomains": ""}
             },
 			{
-				"name": "ScanExpress",
+				"name": "IGN SCAN Express",
 				"type": "ign",
 				"key" : "94zzr2fl3uvw9y9mzqskwyuo",
 				"layer" : "GEOGRAPHICALGRIDSYSTEMS.MAPS.SCAN-EXPRESS.STANDARD", 
