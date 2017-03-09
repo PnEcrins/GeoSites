@@ -26,7 +26,7 @@ include ("dbconnect.php");
 		ng-controller défini la portée du controller, c'est à dire que les propriétés dans HomeController sont utilisables dans tout le body
 	-->
 	<!--<body ng-controller="HomeController"> -->
-	<body>
+	<body ng-cloak>
 		<div ng-include src="'templates/home.html'"></div>
 		<div ng-view></div>
 		<!-- Biliothèques js -->
