@@ -5,7 +5,7 @@ include ("dbconnect.php");
 <!doctype html>
 <html ng-app="GeoSiteApp" class="no-js">
 	<head>
-		<title>{{pageTitle}}<?php echo $title;?></title>
+		<title><?php echo $title;?></title>
 		<meta charset="utf-8" />
 		<base href="<?php echo $base_url;?>">
 		<link href="vendors/bootstrap/css/bootstrap.min.css" rel="stylesheet" />

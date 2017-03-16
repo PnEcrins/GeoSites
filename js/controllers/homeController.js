@@ -9,7 +9,6 @@ app.controller('HomeController', ['$scope','$rootScope', '$timeout', '$compile',
     $scope.syncSidebar = function(){};
     $scope.siteOnScreen = [];
     $scope.interetsGeolArray = [];
-    $rootScope.pageTitle = '';
     
     // Modal accueil
     $scope.openAccueil = function () {
@@ -149,7 +148,7 @@ app.controller('HomeController', ['$scope','$rootScope', '$timeout', '$compile',
         var opacitySlider = new L.Control.opacitySlider();
         
         $scope.map.on("moveend", function (e) {
-            $scope.syncSidebar();
+           // $scope.syncSidebar();
         });
 
         $http.get("config/configmap.json").then(
