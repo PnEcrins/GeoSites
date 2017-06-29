@@ -48,6 +48,7 @@ include ("dbconnect.php");
 		<!-- Modules -->
 		<script src="js/app.js"></script>
 		
+		<!-- Récupération des paramètres PHP des noms de vue pour les passer à AngularJS -->
 		<script>
 			var vuephotos = '<?php echo $vuephotos; ?>';
 			var vuedocuments = '<?php echo $vuedocuments; ?>';
