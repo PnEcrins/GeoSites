@@ -9,6 +9,12 @@ $base = "";
 // Vue renvoyant la liste et le contenu des sites
 $vuesites = "geologie.v_sites";
 
+// Vue renvoyant la liste des photos des sites
+$vuephotos = "geologie.v_photos";
+
+// Vue renvoyant la liste des documents des sites
+$vuedocuments = "geologie.v_documents_sites";
+
 // Titre de l'application (balise <title> du <head> dans le html)
 $title = "Mes sites géologiques";
 

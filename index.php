@@ -49,13 +49,13 @@ include ("dbconnect.php");
 		<script src="js/app.js"></script>
 		
 		<script>
-            var vuephotos = '<?php echo $vuephotos; ?>';
+			var vuephotos = '<?php echo $vuephotos; ?>';
 			var vuedocuments = '<?php echo $vuedocuments; ?>';
-            app.constant("vue", {
-                        "photos": vuephotos,
+			app.constant("vue", {
+						"photos": vuephotos,
 						"documents": vuedocuments
-                        })
-        </script>
+						})
+		</script>
 
 		<!-- Controllers -->
 		<script src="js/controllers/homeController.js"></script>
