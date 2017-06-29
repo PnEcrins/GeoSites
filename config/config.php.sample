@@ -6,8 +6,8 @@ $user = "";
 $passe = ""; 
 $base = "";
 
-// Vue permettant la création du geojson des sites
-$mavue = "geologie.v_sites";
+// Vue renvoyant la liste et le contenu des sites
+$vuesites = "geologie.v_sites";
 
 // Titre de l'application (balise <title> du <head> dans le html)
 $title = "Mes sites géologiques";

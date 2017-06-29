@@ -95,12 +95,8 @@ Cette BDD contient une vue qui doit renvoyer les sites avec les informations sui
    
 Le nom de cette vue peut être différent et paramétré dans le fichier ``config/config.php``. Si votre BDD est différente de celle par défaut, modifiez la pour qu'elle renvoie bien les mêmes données et noms de champs. 
 
-3 autres vues retournent des données nécessaires à un bon affichage du contenu de l'application. Celles-ci ne sont pas configurables (en dur dans le fichier `/js/controllers/modalDetailsController.js`) et doivent donc avoir le même nom et renvoyer le même contenu :
-::
-  CREATE OR REPLACE VIEW geologie.v_interets_sites AS -- Intérêt géologique de chaque site
-    SELECT i.id_site, i.interet1, i.interet2, i.justification
-    FROM geologie.interet_second i
-    ORDER BY i.interet1 DESC, i.interet2; 
+2 autres vues retournent des données génériques nécessaires à un bon affichage du contenu de l'application (photos et documents de chaque site). Leurs noms sont aussi configurables dans le fichier `config/config.php` et doivent renvoyer le même contenu :
+
   
   CREATE OR REPLACE VIEW geologie.v_documents_sites AS -- Documents attachés à chaque site
     SELECT documentation.id_site, documentation.type_document, documentation.fichier, documentation.commentaire
@@ -111,6 +107,13 @@ Le nom de cette vue peut être différent et paramétré dans le fichier ``confi
     SELECT photos.id_site, photos.fichier, photos.legende, photos.ordre, photos.id_photo
     FROM geologie.photos
     ORDER BY photos.id_site;
+	
+Enfin une dernière vue retourne des données nécessaires à un bon affichage du contenu de l'application. Elle est spécifique à la BDD géologie (intérêts géologiques secondaires de chaque site). Son nom est en dur dans le fichier `/js/controllers/modalDetailsController.js` et elle doit renvoyer le même contenu :
+::
+  CREATE OR REPLACE VIEW geologie.v_interets_sites AS -- Intérêt géologique de chaque site
+    SELECT i.id_site, i.interet1, i.interet2, i.justification
+    FROM geologie.interet_second i
+    ORDER BY i.interet1 DESC, i.interet2; 
 
 Une fois la BDD créée, les données ont été importées tel quel dans chaque table en exportant des CSV deuis la BDD Access d'origine. 
 

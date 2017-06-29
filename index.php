@@ -47,6 +47,15 @@ include ("dbconnect.php");
 
 		<!-- Modules -->
 		<script src="js/app.js"></script>
+		
+		<script>
+            var vuephotos = '<?php echo $vuephotos; ?>';
+			var vuedocuments = '<?php echo $vuedocuments; ?>';
+            app.constant("vue", {
+                        "photos": vuephotos,
+						"documents": vuedocuments
+                        })
+        </script>
 
 		<!-- Controllers -->
 		<script src="js/controllers/homeController.js"></script>

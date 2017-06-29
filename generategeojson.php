@@ -3,8 +3,8 @@ include ("dbconnect.php");
 
 header('Content-type: application/json');
 
-//$mavue est définie dans config/config.php
-$query = "Select * from $mavue";
+//$vuesites est définie dans config/config.php
+$query = "Select * from $vuesites";
 $rs = pg_query($dbconnect, $query) or die("La requete suivante ne peut pas etre executee : $query\n");
 
 //Construction du GeoJSON

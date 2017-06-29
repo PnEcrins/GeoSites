@@ -9,6 +9,7 @@ CHANGELOG
 
 - Ajout du suivi des statistiques avec Google Analytics (paramètre `$ID_GA` à ajouter dans `config/config.php`)
 - Ajout de `ng-cloak` à la balise `<body>` pour améliorer l'affichage du `title` de l'application
+- Passage des vues renvoyant la liste des photos et des documents des sites en paramètre (`$vuephotos` et `$vuedocuments` à ajouter dans `config/config.php`)
 
 **Corrections**
 
