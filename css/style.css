@@ -327,9 +327,10 @@ html, body, #container {
 /* Load mask */
 #loadmask{
     position: absolute;
-   /* background: url('../img/load.gif') center no-repeat #fff; */
-   background: url('../img/background_geologie.jpg') center no-repeat #fff;
-   background-size: cover;
+   /* background: url('../img/load.gif') center no-repeat #fff; 
+   /* background: url('../img/background_geologie.jpg') center no-repeat #fff; */
+   background: center no-repeat #fff; 
+   background-size: cover; 
     height: 100%;
     width: 100%;
     overflow: hidden;
