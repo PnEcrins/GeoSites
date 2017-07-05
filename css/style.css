@@ -8,6 +8,7 @@ html, body, #container {
     position:fixed;
     top: 50px;
     height: 100%;
+	padding-bottom: 50px;
 }
 
 /* Les icônes dans la barre de nav */
@@ -179,7 +180,7 @@ html, body, #container {
 	position: fixed;
 	/*display: block;*/
 	overflow: auto;
-	padding: 10px 15px;
+	padding: 10px 15px 40px;
 	/*position: absolute;*/
 	margin-bottom: auto;
     /*float: left;*/
