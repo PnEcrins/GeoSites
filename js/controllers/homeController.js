@@ -420,7 +420,7 @@ app.factory('LeafletServices', ['$http', function($http) {
         if (layerdata.type == 'xyz' || layerdata.type == 'ign') {
           var url = layerdata.url;
           if ( layerdata.type == 'ign') {
-            url = 'https://wxs.ign.fr/' + layerdata.key + '/wmts?LAYER='+layerdata.layer+'&EXCEPTIONS=text/xml&FORMAT=image/png&SERVICE=WMTS&VERSION=1.0.0&REQUEST=GetTile&STYLE=normal&TILEMATRIXSET=PM&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}'; 
+            url = 'https://wxs.ign.fr/' + layerdata.key + '/wmts?LAYER='+layerdata.layer+'&EXCEPTIONS=text/xml&FORMAT=image/'+layerdata.format+'&SERVICE=WMTS&VERSION=1.0.0&REQUEST=GetTile&STYLE=normal&TILEMATRIXSET=PM&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}'; 
           }
           this.layer.map = new L.TileLayer(url,layerdata.options);
         }
