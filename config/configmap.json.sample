@@ -16,13 +16,33 @@
         "mainLayerName" : "Sites geologiques",
 		"baselayers": [
 			{
-				"name": "OpenCycleMap",
-				"type": "xyz",
-				"url": "http://{s}.tile.opencyclemap.org/cycle/{z}/{x}/{y}.png",
-				"active": false,
-                "changeopacity" : false,
-				"options":{}
+				"name": "IGN Plan v2",
+				"type": "ign",
+				"key" : "cartes/geoportail",
+				"format" : "png",
+				"layer" : "GEOGRAPHICALGRIDSYSTEMS.PLANIGNV2", 
+				"active" : true,
+                		"changeopacity" : false,
+				"options": {"maxZoom": 17, "attribution": "IGN", "subdomains": ""}
 			},
+			{
+              			"name": "IGN Orthophotographie",
+              			"type": "ign",
+              			"key" : "ortho/geoportail",
+              			"format" : "jpeg",
+              			"layer" : "ORTHOIMAGERY.ORTHOPHOTOS", 
+              			"active" : false,
+              			"changeopacity" : false,
+              			"options": {"maxZoom": 19, "attribution": "IGN", "subdomains": ""}
+            		},
+			{
+				"name": "OpenTopoMap",
+				"type": "xyz",
+				"url": "https://a.tile.opentopomap.org/{z}/{x}/{y}.png",
+				"active": false,
+                		"changeopacity" : false,
+				"options":{}
+	    		},
 			{
 				"name": "OpenStreetMap",
 				"type": "xyz",
@@ -30,33 +50,6 @@
 				"active": false,
                 "changeopacity" : false,
 				"options":{}
-			},
-			{
-              "name": "IGN SCAN",
-              "type": "ign",
-              "key" : "94zzr2fl3uvw9y9mzqskwyuo",
-              "layer" : "GEOGRAPHICALGRIDSYSTEMS.MAPS", 
-              "active" : false,
-              "changeopacity" : false,
-              "options": {"maxZoom": 17, "attribution": "IGN", "subdomains": ""}
-            },
-            {
-              "name": "IGN Orthophotographie",
-              "type": "ign",
-              "key" : "94zzr2fl3uvw9y9mzqskwyuo",
-              "layer" : "ORTHOIMAGERY.ORTHOPHOTOS", 
-              "active" : false,
-              "changeopacity" : false,
-              "options": {"maxZoom": 19, "attribution": "IGN", "subdomains": ""}
-            },
-			{
-				"name": "IGN SCAN Express",
-				"type": "ign",
-				"key" : "94zzr2fl3uvw9y9mzqskwyuo",
-				"layer" : "GEOGRAPHICALGRIDSYSTEMS.MAPS.SCAN-EXPRESS.STANDARD", 
-				"active" : true,
-                "changeopacity" : false,
-				"options": {"maxZoom": 17, "attribution": "IGN", "subdomains": ""}
 			}
 		],
         "opacitylayer":{
